@@ -1,11 +1,13 @@
 
 .body {
     align-items: center;
+    background-size: cover;
+    width: 100%;
 }
 
-.footergrid {
-    background-color: saddlebrown;
+.footerheader {
     color: white;
+    background-color: saddlebrown;
     justify-items: center;
     align-items: center;
     padding: 5px;

@@ -5,7 +5,6 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import "./styles.css"
 import {BrowserRouter } from "react-router-dom";
-import "./footer.css"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

@@ -2,17 +2,25 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: beige;
+    background-size: cover;
+    margin: 10px;
+}
+
 .navcontainer {
+    margin: 30px;
     padding: 20px;
     background-color: #AD7924;
-    max-width: 110px;
-    margin: 0 auto;
-    height: 100%;
+    justify-items: left;
+    background-size: cover;
+    width: 100%;
+    box-shadow: 20px 20px 5px rgba(0, 0, 0, 0.2);
 }
 
 .nav {
     color: black;
-    display: flex;
+    display: inline-flex;
     justify-content: space-between;
     gap: 2rem;
     align-items: center; /* Added align-items to center items vertically */
@@ -27,7 +35,6 @@
     text-decoration: none;
     height: 100%;
     display: flex;
-    align-items: center;
     padding: .25rem;
 }
 
@@ -35,7 +42,8 @@
     padding: 0;
     margin: 3px;
     list-style: none;
-    display: flex;
+    float: left;
+    display: inline-flex;
     gap: 1rem;
 }
 
@@ -53,7 +61,7 @@
 }
 
 .menupage {
-    background-color: white;
+    background-color: beige;
     justify-content: left;
     display: flex; /* Changed to flex for proper alignment */
     flex-wrap: wrap; /* Allow items to wrap to the next line on small screens */
@@ -76,6 +84,8 @@
 
     .site-title {
         font-size: 2rem;
+        text-wrap: unset;
+        line-height: 30px;
     }
 }
 
@@ -104,4 +114,13 @@
         text-wrap: unset;
         line-height: 30px;
     }
+}
+
+.footer {
+    color: black;
+    align-items: center;
+    padding-left: 100px;
+    padding-right: 100px;
+    text-align: center;
+    width: 100%;
 }
