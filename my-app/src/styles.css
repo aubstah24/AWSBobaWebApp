@@ -133,6 +133,14 @@ body {
 }
 
 @media (max-width: 600px) {
+    .sweetfull {
+        background-color: #785D32;
+        padding: 40px;
+        align-items: center;
+        text-align: center;
+        display: inline-grid;
+    }
+
     .navcontainer {
         max-width: 100%; /* Allow the container to take the full width on small screens */
         padding: 10px;

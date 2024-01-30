@@ -1,6 +1,6 @@
 import {
-    Card, CardContent,
-    Container, Grid, GridColumn,
+    Card,
+    Container,
     Header, Image
 } from "semantic-ui-react"
 import React from "react";
