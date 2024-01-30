@@ -7,6 +7,8 @@ import {OnlineOrderingPage} from "./Pages/OnlineOrderingPage";
 import Navbar from "./Navbar";
 import {Route , Routes} from "react-router-dom";
 import Footer from "./Footer";
+import 'semantic-ui-css/semantic.min.css';
+
 
 function App() {
 
