@@ -1,10 +1,9 @@
-//import logo from './logo.svg';
 import './App.css';
 import {AboutUsPage} from "./Pages/AboutUsPage";
 import {LandingPage} from "./Pages/LandingPage";
 import {MenuPage} from "./Pages/MenuPage";
 import {OnlineOrderingPage} from "./Pages/OnlineOrderingPage";
-import Navbar from "./Navbar";
+import Nav from "./Navbar";
 import {Route , Routes} from "react-router-dom";
 import Footer from "./Footer";
 import 'semantic-ui-css/semantic.min.css';
@@ -14,7 +13,7 @@ function App() {
 
   return (
       <>
-        <Navbar/>
+        <Nav/>
         <div className="container">
           <Routes>
             <Route path="/" element={<LandingPage/>}></Route>

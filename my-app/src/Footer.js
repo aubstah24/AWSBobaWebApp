@@ -1,4 +1,4 @@
-import {Container, Icon, Grid, GridColumn} from 'semantic-ui-react'
+import {Container, Grid, GridColumn} from 'semantic-ui-react'
 import React from "react"
 
 
@@ -6,7 +6,7 @@ export default function Footer() {
 
     return (
         <Container className='footerheader'>
-            <Grid className='grid'>
+            <Grid className='footergrid'>
                 <GridColumn>
                     <p>AWS Boba Website Mock</p>
                     <p>Email us at bobawebsite@gmail.com</p>

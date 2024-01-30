@@ -49,7 +49,6 @@
 
 .nav li:hover {
     background-color: saddlebrown;
-    margin: 3px;
 }
 
 .pageheader{
@@ -77,28 +76,42 @@
     .nav ul {
         margin-right: 30px;
     }
+
+    .site-title {
+        font-size: 2rem;
+    }
+
 }
 
 @media (max-width: 600px) {
 
+    .navcontainer {
+        display: block;
+        flex-direction: column;
+        margin-top: auto;
+        padding: 50px;
+    }
+
     .nav {
-        position: absolute;
-        right: 0;
-        top: 60px;
-        background-color: #fef7e5;
-        width: 0;
-        height: calc(100vh - 60px);
-        transition: all 0.3s ease-in;
-        overflow: hidden;
+        display: block;
+        height: auto;
     }
 
     .nav ul {
         display: flex;
         flex-direction: column;
+        overflow: auto;
     }
 
     .nav ul li {
-        margin-right: unset;
-        margin-top: 22px;
+        display: block;
+        position: relative;
+        text-align: left;
+    }
+
+    .site-title {
+        font-size: 2rem;
+        text-wrap: unset;
+        line-height: 30px;
     }
 }
