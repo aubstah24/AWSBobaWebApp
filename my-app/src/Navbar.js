@@ -1,17 +1,20 @@
 import {Link , useMatch, useResolvedPath} from "react-router-dom";
+import {Container} from "semantic-ui-react";
 
 export default function Navbar() {
     const path = window.location.pathname
     return (
-    <nav className="nav">
-        <Link to="/" className="site-title">Site Name</Link>
-        <ul>
-            <CustomLink to="/">HOME</CustomLink>
-            <CustomLink to="/menu">MENU</CustomLink>
-            <CustomLink to="/order">ONLINE ORDER</CustomLink>
-            <CustomLink to="/about">ABOUT US</CustomLink>
-        </ul>
-    </nav>
+        <Container className='navcontainer'>
+            <nav className="nav">
+                <Link to="/" className="site-title">Usui Boba Shop</Link>
+                <ul>
+                    <CustomLink to="/">HOME</CustomLink>
+                    <CustomLink to="/menu">MENU</CustomLink>
+                    <CustomLink to="/order">ONLINE ORDER</CustomLink>
+                    <CustomLink to="/about">ABOUT US</CustomLink>
+                </ul>
+            </nav>
+        </Container>
     )
 }
 

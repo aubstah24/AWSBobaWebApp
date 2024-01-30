@@ -2,22 +2,22 @@
     box-sizing: border-box;
 }
 
-body {
-    margin: 0;
+.navcontainer {
+    padding: 5px;
+    background-color: #AD7924;
 }
 
 .nav {
-    background-color: #333;
-    color: white;
-    display: flex;
+    color: black;
+    display: inline-flex;
     justify-content: space-between;
-    align-items: stretch;
     gap: 2rem;
-    padding: 0 1rem;
+    border-bottom-width: 100px;
+    border-bottom-color: #000000;
 }
 
 .site-title {
-    font-size: 2rem;
+    font-size: 3rem;
 }
 
 .nav a {
@@ -31,16 +31,24 @@ body {
 
 .nav ul {
     padding: 0;
-    margin: 0;
+    margin: 3px;
     list-style: none;
     display: flex;
+    float: left;
     gap: 1rem;
 }
 
+
 .nav li.active {
-    background-color: #555555;
+    background-color: saddlebrown;
 }
 
 .nav li:hover {
-    background-color: #555555;
+    background-color: saddlebrown;
+    margin: 3px;
+}
+
+.header {
+    padding: 10px;
+    text-align: center;
 }

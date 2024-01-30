@@ -1,8 +1,11 @@
+import {Container, Header} from "semantic-ui-react";
+
 export const MenuPage = () => {
     return (
-        <p>
-            This is where the menu is going to be placed.
-        </p>
+        <Container>
+            <Header as='h1'>OUR MENU</Header>
+
+        </Container>
     )
 
 }

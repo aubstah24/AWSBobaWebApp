@@ -1,0 +1,13 @@
+
+.body {
+    align-items: center;
+}
+
+.grid {
+    background-color: saddlebrown;
+    color: white;
+    justify-items: center;
+    align-items: center;
+    padding: 5px;
+    text-align: center;
+}
