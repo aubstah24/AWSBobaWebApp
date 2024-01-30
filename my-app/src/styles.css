@@ -3,8 +3,11 @@
 }
 
 .navcontainer {
-    padding: 5px;
+    padding: 20px;
     background-color: #AD7924;
+    max-width: 110px;
+    margin: 0 auto;
+    height: 100%;
 }
 
 .nav {
@@ -12,8 +15,8 @@
     display: inline-flex;
     justify-content: space-between;
     gap: 2rem;
-    border-bottom-width: 100px;
-    border-bottom-color: #000000;
+    position: relative;
+    height: 60px;
 }
 
 .site-title {
@@ -34,6 +37,7 @@
     margin: 3px;
     list-style: none;
     display: flex;
+    justify-content: space-between;
     float: left;
     gap: 1rem;
 }
@@ -48,7 +52,53 @@
     margin: 3px;
 }
 
-.header {
-    padding: 10px;
+.pageheader{
+    padding: 20px;
     text-align: center;
+}
+
+.menupage {
+    background-color: white;
+    justify-content: left;
+    display: inline-flex;
+}
+
+.card image {
+    text-align: left;
+    display: inline-flex;
+}
+
+.card {
+    padding: 10px;
+    margin: 10px;
+}
+
+@media (max-width: 768px) {
+    .nav ul {
+        margin-right: 30px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .nav {
+        position: absolute;
+        right: 0;
+        top: 60px;
+        background-color: #fef7e5;
+        width: 0;
+        height: calc(100vh - 60px);
+        transition: all 0.3s ease-in;
+        overflow: hidden;
+    }
+
+    .nav ul {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .nav ul li {
+        margin-right: unset;
+        margin-top: 22px;
+    }
 }

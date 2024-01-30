@@ -1,39 +1,48 @@
 import {
-    Container,
-    Header, Item, ItemContent, ItemDescription, ItemGroup, ItemHeader, ItemImage, ItemMeta
+    Card, CardContent,
+    Container, Grid, GridColumn,
+    Header, Image
 } from "semantic-ui-react"
 import React from "react";
 import 'semantic-ui-css/semantic.min.css';
-import ItemExtra from 'semantic-ui-react/src/views/Item/ItemExtra';
+import filler from '../images/BobaFiller.jpeg';
+import coffee from '../images/coffee.jpg';
+import milk from '../images/milk.jpg';
+
 
 export const MenuPage = () => {
     return (
-        <Container>
-            <Header as='h1'>OUR MENU</Header>
-            <ItemGroup>
-                <Item>
-                    <ItemImage src='/images/BobaFiller.jpeg' size='tiny'/>
+        <Container className='menupage'>
+            <Header className='pageheader' as='h1'>OUR MENU</Header>
+                <Card.Group>
+                    <Card fluid>
+                        <Image floated="left" src={filler} size='small' alt="Filler"/>
+                        <Card.Content>
+                            <Card.Header>BOBA DRINK EXAMPLE 1</Card.Header>
+                            <p>Here is a description of the boba like what flavors are in this and that it has syrups or extra sauces inside.</p>
+                        </Card.Content>
+                    </Card>
+                </Card.Group>
 
-                    <ItemContent>
-                        <ItemHeader as='a'>Boba Drink Example 1</ItemHeader>
-                        <ItemMeta>Contains: Dairy (substitue available)</ItemMeta>
-                        <ItemDescription>Here is a description of the boba like what flavors are in this and that it has syrups or extra sauces inside.</ItemDescription>
-                        <ItemExtra>*Lowest sweetness level is 50%</ItemExtra>
-                    </ItemContent>
-                </Item>
+            <Card.Group>
+                <Card fluid>
+                    <Image floated="left" src={coffee} size='small' alt="Filler"/>
+                    <Card.Content>
+                        <Card.Header>COFFEE DRINK EXAMPLE 2</Card.Header>
+                        <p>Here is a description of the boba like what flavors are in this and that it has syrups or extra sauces inside.</p>
+                    </Card.Content>
+                </Card>
+            </Card.Group>
 
-                <Item>
-                    <ItemImage src='/images/BobaFiller.jpeg' size='tiny'/>
-
-                    <ItemContent>
-                        <ItemHeader as='a'>Coffee Drink Example 1</ItemHeader>
-                        <ItemMeta>Milk Options: Oat, Soy, Coconut, Skim</ItemMeta>
-                        <ItemDescription>Here is a description of the coffee drink like what roast, decaf, any flavorings</ItemDescription>
-                        <ItemExtra>Flavors available: Caramel, Lavender, Vanilla, Strawberry</ItemExtra>
-                    </ItemContent>
-                </Item>
-            </ItemGroup>
-
+            <Card.Group>
+                <Card fluid>
+                    <Image floated="left" src={milk} size='small' alt="Filler"/>
+                    <Card.Content>
+                        <Card.Header>SUBSTITUTES FOR MILK</Card.Header>
+                        <p>Here is a description of the boba like what flavors are in this and that it has syrups or extra sauces inside.</p>
+                    </Card.Content>
+                </Card>
+            </Card.Group>
         </Container>
     )
 
