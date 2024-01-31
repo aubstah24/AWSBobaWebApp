@@ -1,9 +1,24 @@
-import {Card, Container, Header, Image, Table, TableBody, TableCell, TableHeader, TableHeaderCell, TableRow} from "semantic-ui-react"
+import {
+    Card,
+    Container, Grid, GridColumn,
+    GridRow,
+    Header,
+    Image,
+    Table,
+    TableBody,
+    TableCell,
+    TableHeader,
+    TableHeaderCell,
+    TableRow
+} from "semantic-ui-react"
 import React from "react";
 import 'semantic-ui-css/semantic.min.css';
 import filler from '../images/BobaFiller.jpeg';
 import coffee from '../images/coffee.jpg';
 import milk from '../images/milk.jpg';
+import oat from '../images/oatmilk.jpg';
+import soy from '../images/soymilk.jpg';
+import coco from '../images/cocomilk.jpg';
 
 
 export const MenuPage = () => {
@@ -64,6 +79,30 @@ export const MenuPage = () => {
                     </TableRow>
                 </TableBody>
             </Table>
+
+            <Header as='h3'>Milk Options:</Header>
+
+            <Grid>
+                <GridRow columns={4}>
+                    <GridColumn>
+                        <Image src={oat} size='medium' alt={oat}/>
+                        <Header as='h4' textAlign='center'>Oat Milk</Header>
+                    </GridColumn>
+                    <GridColumn>
+                        <Image src={soy} size='medium' alt={soy}/>
+                        <Header as='h4' textAlign='center'>Soy Milk</Header>
+                    </GridColumn>
+                    <GridColumn>
+                        <Image src={coco} size='medium' alt={coco}/>
+                        <Header as='h4' textAlign='center'>Coconut Milk</Header>
+                    </GridColumn>
+                    <GridColumn>
+                        <Image src={milk} size='medium' alt={milk}/>
+                        <Header as='h4' textAlign='center'>Regular Milk</Header>
+                    </GridColumn>
+                </GridRow>
+            </Grid>
+
             <Card.Group>
                 <Card fluid>
                     <Image floated="left" src={filler} size='small' alt="Filler"/>
