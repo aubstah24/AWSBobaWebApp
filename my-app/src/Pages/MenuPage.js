@@ -1,8 +1,4 @@
-import {
-    Card,
-    Container,
-    Header, Image, Table, TableBody, TableCell, TableHeader, TableHeaderCell, TableRow
-} from "semantic-ui-react"
+import {Card, Container, Header, Image, Table, TableBody, TableCell, TableHeader, TableHeaderCell, TableRow} from "semantic-ui-react"
 import React from "react";
 import 'semantic-ui-css/semantic.min.css';
 import filler from '../images/BobaFiller.jpeg';
