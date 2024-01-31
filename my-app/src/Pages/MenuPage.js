@@ -1,7 +1,7 @@
 import {
     Card,
     Container,
-    Header, Image
+    Header, Image, Table, TableBody, TableCell, TableHeader, TableHeaderCell, TableRow
 } from "semantic-ui-react"
 import React from "react";
 import 'semantic-ui-css/semantic.min.css';
@@ -14,18 +14,60 @@ export const MenuPage = () => {
     return (
         <Container className='menupage'>
             <Header className='pageheader' as='h1'>OUR MENU</Header>
-
-            <div className='sweetnesslevel'>
-                <p className='sweetfull'>100% Sweet</p>
-
-                <p className='sweet3'>75% Sweet</p>
-
-                <p className='sweethalf'>50% Sweet</p>
-
-                <p className='sweetquarter'>25% Sweet</p>
-
-                <p className='unsweet'>0% Sweet</p>
+            <div className='container'>
+                <div className='box' id='sweetfull'>100% Sweet</div>
+                <div className='box' id='sweet3'>75% Sweet</div>
+                <div className='box' id='sweethalf'>50% Sweet</div>
+                <div className='box' id='sweetquarter'>25% Sweet</div>
+                <div className='box' id='unsweet'>0% Sweet</div>
             </div>
+
+            <Table celled fixed singleLine>
+                <TableHeader>
+                    <TableRow textAlign='center'>
+                        <TableHeaderCell/>
+                        <TableHeaderCell>Toppings</TableHeaderCell>
+                        <TableHeaderCell/>
+                    </TableRow>
+                    <TableRow>
+                        <TableHeaderCell className='row1'>+ $0.50</TableHeaderCell>
+                        <TableHeaderCell className='row2'>+ $1</TableHeaderCell>
+                        <TableHeaderCell className='row3'>Free</TableHeaderCell>
+                    </TableRow>
+                </TableHeader>
+
+                <TableBody>
+                    <TableRow>
+                        <TableCell>Lychee Jelly</TableCell>
+                        <TableCell>Coffee Jelly</TableCell>
+                        <TableCell>Regular Boba</TableCell>
+                    </TableRow>
+
+                    <TableRow>
+                        <TableCell>Strawberry Jelly</TableCell>
+                        <TableCell>Ube Walls</TableCell>
+                        <TableCell>Large Boba</TableCell>
+                    </TableRow>
+
+                    <TableRow>
+                        <TableCell>Mango Jelly</TableCell>
+                        <TableCell>Caramel Walls</TableCell>
+                        <TableCell>Condensed Milk</TableCell>
+                    </TableRow>
+
+                    <TableRow>
+                        <TableCell>Passion fruit Jelly</TableCell>
+                        <TableCell>Strawberry Puree</TableCell>
+                        <TableCell>Extra Boba</TableCell>
+                    </TableRow>
+
+                    <TableRow>
+                        <TableCell>Orange Jelly</TableCell>
+                        <TableCell>Chocolate Walls</TableCell>
+                        <TableCell>Green Tea</TableCell>
+                    </TableRow>
+                </TableBody>
+            </Table>
             <Card.Group>
                 <Card fluid>
                     <Image floated="left" src={filler} size='small' alt="Filler"/>

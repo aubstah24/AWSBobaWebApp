@@ -68,46 +68,47 @@ body {
 }
 
 .sweetnesslevel {
-    display: flex;
-    justify-content: space-between;
-    justify-items: auto;
+    justify-content: flex-start;
     padding-top: 30px;
     margin: 20px;
 }
 
-.sweetfull {
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.box {
+    padding: 20px 10px 20px 10px;
+    margin: 5px;
+    width: 18%;
+    text-align: center;
+}
+
+#sweetfull {
     background-color: #785D32;
-    padding: 40px;
-    align-items: center;
-    text-align: center;
+
 }
 
-.sweet3 {
+#sweet3 {
     background-color: #93723D;
-    padding: 40px;
-    align-items: center;
-    text-align: center;
+
 }
 
-.sweethalf {
+#sweethalf {
     background-color: #AD8749;
-    padding: 40px;
-    align-items: center;
-    text-align: center;
+
 }
 
-.sweetquarter {
+#sweetquarter {
     background-color: #CCA057;
-    padding: 40px;
-    align-items: center;
-    text-align: center;
+
 }
 
-.unsweet {
+#unsweet {
     background-color: #ECBA66;
-    padding: 40px;
-    align-items: center;
-    text-align: center;
+
 }
 
 .card image {
@@ -133,13 +134,6 @@ body {
 }
 
 @media (max-width: 600px) {
-    .sweetfull {
-        background-color: #785D32;
-        padding: 40px;
-        align-items: center;
-        text-align: center;
-        display: inline-grid;
-    }
 
     .navcontainer {
         max-width: 100%; /* Allow the container to take the full width on small screens */
