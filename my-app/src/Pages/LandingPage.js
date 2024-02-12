@@ -1,42 +1,47 @@
-import {Card, Container, Header, Image} from "semantic-ui-react";
-import filler from "../images/BobaFiller.jpeg";
-import coffee from "../images/coffee.jpg";
-import milk from "../images/milk.jpg";
-import React from "react";
+import {Button, Container, Grid, GridColumn, GridRow, Header, Image} from "semantic-ui-react";
+import React, {useEffect, useState} from "react";
+import inside from "../images/boba_inside.jpg";
+import Footer from "../Footer";
+import matcha from "../images/matcha_landing.png";
+
 
 export const LandingPage = () => {
+
     return (
-        <Container className='menupage'>
-            <Header className='pageheader' as='h1'>WELCOME TO OUR FAMILY</Header>
-            <Card.Group>
-                <Card fluid>
-                    <Image floated="left" src={filler} size='small' alt="Filler"/>
-                    <Card.Content>
-                        <Card.Header>BOBA DRINK EXAMPLE 1</Card.Header>
-                        <p>Here is a description of the boba like what flavors are in this and that it has syrups or extra sauces inside.</p>
-                    </Card.Content>
-                </Card>
-            </Card.Group>
-
-            <Card.Group>
-                <Card fluid>
-                    <Image floated="left" src={coffee} size='small' alt="Filler"/>
-                    <Card.Content>
-                        <Card.Header>COFFEE DRINK EXAMPLE 2</Card.Header>
-                        <p>Here is a description of the boba like what flavors are in this and that it has syrups or extra sauces inside.</p>
-                    </Card.Content>
-                </Card>
-            </Card.Group>
-
-            <Card.Group>
-                <Card fluid>
-                    <Image floated="left" src={milk} size='small' alt="Filler"/>
-                    <Card.Content>
-                        <Card.Header>SUBSTITUTES FOR MILK</Card.Header>
-                        <p>Here is a description of the boba like what flavors are in this and that it has syrups or extra sauces inside.</p>
-                    </Card.Content>
-                </Card>
-            </Card.Group>
+        <Container>
+            <Grid>
+                <GridRow columns={2} >
+                    <GridColumn className="intro"/>
+                    <GridColumn className="welcome">
+                            <Header className='landingheader' as='h1'>WELCOME TO OUR FAMILY</Header>
+                            <p>Welcome to our family-owned boba shop. We sell coffee, espresso, boba teas, and boba milk
+                                teas. </p>
+                            <Button href="/menu">SEE MENU</Button>
+                    </GridColumn>
+                </GridRow>
+                <GridRow columns={2}>
+                    <GridColumn>
+                        <Image src={inside} alt={inside}/>
+                    </GridColumn>
+                    <GridColumn className="coffeesection">
+                        <Header as="h2">
+                            Travel with our roasts from around the world...
+                        </Header>
+                        <p>We brought the countries to you with our roasts from around the world.  We hand picked the best coffees and with different bodies so that you can find the right fit.  Our roasts include beans from Brazil, Puerto Rico, Japan, Ethiopia, and Seattle.</p>
+                    </GridColumn>
+                </GridRow>
+                <GridRow columns={2}>
+                    <GridColumn className="coffeesection">
+                        <Header as="h2">
+                            ...And check out our green tea blends
+                        </Header>
+                        <p>There is a whole world when you talk about Green Tea.  We have our high end matcha powder as well as our hojicha blend.  We have green tea for our tea-based boba drinks or our plain hot tea.  </p>
+                    </GridColumn>
+                    <GridColumn>
+                        <Image src={matcha} alt={matcha}/>
+                    </GridColumn>
+                </GridRow>
+            </Grid>
         </Container>
     )
 

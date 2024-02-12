@@ -4,7 +4,7 @@ import {Container} from "semantic-ui-react";
 export default function Navbar() {
     const path = window.location.pathname
     return (
-        <Container className='navcontainer'>
+        <div className='navcontainer'>
             <nav className="nav">
                 <Link to="/" className="site-title">Usui Boba Shop</Link>
                 <ul>
@@ -14,7 +14,7 @@ export default function Navbar() {
                     <CustomLink to="/about">ABOUT US</CustomLink>
                 </ul>
             </nav>
-        </Container>
+        </div>
     )
 }
 

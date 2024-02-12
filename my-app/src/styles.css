@@ -4,17 +4,16 @@
 
 body {
     background-color: beige;
-    background-size: cover;
     margin: 10px;
 }
 
+
+/*NAVBAR CSS*/
 .navcontainer {
-    margin: 30px;
     padding: 20px;
-    background-color: #AD7924;
-    justify-items: left;
-    background-size: cover;
-    width: 100%;
+    background-color: #DAA06D;
+    justify-items: right;
+    justify-content: right;
     box-shadow: 20px 20px 5px rgba(0, 0, 0, 0.2);
 }
 
@@ -40,9 +39,9 @@ body {
 
 .nav ul {
     padding: 0;
-    margin: 3px;
+    margin: 5px;
     list-style: none;
-    float: left;
+    float: right;
     display: inline-flex;
     gap: 1rem;
 }
@@ -59,9 +58,52 @@ body {
     padding: 20px;
     text-align: center;
 }
+/*NAVBAR CSS END*/
 
+
+/*LANDING PAGE CSS*/
+body {
+    background-image: url("./images/coffee_landing.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+}
+
+.grid {
+    width: 100%;
+    justify-items: center;
+}
+.welcome {
+    position: absolute;
+    top: 30%;
+    right: 0;
+    text-wrap: inherit;
+    text-align: center;
+}
+
+.intro {
+    height: 100%;
+    width: 100%;
+    padding: 40%;
+}
+
+
+.image[alt="inside"] {
+    height: 100%;
+}
+
+.coffeesection {
+    text-align: left;
+    justify-items: center;
+    padding-top: 20%;
+}
+/*LANDING PAGE CSS END*/
+
+
+
+/*MENU PAGE CSS*/
 .menupage {
-    background-color: beige;
+    background-color: #DAA06D;
     justify-content: left;
     display: flex; /* Changed to flex for proper alignment */
     flex-wrap: wrap; /* Allow items to wrap to the next line on small screens */
@@ -87,27 +129,27 @@ body {
 }
 
 #sweetfull {
-    background-color: #785D32;
+    background-color: #7B3F00;
 
 }
 
 #sweet3 {
-    background-color: #93723D;
+    background-color: #a85803;
 
 }
 
 #sweethalf {
-    background-color: #AD8749;
+    background-color: #d16e04;
 
 }
 
 #sweetquarter {
-    background-color: #CCA057;
+    background-color: #d98930;
 
 }
 
 #unsweet {
-    background-color: #ECBA66;
+    background-color: #f2bb7e;
 
 }
 
@@ -121,6 +163,16 @@ body {
     margin: 10px;
 }
 
+/*MENU PAGE CSS END*/
+
+/*ORDER PAGE CSS*/
+/*ORDER PAGE CSS END*/
+
+
+/*ABOUT US PAGE CSS*/
+/*ABOUT US PAGE CSS END*/
+
+/*TABLET CSS GROUP*/
 @media (max-width: 768px) {
     .nav ul {
         margin-right: 30px;
@@ -131,8 +183,23 @@ body {
         text-wrap: unset;
         line-height: 30px;
     }
+
+    .welcome {
+        position: absolute;
+        top: 20%;
+        right: 50%;
+        text-wrap: inherit;
+        width: 20%;
+        text-align: center;
+    }
+
+    .intro {
+        height: 100%;
+        padding: 60%;
+    }
 }
 
+/*PHONE CSS GROUP*/
 @media (max-width: 600px) {
 
     .navcontainer {
@@ -159,13 +226,30 @@ body {
         text-wrap: unset;
         line-height: 30px;
     }
+
+
+    /*LANDING PAGE CSS*/
+    .welcome {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .grid {
+        display: flex;
+    }
+
+    /*ABOUT US PAGE CSS*/
+    .form {
+        width: 100%;
+    }
+
 }
+
+
+
 
 .footer {
     color: black;
     align-items: center;
-    padding-left: 100px;
-    padding-right: 100px;
     text-align: center;
-    width: 100%;
 }

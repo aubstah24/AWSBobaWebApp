@@ -22,8 +22,9 @@ import coco from '../images/cocomilk.jpg';
 
 
 export const MenuPage = () => {
+
     return (
-        <Container className='menupage'>
+        <Container className='menupage' style={{width: '100%'}}>
             <Header className='pageheader' as='h1'>OUR MENU</Header>
             <div className='container'>
                 <div className='box' id='sweetfull'>100% Sweet</div>
@@ -79,7 +80,7 @@ export const MenuPage = () => {
                     </TableRow>
                 </TableBody>
             </Table>
-
+7
             <Header as='h3'>Milk Options:</Header>
 
             <Grid>
