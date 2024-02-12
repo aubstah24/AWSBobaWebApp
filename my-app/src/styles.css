@@ -7,6 +7,11 @@ body {
     margin: 10px;
 }
 
+.grid {
+    width: 100%;
+    justify-items: center;
+}
+
 
 /*NAVBAR CSS*/
 .navcontainer {
@@ -69,10 +74,6 @@ body {
     width: 100%;
 }
 
-.grid {
-    width: 100%;
-    justify-items: center;
-}
 .welcome {
     position: absolute;
     top: 30%;
@@ -170,6 +171,15 @@ body {
 
 
 /*ABOUT US PAGE CSS*/
+.location {
+    padding: 20px;
+    display: grid;
+    place-items: center;
+}
+
+.bio {
+    text-align: center;
+}
 /*ABOUT US PAGE CSS END*/
 
 /*TABLET CSS GROUP*/

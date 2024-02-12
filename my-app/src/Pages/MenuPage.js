@@ -26,6 +26,8 @@ export const MenuPage = () => {
     return (
         <Container className='menupage' style={{width: '100%'}}>
             <Header className='pageheader' as='h1'>OUR MENU</Header>
+
+            <Header as="h3">Select your sweetness:</Header>
             <div className='container'>
                 <div className='box' id='sweetfull'>100% Sweet</div>
                 <div className='box' id='sweet3'>75% Sweet</div>
@@ -33,7 +35,8 @@ export const MenuPage = () => {
                 <div className='box' id='sweetquarter'>25% Sweet</div>
                 <div className='box' id='unsweet'>0% Sweet</div>
             </div>
-
+'
+            <Header as="h3">Topping selections:</Header>
             <Table celled fixed singleLine>
                 <TableHeader>
                     <TableRow textAlign='center'>
@@ -80,7 +83,7 @@ export const MenuPage = () => {
                     </TableRow>
                 </TableBody>
             </Table>
-7
+
             <Header as='h3'>Milk Options:</Header>
 
             <Grid>
