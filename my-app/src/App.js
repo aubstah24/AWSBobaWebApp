@@ -8,6 +8,7 @@ import {Route , Routes} from "react-router-dom";
 import Footer from "./Footer";
 import 'semantic-ui-css/semantic.min.css';
 import {Divider} from "semantic-ui-react";
+import {LocationPage} from "./Pages/LocationPage";
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
             <Route path="/menu" element={<MenuPage/>}></Route>
             <Route path="/order" element={<OnlineOrderingPage/>}></Route>
             <Route path="/about" element={<AboutUsPage/>}></Route>
+            <Route path="/location" element={<LocationPage/>}></Route>
           </Routes>
         </div>
           <Divider/>

@@ -10,8 +10,9 @@ export default function Navbar() {
                 <ul>
                     <CustomLink to="/">HOME</CustomLink>
                     <CustomLink to="/menu">MENU</CustomLink>
-                    <CustomLink to="/order">ONLINE ORDER</CustomLink>
+                    <Link to="https://buy.stripe.com/test_14k7sUdrHfQx5fG145">ONLINE ORDER</Link>
                     <CustomLink to="/about">ABOUT US</CustomLink>
+                    <CustomLink to="/location">LOCATION</CustomLink>
                 </ul>
             </nav>
         </div>

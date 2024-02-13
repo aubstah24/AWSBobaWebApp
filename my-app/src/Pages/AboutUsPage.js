@@ -4,20 +4,12 @@ import location from "../images/location_filler.png";
 
 export const AboutUsPage = () => {
     return (
-        <Container className='menupage' style={{width: '100%'}}>
+        <Container className='menupage'>
 
             <div className="bio">
                 <Header className='pageheader' as='h1'>OUR STORY</Header>
                 <p>We are a family-owned business and we wanted to provide affordable drinks while customers do their laundry.  We call it sip n' wash!
                 We tak pride in our drink quality by going the extra lengths to ensure our ingredients are what we say they are.  </p>
-            </div>
-
-            <Divider/>
-
-            <div className="location">
-                <Header as="h2">LOCATION</Header>
-                <p>We are located at the intersection of Pensacola and King Street.  Our Parking entrance is on Pensacola which is a one way.  </p>
-                <Image src={location} size="huge" alt={location}/>
             </div>
 
             <Divider/>

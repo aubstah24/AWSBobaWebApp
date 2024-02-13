@@ -1,8 +1,8 @@
-import {Button, Container, Grid, GridColumn, GridRow, Header, Image} from "semantic-ui-react";
-import React, {useEffect, useState} from "react";
+import {Button, Container, Divider, Grid, GridColumn, GridRow, Header, Image} from "semantic-ui-react";
+import React from "react";
 import inside from "../images/boba_inside.jpg";
-import Footer from "../Footer";
 import matcha from "../images/matcha_landing.png";
+import gallery from "../images/boba_gallery_filler.jpg";
 
 
 export const LandingPage = () => {
@@ -39,6 +39,40 @@ export const LandingPage = () => {
                     </GridColumn>
                     <GridColumn>
                         <Image src={matcha} alt={matcha}/>
+                    </GridColumn>
+                </GridRow>
+            </Grid>
+
+
+
+            <Grid>
+                <Header as="h2" className="gridgallery">SOME OF OUR FAVORITES...</Header>
+                <GridRow columns={4}>
+                    <GridColumn>
+                        <Image src={gallery} alt={gallery} circular/>
+                    </GridColumn>
+                    <GridColumn>
+                        <Image src={gallery} alt={gallery} circular/>
+                    </GridColumn>
+                    <GridColumn>
+                        <Image src={gallery} alt={gallery} circular/>
+                    </GridColumn>
+                    <GridColumn>
+                        <Image src={gallery} alt={gallery} circular/>
+                    </GridColumn>
+                </GridRow>
+                <GridRow columns={4}>
+                    <GridColumn>
+                        <Image src={gallery} alt={gallery} circular/>
+                    </GridColumn>
+                    <GridColumn>
+                        <Image src={gallery} alt={gallery} circular/>
+                    </GridColumn>
+                    <GridColumn>
+                        <Image src={gallery} alt={gallery} circular/>
+                    </GridColumn>
+                    <GridColumn>
+                        <Image src={gallery} alt={gallery} circular/>
                     </GridColumn>
                 </GridRow>
             </Grid>
