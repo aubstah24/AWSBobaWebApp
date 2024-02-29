@@ -11,13 +11,14 @@ import {Divider} from "semantic-ui-react";
 import {LocationPage} from "./Pages/LocationPage";
 import {LoginPage} from "./Pages/LoginPage";
 import {SignUpPage} from "./Pages/SignUpPage";
-
+import TopMenu from "./TopMenu";
+import {CartPage} from "./Pages/CartPage";
 
 function App() {
 
   return (
       <>
-        <Nav/>
+        <TopMenu/>
         <div className="container">
           <Routes>
             <Route path="/" element={<LandingPage/>}></Route>
@@ -26,7 +27,8 @@ function App() {
             <Route path="/about" element={<AboutUsPage/>}></Route>
             <Route path="/location" element={<LocationPage/>}></Route>
             <Route path="/login" element={<LoginPage/>}></Route>
-              <Route path="/signup" element={<SignUpPage/>}></Route>
+            <Route path="/signup" element={<SignUpPage/>}></Route>
+            <Route path="/cart" element={<CartPage/>}></Route>
           </Routes>
         </div>
           <Divider/>

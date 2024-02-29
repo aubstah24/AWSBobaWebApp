@@ -33,6 +33,12 @@ body {
 .site-title {
     font-size: 3rem;
     font-weight: bold;
+    color: black;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
 }
 
 .nav a {
@@ -59,6 +65,8 @@ body {
 .nav li:hover {
     background-color: saddlebrown;
 }
+
+
 
 .pageheader {
     padding: 20px;
@@ -103,29 +111,30 @@ input {
 
 /*LANDING PAGE CSS*/
 body {
-    background-image: url("./images/coffee_landing.jpg");
+    background-image: url("./images/background.png");
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     width: 100%;
 }
 
 .welcome {
-    position: absolute;
-    top: 30%;
-    right: 0;
+    justify-content: center;
+    align-items: center;
     text-wrap: inherit;
     text-align: center;
-}
-
-.intro {
-    height: 100%;
-    width: 100%;
-    padding: 40%;
+    padding: 250px;
 }
 
 
 .image[alt="inside"] {
-    height: 100%;
+    display: flex;
+}
+.image[alt="matcha"] {
+    width: 100%;
+}
+
+.info {
+    background-color: #DAA06D;
 }
 
 .coffeesection {
