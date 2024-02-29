@@ -9,6 +9,8 @@ import Footer from "./Footer";
 import 'semantic-ui-css/semantic.min.css';
 import {Divider} from "semantic-ui-react";
 import {LocationPage} from "./Pages/LocationPage";
+import {LoginPage} from "./Pages/LoginPage";
+import {SignUpPage} from "./Pages/SignUpPage";
 
 
 function App() {
@@ -23,6 +25,8 @@ function App() {
             <Route path="/order" element={<OnlineOrderingPage/>}></Route>
             <Route path="/about" element={<AboutUsPage/>}></Route>
             <Route path="/location" element={<LocationPage/>}></Route>
+            <Route path="/login" element={<LoginPage/>}></Route>
+              <Route path="/signup" element={<SignUpPage/>}></Route>
           </Routes>
         </div>
           <Divider/>

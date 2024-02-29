@@ -1,5 +1,7 @@
 import {Link , useMatch, useResolvedPath} from "react-router-dom";
-import {Container} from "semantic-ui-react";
+import {Dropdown, Icon, Image, Item} from "semantic-ui-react";
+import icon from './images/signinIcon.png';
+
 
 export default function Navbar() {
     const path = window.location.pathname
@@ -14,6 +16,7 @@ export default function Navbar() {
                     <CustomLink to="/about">ABOUT US</CustomLink>
                     <CustomLink to="/location">LOCATION</CustomLink>
                 </ul>
+                <Image className="profileicon" src={icon} href="/login"/>
             </nav>
         </div>
     )
