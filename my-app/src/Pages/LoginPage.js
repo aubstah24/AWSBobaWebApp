@@ -1,11 +1,39 @@
-import React, { useState } from 'react';
-import { CognitoIdentityServiceProvider } from 'aws-sdk';
+import React, { useState, useEffect } from 'react';
 import {Link, Navigate} from "react-router-dom";
 import {LandingPage} from "./LandingPage";
 import signUpPage, {SignUpPage} from "./SignUpPage";
 import {Button, Container, Header, Input} from "semantic-ui-react";
+import { withAuthenticator } from '@aws-amplify/ui-react';
+import { Amplify } from 'aws-amplify';
+import awsExports from '../aws-exports';
 
-export const LoginPage = () => {
+Amplify.configure(awsExports);
+
+function LoginPage({ isPassedToWithAuthenticator, signOut, user }) {
+
+    if (!isPassedToWithAuthenticator) {
+        throw new Error(`isPassedToWithAuthenticator was not provided`);
+    }
+
+    return (
+      <>
+        <h1>Hello {user.username}</h1>
+        <button onClick={signOut}>Sign out</button>
+      </>
+    );
+    }
+
+export default withAuthenticator(LoginPage);
+
+    export async function getStaticProps() {
+    return {
+      props: {
+        isPassedToWithAuthenticator: true,
+      },
+    };
+}
+
+    /*
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -41,4 +69,5 @@ export const LoginPage = () => {
             <Link to="/signup">Don't have an account?</Link>
         </div>
     )
-}
+
+}*/

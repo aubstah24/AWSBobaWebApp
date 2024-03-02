@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState, setShowLogin, showLogin} from 'react';
 import {Link , useMatch, useResolvedPath} from "react-router-dom";
 import {Container, Header, Menu, Icon, Dropdown, Image} from 'semantic-ui-react';
+import AuthComponent from './AuthComponent';
+
+
 
 export default class TopMenu extends React.Component {
 
@@ -8,10 +11,9 @@ export default class TopMenu extends React.Component {
     handleItemClick = (e, { name }) => this.setState({ activeItem: name})
 
 
-
   render() {
 
-  const { activeItem } = this.state
+    const { activeItem } = this.state;
 
     return (
     <div className="navcontainer">
@@ -47,11 +49,16 @@ export default class TopMenu extends React.Component {
                 onClick={this.handleItemClick}>
                 <Link to="/location">LOCATION</Link>
                 </Menu.Item>
-            <Menu.Item fitted position="right"><Link to="/login"><Icon name="user circle" size="big"/></Link></Menu.Item>
-            <Menu.Item fitted><Link to="/cart"><Icon name="shop" size="big"/></Link></Menu.Item>
+            <Menu.Item fitted position="right">
+                <AuthComponent/>
+            </Menu.Item>
+            <Menu.Item fitted>
+                <Link to="/cart"><Icon name="shop" size="big"/></Link>
+            </Menu.Item>
 
         </Menu>
         </div>
     );
   }
 }
+
