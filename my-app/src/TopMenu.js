@@ -1,7 +1,8 @@
 import React, { useState, setShowLogin, showLogin} from 'react';
 import {Link , useMatch, useResolvedPath} from "react-router-dom";
-import {Container, Header, Menu, Icon, Dropdown, Image} from 'semantic-ui-react';
+import {Container, Header, Menu, Image, Button, Icon} from 'semantic-ui-react';
 import AuthComponent from './AuthComponent';
+import cart from './images/boba-cart.png';
 
 
 
@@ -18,7 +19,7 @@ export default class TopMenu extends React.Component {
     return (
     <div className="navcontainer">
         <Header as="h1"><Link to="/" className="site-title">Usui Boba Shop</Link></Header>
-        <Menu borderless pointing secondary className="nav">
+        <Menu borderless pointing secondary stackable className="nav">
             <Menu.Item
                 name='home'
                 active={activeItem === 'home'}
@@ -53,7 +54,12 @@ export default class TopMenu extends React.Component {
                 <AuthComponent/>
             </Menu.Item>
             <Menu.Item fitted>
-                <Link to="/cart"><Icon name="shop" size="big"/></Link>
+                <Button circular>
+                    <Link to="/cart"><Image style={{width:"3rem", height:"auto"}} src={cart}/></Link>
+                    <Container className="circular" style={{borderRadius: "50%" , backgroundColor: "black",justifyContent:"center", display: "flex", alignItems: "center", width: ".5rem", height: ".5rem", position: "absolute", color:"white", bottom:0, right:0, transform: "translate(25%,25%)"}}>
+                       3
+                    </Container>
+                </Button>
             </Menu.Item>
 
         </Menu>
