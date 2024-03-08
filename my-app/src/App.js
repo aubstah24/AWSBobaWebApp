@@ -12,12 +12,13 @@ import {LocationPage} from "./Pages/LocationPage";
 import TopMenu from "./TopMenu";
 import {CartPage} from "./Pages/CartPage";
 import LoginPage from "./Pages/LoginPage";
+import ShoppingCartContext from "./ShoppingCartContext";
 
 
 function App() {
 
   return (
-      <>
+      <ShoppingCartContext>
         <TopMenu/>
         <div className="container">
           <Routes>
@@ -32,7 +33,7 @@ function App() {
         </div>
           <Divider/>
         <Footer/>
-      </>
+      </ShoppingCartContext>
 
   );
 }

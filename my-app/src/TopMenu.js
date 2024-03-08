@@ -3,6 +3,7 @@ import {Link , useMatch, useResolvedPath} from "react-router-dom";
 import {Container, Header, Menu, Image, Button, Icon} from 'semantic-ui-react';
 import AuthComponent from './AuthComponent';
 import cart from './images/boba-cart.png';
+import {Badge} from "@aws-amplify/ui-react";
 
 
 
@@ -55,10 +56,12 @@ export default class TopMenu extends React.Component {
             </Menu.Item>
             <Menu.Item fitted>
                 <Button circular>
-                    <Link to="/cart"><Image style={{width:"3rem", height:"auto"}} src={cart}/></Link>
-                    <Container className="circular" style={{borderRadius: "50%" , backgroundColor: "black",justifyContent:"center", display: "flex", alignItems: "center", width: ".5rem", height: ".5rem", position: "absolute", color:"white", bottom:0, right:0, transform: "translate(25%,25%)"}}>
-                       3
-                    </Container>
+                    <Link to="/cart"><Image style={{width:"2.5rem", height:"auto"}} src={cart}/>
+                    <Badge style={{justifyContent: "right", display: "flex"}}>4</Badge>
+                    </Link>
+                    {/*<Container className="circular" style={{borderRadius: "50%" , backgroundColor: "black",justifyContent:"center", display: "flex", alignItems: "center", width: ".5rem", height: ".5rem", position: "absolute", color:"white", bottom:0, right:0, transform: "translate(25%,25%)"}}>*/}
+                    {/*   3*/}
+                    {/*</Container>*/}
                 </Button>
             </Menu.Item>
 
