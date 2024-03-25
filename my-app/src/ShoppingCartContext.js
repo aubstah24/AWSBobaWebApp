@@ -1,55 +1,100 @@
-import {createContext, useContext, useReducer} from "react";
-import items from "../src/data/items.json";
-import * as PropTypes from "prop-types";
+import {createContext, useState} from "react";
+import products from "../src/data/items.json";
 
-const Cart = createContext();
-const initialState = {count: 0};
 
-const ShoppingCartContext = ({children}) => {
-    const products = [...Array(children)].map(() => ({
-       id: initialState.items.id,
-        name: initialState.items.drink,
-        price: initialState.items.price,
-        image: initialState.items.img,
-        description: initialState.items.description,
-        category: initialState.items.category,
-        caffeine: initialState.items.caffeine,
-        includesDairy: initialState.items.includesDairy,
-    }));
+const ShoppingCartContext = createContext({
+    products: [],
+    getProductQuantity: () => {},
+    addToCart: () => {},
+    removeFromCart: () => {},
+    deleteFromCart: () => {},
+    getTotalCost: () => {}
+});
 
-    const [state, dispatch] = useReducer(reducer, {
-        products: products,
-        cart: [],
-    });
 
-    return <Cart.Provider value={{state, dispatch}}>{children}</Cart.Provider>
-}
+export function CartProvider({ children }) {
+    const [cartProducts, setCartProducts] = useState([]);
 
-export default ShoppingCartContext;
+    function getProductQuantity(id) {
 
-export const CartState = () => {
-    return useContext(Cart);
-}
+        const quantity = cartProducts.find((product) => product.id === id)?.quantity;
 
-function reducer(state, action) {
-    switch (action.type) {
-        case 'increment':
-            return {count: state.count + 1};
-            case 'decrement':
-                return {count: state.count - 1};
-        default:
-            return state;
+        if (quantity === undefined || quantity === null) {
+            return 0;
+        }
+
+        return quantity;
     }
-}
 
-function counter(state, action) {
+
+    function addToCart(id) {
+
+        const quantity = getProductQuantity(id);
+
+        if (quantity === 0 || quantity === null) {
+            setCartProducts(
+                [...cartProducts, {
+                    id: id,
+                    quantity: 1
+                }]
+            )
+        } else {
+            setCartProducts(
+                cartProducts.map(product => product.id === id ? {...product, quantity: product.quantity + 1}
+                : product
+                )
+            )
+        }
+
+    }
+
+    function removeFromCart(id) {
+
+        const quantity = getProductQuantity(id);
+
+        if (quantity === 1) {
+            deleteFromCart(id);
+        } else {
+            setCartProducts(
+                cartProducts.map(product => product.id === id ? {...product, quantity: product.quantity - 1}
+                    : product
+                )
+            )
+        }
+
+    }
+
+    function deleteFromCart(id) {
+        setCartProducts(
+            cartProducts =>
+                cartProducts.filter(currentProduct => {
+                    return currentProduct.id !== id;
+                })
+        )
+    }
+
+    function getTotalCost(id) {
+        let productData = products.find(products => products.id === id);
+        let totalCost = 0;
+
+        cartProducts.map((cartItem) => {
+            totalCost += (productData.price * cartItem.quantity);
+        });
+        return totalCost;
+    }
+
+    const contextValue = {
+        products: cartProducts,
+        getProductQuantity,
+        addToCart,
+        removeFromCart,
+        deleteFromCart,
+        getTotalCost
+    }
+
     return (
-        <>
-            Count: {state.count}
-            <Button onClick={() => dispatch({type: 'decrement'})}>-</Button>
-            <Button onClick={() => dispatch({type: 'increment'})}>+</Button>
-        </>
+        <ShoppingCartContext.Provider value={contextValue}>{children}</ShoppingCartContext.Provider>
     )
 }
 
-
+export default CartProvider;

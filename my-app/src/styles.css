@@ -228,6 +228,23 @@ body {
 /*MENU PAGE CSS END*/
 
 /*ORDER PAGE CSS*/
+.onlineorderingpage {
+    display: flex;
+}
+.card {
+    padding: 10px;
+    width: 100%;
+}
+
+
+.eachitem {
+    width: 100%;
+    justify-content: space-between;
+    text-align: center;
+    padding: 10px;
+}
+
+
 /*ORDER PAGE CSS END*/
 
 

@@ -1,19 +1,25 @@
-import {Card, Container, Grid, GridColumn, GridRow, Header, Image} from "semantic-ui-react";
+import {CardGroup, Grid, GridColumn, GridRow, Header} from "semantic-ui-react";
 import React from "react";
-import menuItems from "../data/items.json";
-import {DrinkItem} from "../data/DrinkItem";
+import products from "../data/items.json";
+import SingleItem from "../data/SingleItem";
+
 
 export function OnlineOrderingPage() {
+
     return (
         <>
-            <Header as="h1">Online Ordering</Header>
             <Grid>
                 <GridRow>
-                    {menuItems.map((item, id) => (
-                        <GridColumn key={id}>
-                            <DrinkItem {...item}/>
-                        </GridColumn>
-                    ))}
+                    <GridColumn>
+                        <Header as="h1" textAlign="center">Online Ordering</Header>
+                    </GridColumn>
+                </GridRow>
+                <GridRow>
+                    <CardGroup>
+                        {products.map((products) => {
+                            return <SingleItem product={products} key={products.id}/>;
+                        })}
+                    </CardGroup>
                 </GridRow>
             </Grid>
         </>

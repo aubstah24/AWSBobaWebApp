@@ -1,21 +1,24 @@
-import React, { useState, setShowLogin, showLogin} from 'react';
-import {Link , useMatch, useResolvedPath} from "react-router-dom";
-import {Container, Header, Menu, Image, Button, Icon} from 'semantic-ui-react';
+import React, {useContext} from 'react';
+import {Link} from "react-router-dom";
+import {Header, Menu, Image, Button} from 'semantic-ui-react';
 import AuthComponent from './AuthComponent';
-import cart from './images/boba-cart.png';
+import bobaicon from './images/boba-cart.png';
 import {Badge} from "@aws-amplify/ui-react";
+import ShoppingCartContext from "./ShoppingCartContext";
 
 
 
 export default class TopMenu extends React.Component {
 
     state = { activeItem: 'home' }
-    handleItemClick = (e, { name }) => this.setState({ activeItem: name})
+    handleItemClick = (e, { name }) => this.setState({ activeItem: name});
 
 
   render() {
 
     const { activeItem } = this.state;
+    //const cart = useContext(ShoppingCartContext);
+    //const count = cart.items.reduce((sum, product) => sum + product.quantity, 0);
 
     return (
     <div className="navcontainer">
@@ -56,12 +59,9 @@ export default class TopMenu extends React.Component {
             </Menu.Item>
             <Menu.Item fitted>
                 <Button circular>
-                    <Link to="/cart"><Image style={{width:"2.5rem", height:"auto"}} src={cart}/>
+                    <Link to="/cart"><Image style={{width:"2.5rem", height:"auto"}} src={bobaicon}/>
                     <Badge style={{justifyContent: "right", display: "flex"}}>4</Badge>
                     </Link>
-                    {/*<Container className="circular" style={{borderRadius: "50%" , backgroundColor: "black",justifyContent:"center", display: "flex", alignItems: "center", width: ".5rem", height: ".5rem", position: "absolute", color:"white", bottom:0, right:0, transform: "translate(25%,25%)"}}>*/}
-                    {/*   3*/}
-                    {/*</Container>*/}
                 </Button>
             </Menu.Item>
 
