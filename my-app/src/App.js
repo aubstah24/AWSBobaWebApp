@@ -12,12 +12,12 @@ import TopMenu from "./TopMenu";
 import {CartPage} from "./Pages/CartPage";
 import LoginPage from "./Pages/LoginPage";
 import {CartProvider} from "./ShoppingCartContext";
-
+import data from "./data/items.json";
 
 function App() {
 
   return (
-<>
+<CartProvider value={data}>
         <TopMenu/>
         <div className="container">
           <Routes>
@@ -32,7 +32,7 @@ function App() {
         </div>
           <Divider/>
         <Footer/>
-</>
+</CartProvider>
   );
 }
 

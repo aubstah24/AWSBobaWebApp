@@ -2,17 +2,18 @@ import {Button, CardGroup, Container, GridColumn, GridRow, Image} from 'semantic
 import {Col, ListGroup, Row, Form} from "react-bootstrap";
 import React, {useContext, useEffect} from "react";
 import products from "../data/items.json";
-import ShoppingCartContext from "../ShoppingCartContext";
+import ShoppingCartContext, {useCart} from "../ShoppingCartContext";
 
 
 export const CartPage = () => {
 
+    const { cart } = useCart();
 
     return (
         <Container className="productContainer" style={{backgroundColor: "white"}}>
             <ListGroup>
                 {
-                    products.map((products) => (
+                    cart.map((products) => (
                         <ListGroup.Item key={products.id}>
                             <GridRow>
                                 <GridColumn>
@@ -36,10 +37,10 @@ export const CartPage = () => {
             </ListGroup>
 
             <div className="summary">
-                <span>Subtotal ({products.length}) items</span>
-                <span> Total: $  </span>
+                <span>Subtotal ({cart.length}) items</span>
+                <span> Total: $ {cart.length * cart.items.price} </span>
             </div>
-            <Button disabled={products.length === 0}>
+            <Button disabled={cart.length === 0}>
                 Proceed to Checkout
             </Button>
         </Container>

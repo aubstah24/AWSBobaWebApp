@@ -7,15 +7,24 @@ import {
     CardHeader,
     GridRow, GridColumn, Image
 } from "semantic-ui-react";
-import ShoppingCartContext from "../ShoppingCartContext";
-import {CardText, CardFooter, Form, Col} from "react-bootstrap";
-import {useContext} from "react";
+import {CardText, CardFooter} from "react-bootstrap";
+import {useState} from "react";
+import CartCounter from "./CartCounter";
+import {addToCart} from "../ShoppingCartContext";
+
 
 function SingleItem (props) {
 
     const product = props.product;
 
 
+    console.log(count);
+
+    this.handleAddItem = function (id) {
+        return function (p1: React.MouseEvent<HTMLButtonElement>, p2: ButtonProps) {
+            addToCart(id);
+        };
+    };
     return <div className="eachitem">
         <Card style={{ width: "100%" }}>
             <Grid celled>
@@ -36,7 +45,7 @@ function SingleItem (props) {
                             <br/>
                             {product.includesDairy === "TRUE" ? "Contains Dairy" : "Dairy-Free"}</CardContent>
                         <CardFooter>
-                            <Button color="brown">
+                            <Button color="brown" onClick={this.handleAddItem(product.id)}>
                                 Add to Cart
                             </Button>
                         </CardFooter>
