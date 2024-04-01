@@ -11,13 +11,33 @@ import {LocationPage} from "./Pages/LocationPage";
 import TopMenu from "./TopMenu";
 import {CartPage} from "./Pages/CartPage";
 import LoginPage from "./Pages/LoginPage";
-import {CartProvider} from "./ShoppingCartContext";
+import CartContext from "./Cart/CartContext";
 import data from "./data/items.json";
+import {useEffect, useState} from "react";
+import { commerce } from './Commerce.js'
 
 function App() {
 
-  return (
-<CartProvider value={data}>
+    const [cart, setCart] = useState();
+
+    useEffect(() => {
+        commerce.cart.retrieve()
+            .then(cart => {
+                setCart(cart)
+            })
+    }, []);
+
+    const addProductToCart = (productId) => {
+        commerce.cart.add(productId, 1)
+            .then(result => {
+                setCart(result.cart);
+                alert("Product added to cart");
+            });
+    }
+
+
+    return (
+<CartContext.Provider value={{cart, setCart, addProductToCart}}>
         <TopMenu/>
         <div className="container">
           <Routes>
@@ -32,7 +52,7 @@ function App() {
         </div>
           <Divider/>
         <Footer/>
-</CartProvider>
+</CartContext.Provider>
   );
 }
 

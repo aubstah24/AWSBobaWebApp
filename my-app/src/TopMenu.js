@@ -4,8 +4,7 @@ import {Header, Menu, Image, Button} from 'semantic-ui-react';
 import AuthComponent from './AuthComponent';
 import bobaicon from './images/boba-cart.png';
 import {Badge} from "@aws-amplify/ui-react";
-import {useCart, addToCart} from "./ShoppingCartContext";
-import CartCounter from "./data/CartCounter";
+import CartContext from "./Cart/CartContext";
 
 
 
@@ -18,9 +17,8 @@ export default class TopMenu extends React.Component {
   render() {
 
     const { activeItem } = this.state;
+    const {cart} = useContext(CartContext);
 
-      //const cart = useContext(ShoppingCartContext);
-    //const count = cart.items.reduce((sum, product) => sum + product.quantity, 0);
 
     return (
     <div className="navcontainer">
@@ -62,7 +60,7 @@ export default class TopMenu extends React.Component {
             <Menu.Item fitted>
                 <Button circular>
                     <Link to="/cart"><Image style={{width:"2.5rem", height:"auto"}} src={bobaicon}/>
-                    <Badge style={{justifyContent: "right", display: "flex"}}>5</Badge>
+                    <Badge style={{justifyContent: "right", display: "flex"}}>{cart.length}</Badge>
                     </Link>
                 </Button>
             </Menu.Item>

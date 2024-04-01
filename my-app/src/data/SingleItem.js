@@ -5,26 +5,25 @@ import {
     CardDescription,
     Grid,
     CardHeader,
-    GridRow, GridColumn, Image
+    GridRow, GridColumn, Image, Dropdown
 } from "semantic-ui-react";
 import {CardText, CardFooter} from "react-bootstrap";
 import {useState} from "react";
-import CartCounter from "./CartCounter";
-import {addToCart} from "../ShoppingCartContext";
+import sweetness from "./sweetness.json";
+import toppings from "./toppings.json";
+
 
 
 function SingleItem (props) {
 
     const product = props.product;
 
+    const handleButtonAddCart = e => {
+        e.preventDefault();
+        addToCart(product.id, handleSweet(), handleToppings());
+    }
 
-    console.log(count);
 
-    this.handleAddItem = function (id) {
-        return function (p1: React.MouseEvent<HTMLButtonElement>, p2: ButtonProps) {
-            addToCart(id);
-        };
-    };
     return <div className="eachitem">
         <Card style={{ width: "100%" }}>
             <Grid celled>
@@ -43,9 +42,14 @@ function SingleItem (props) {
                         <CardContent>
                             {product.caffeine === "TRUE" ? "Contains Caffeine" : "Caffeine-Free"}
                             <br/>
-                            {product.includesDairy === "TRUE" ? "Contains Dairy" : "Dairy-Free"}</CardContent>
+                            {product.includesDairy === "TRUE" ? "Contains Dairy" : "Dairy-Free"}
+                        </CardContent>
+                        <CardText>
+                            <Dropdown fluid selection options={sweetness}/>
+                            <Dropdown fluid selection options={toppings}/>
+                        </CardText>
                         <CardFooter>
-                            <Button color="brown" onClick={this.handleAddItem(product.id)}>
+                            <Button color="brown" onClick={handleButtonAddCart}>
                                 Add to Cart
                             </Button>
                         </CardFooter>
