@@ -1,24 +1,28 @@
-import React, { useState, setShowLogin, showLogin} from 'react';
-import {Link , useMatch, useResolvedPath} from "react-router-dom";
-import {Container, Header, Menu, Icon, Dropdown, Image} from 'semantic-ui-react';
+import React, {useContext} from 'react';
+import {Link} from "react-router-dom";
+import {Button, Header, Image, Menu} from 'semantic-ui-react';
 import AuthComponent from './AuthComponent';
-
+import bobaicon from './images/boba-cart.png';
+import {Badge} from "@aws-amplify/ui-react";
+import {CartContext} from "./Cart/CartContext";
 
 
 export default class TopMenu extends React.Component {
 
     state = { activeItem: 'home' }
-    handleItemClick = (e, { name }) => this.setState({ activeItem: name})
+    handleItemClick = (e, { name }) => this.setState({ activeItem: name});
 
 
   render() {
 
     const { activeItem } = this.state;
 
-    return (
+
+
+      return (
     <div className="navcontainer">
         <Header as="h1"><Link to="/" className="site-title">Usui Boba Shop</Link></Header>
-        <Menu borderless pointing secondary className="nav">
+        <Menu borderless pointing secondary stackable className="nav">
             <Menu.Item
                 name='home'
                 active={activeItem === 'home'}
@@ -53,7 +57,13 @@ export default class TopMenu extends React.Component {
                 <AuthComponent/>
             </Menu.Item>
             <Menu.Item fitted>
-                <Link to="/cart"><Icon name="shop" size="big"/></Link>
+                <Button circular>
+                    <Link to="/cart"><Image style={{width:"2.5rem", height:"auto"}} src={bobaicon}/>
+                    <Badge style={{justifyContent: "right", display: "flex"}}>
+                        {(<GetCartTotal/> === 0) ? 0: <GetCartTotal/>}
+                    </Badge>
+                    </Link>
+                </Button>
             </Menu.Item>
 
         </Menu>
@@ -61,4 +71,10 @@ export default class TopMenu extends React.Component {
     );
   }
 }
+
+const GetCartTotal = (props) => {
+    const {cartItems} = useContext(CartContext);
+    return Number(cartItems.length);
+}
+
 

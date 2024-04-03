@@ -1,6 +1,5 @@
-import {Container, Divider, Form, FormButton, FormField, Header, Image, TextArea} from "semantic-ui-react";
+import {Container, Divider, Form, FormButton, FormField, Header, TextArea} from "semantic-ui-react";
 import React from "react";
-import location from "../images/location_filler.png";
 
 export const AboutUsPage = () => {
     return (

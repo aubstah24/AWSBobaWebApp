@@ -228,6 +228,22 @@ body {
 /*MENU PAGE CSS END*/
 
 /*ORDER PAGE CSS*/
+.onlineorderingpage {
+    background-color: #DAA06D;
+    justify-content: space-between;
+    align-content: center;
+    text-align: center;
+    padding: 30px;
+}
+
+.product {
+    justify-content: space-between;
+    padding: 30px;
+    width: 100%;
+}
+
+
+
 /*ORDER PAGE CSS END*/
 
 

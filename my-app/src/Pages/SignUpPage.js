@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { CognitoIdentityServiceProvider } from 'aws-sdk';
 import {Link, Navigate} from "react-router-dom";
 import {LandingPage} from "./LandingPage";
-import {Button, Container, Header, Input} from "semantic-ui-react";
+import {Button, Header, Input} from "semantic-ui-react";
 
 export const SignUpPage = () => {
     const [name, setName] = useState('');

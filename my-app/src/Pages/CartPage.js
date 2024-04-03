@@ -1,10 +1,25 @@
-import {Header} from 'semantic-ui-react';
+import { Container} from 'semantic-ui-react';
+import React, {useContext} from "react";
+import CartTotalRow from "../Cart/CartTotalRow";
+import {CartProductList} from "../Cart/CartProductList";
+import {CartContext} from "../Cart/CartContext";
+
 
 export const CartPage = () => {
-    return (
-        <div classname="cartpage">
-            <Header as="h1">Your Shopping Cart</Header>
+    const {cartItems} = useContext(CartContext);
 
-        </div>
+    if (cartItems.length > 0) {
+        return (
+            <Container className="productContainer" style={{backgroundColor: "white"}}>
+                <CartProductList/>
+                <CartTotalRow/>
+            </Container>
+        );
+    }
+
+    return (
+        <Container className="productContainer" style={{backgroundColor: "white"}}>
+            <p>Your cart is empty.</p>
+        </Container>
     )
 }
