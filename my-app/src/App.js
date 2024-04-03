@@ -11,31 +11,13 @@ import {LocationPage} from "./Pages/LocationPage";
 import TopMenu from "./TopMenu";
 import {CartPage} from "./Pages/CartPage";
 import LoginPage from "./Pages/LoginPage";
-import CartContext from "./Cart/CartContext";
-import data from "./data/items.json";
-import {useState} from "react";
-import { commerce } from './Commerce.js'
+import CartContext, {ContextProvider} from "./Cart/CartContext";
+import {PRODUCTS} from "./data/products";
 
 function App() {
 
-    const [cart, setCart] = useState();
-
-    const addToCart = (productId, sweet, topping) => {
-        let quantity = cart.find((data)=>data.id === productId)?.quantity;
-
-        if (quantity === undefined || quantity === null) {
-            setCart([...cart, {
-                id: productId,
-                count: 1
-            }])
-        } else {
-            setCart(cart.map(data=>data.id === productId?{...data, count: data.count+1}:data))
-        }
-    }
-
-
     return (
-<CartContext.Provider data={data} value={cart}>
+<ContextProvider data={PRODUCTS}>
         <TopMenu/>
         <div className="container">
           <Routes>
@@ -50,7 +32,7 @@ function App() {
         </div>
           <Divider/>
         <Footer/>
-</CartContext.Provider>
+</ContextProvider>
   );
 }
 

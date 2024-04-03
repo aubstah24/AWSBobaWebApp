@@ -1,12 +1,24 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import CartProductRow from './CartProductRow';
+import {Container, Header} from "semantic-ui-react";
+import {PRODUCTS} from "../data/products";
+import {CartContext} from "./CartContext";
 
-const CartProductList = ({ cart }) => {
+export const CartProductList = (props) => {
+    const {cartItems} = useContext(CartContext);
+
     return (
-        cart.line_items.map(line_item => {
-            return <CartProductRow key={line_item.id} lineItem={line_item} />
-        })
-    );
-}
-
-export default CartProductList;
+        <div>
+            <Header as='h1'>
+                Your Cart Items
+            </Header>
+            <Container>
+                {PRODUCTS.map((product) => {
+                    if (cartItems[product.id] !== 0) {
+                        return <CartProductRow data={product}/>;
+                    }
+                }
+                )}
+            </Container>
+        </div>
+    )

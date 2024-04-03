@@ -1,24 +1,33 @@
-import React from 'react';
-import {Grid, GridColumn, GridRow, Header, Image} from "semantic-ui-react";
+import React, {useContext} from 'react';
+import {Button, Grid, GridColumn, GridRow, Header, Image, Input} from "semantic-ui-react";
 import {product} from '../data/items.json'
+import {CartContext} from "./CartContext";
 
-const CartProductRow = ({ lineItem }) => {
+const CartProductRow = (props) => {
+    const { id, drink, price, img } = props.data;
+    const {cartItems, addToCart, removeFromCart} = useContext(CartContext);
+
     return (
         <div className="row product">
             <Grid>
                 <GridRow>
                     <GridColumn>
-                        <Image src={lineItem.media.source} alt={lineItem.name} height="50" />
+                        <Image src={img} fluid/>
                     </GridColumn>
                     <GridColumn>
-                        <Header as='h5'>{lineItem.name}</Header>
+                        <Header as='h2'>{drink}</Header>
                     </GridColumn>
                     <GridColumn>
-                        <Header as='h5'>{lineItem.quantity}</Header>
+                        <Header as='h5'>{count}</Header>
                     </GridColumn>
                     <GridColumn>
-                        {lineItem.line_total.formatted_with_symbol}
+                        <p>${price}</p>
                     </GridColumn>
+                </GridRow>
+                <GridRow>
+                    <Button onClick={() => removeFromCart(id)}> - </Button>
+                    <Input value={cartItems[id]} onChange={(e) => updateCartCount(Number(e.target.value))}/>
+                    <Button onClick={() => addToCart(id)}> + </Button>
                 </GridRow>
             </Grid>
         </div>

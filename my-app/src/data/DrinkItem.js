@@ -4,10 +4,13 @@ import {
     Container,
     Header
 } from "semantic-ui-react";
+import {useContext} from "react";
 
 
 export const DrinkItem = (props) => {
-    const { id, drink, price, img, description, category, caffeine, includesDairy } = props.data;
+    const { id, drink, price, img, description, caffeine, includesDairy } = props.data;
+    const { addToCart, cartItems } = useContext(CartContext);
+    const count = cartItems[id]
 
     return (
         <div>
@@ -16,11 +19,11 @@ export const DrinkItem = (props) => {
                 <Header as='h2' textAlign="center">{drink}</Header>
                 <span>{description}</span>
                 <p>${price}</p>
-                {product.caffeine === "TRUE" ? "Contains Caffeine" : "Caffeine-Free"}
+                {caffeine === "TRUE" ? "Contains Caffeine" : "Caffeine-Free"}
                 <br/>
-                {product.includesDairy === "TRUE" ? "Contains Dairy" : "Dairy-Free"}
+                {includesDairy === "TRUE" ? "Contains Dairy" : "Dairy-Free"}
             </Container>
-            <Button>Add To Cart</Button>
+            <Button onClick={() => addToCart(id)}>Add To Cart</Button>
         </div>
     )
 }
