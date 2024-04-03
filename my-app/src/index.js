@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import "./styles.css"
 import {BrowserRouter } from "react-router-dom";
-import ShoppingCartContext from "./ShoppingCartContext";
+import 'bootstrap/dist/css/bootstrap.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

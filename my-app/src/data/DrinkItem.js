@@ -1,35 +1,26 @@
-import {Card, CardHeader, CardContent, CardDescription, Image, CardMeta, Button} from "semantic-ui-react";
-import * as PropTypes from "prop-types";
-import {Component} from "react";
+import {
+    Image,
+    Button,
+    Container,
+    Header
+} from "semantic-ui-react";
 
 
-export class DrinkItem extends Component {
-    render() {
-        let {drink, id, price, img, description, category, caffeine, includesDairy} = this.props;
-        const quantity = 0;
+export const DrinkItem = (props) => {
+    const { id, drink, price, img, description, category, caffeine, includesDairy } = props.data;
 
-        return (
-            <Card>
-                <CardHeader>{drink}</CardHeader>
-                <Image wrapped ui={false} src={img} style={{objectFit: "cover"}}/>
-                <CardDescription>{description}</CardDescription>
-                <CardMeta>$ {price}</CardMeta>
-                <CardContent>{caffeine} | {includesDairy}</CardContent>
-                <Button>
-                    Add to Cart
-                </Button>
-            </Card>
-        )
-    }
-}
-
-DrinkItem.propTypes = {
-    drink: PropTypes.any,
-    id: PropTypes.any,
-    price: PropTypes.any,
-    img: PropTypes.any,
-    description: PropTypes.any,
-    category: PropTypes.any,
-    caffeine: PropTypes.any,
-    includesDairy: PropTypes.any
+    return (
+        <div>
+            <Image src={img} style={{width: "100%"}} />
+            <Container fluid>
+                <Header as='h2' textAlign="center">{drink}</Header>
+                <span>{description}</span>
+                <p>${price}</p>
+                {product.caffeine === "TRUE" ? "Contains Caffeine" : "Caffeine-Free"}
+                <br/>
+                {product.includesDairy === "TRUE" ? "Contains Dairy" : "Dairy-Free"}
+            </Container>
+            <Button>Add To Cart</Button>
+        </div>
+    )
 }

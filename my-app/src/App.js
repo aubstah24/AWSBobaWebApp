@@ -13,31 +13,29 @@ import {CartPage} from "./Pages/CartPage";
 import LoginPage from "./Pages/LoginPage";
 import CartContext from "./Cart/CartContext";
 import data from "./data/items.json";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import { commerce } from './Commerce.js'
 
 function App() {
 
     const [cart, setCart] = useState();
 
-    useEffect(() => {
-        commerce.cart.retrieve()
-            .then(cart => {
-                setCart(cart)
-            })
-    }, []);
+    const addToCart = (productId, sweet, topping) => {
+        let quantity = cart.find((data)=>data.id === productId)?.quantity;
 
-    const addProductToCart = (productId) => {
-        commerce.cart.add(productId, 1)
-            .then(result => {
-                setCart(result.cart);
-                alert("Product added to cart");
-            });
+        if (quantity === undefined || quantity === null) {
+            setCart([...cart, {
+                id: productId,
+                count: 1
+            }])
+        } else {
+            setCart(cart.map(data=>data.id === productId?{...data, count: data.count+1}:data))
+        }
     }
 
 
     return (
-<CartContext.Provider value={{cart, setCart, addProductToCart}}>
+<CartContext.Provider data={data} value={cart}>
         <TopMenu/>
         <div className="container">
           <Routes>
