@@ -8,7 +8,7 @@ import {CartContext} from "../Cart/CartContext";
 export const CartPage = () => {
     const {cartItems} = useContext(CartContext);
 
-    if (cartItems > 0) {
+    if (cartItems.length > 0) {
         return (
             <Container className="productContainer" style={{backgroundColor: "white"}}>
                 <CartProductList/>

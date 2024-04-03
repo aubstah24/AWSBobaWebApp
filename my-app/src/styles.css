@@ -229,20 +229,19 @@ body {
 
 /*ORDER PAGE CSS*/
 .onlineorderingpage {
-    display: flex;
-}
-.card {
-    padding: 10px;
-    width: 100%;
-}
-
-
-.eachitem {
-    width: 100%;
+    background-color: #DAA06D;
     justify-content: space-between;
+    align-content: center;
     text-align: center;
-    padding: 10px;
+    padding: 30px;
 }
+
+.product {
+    justify-content: space-between;
+    padding: 30px;
+    width: 100%;
+}
+
 
 
 /*ORDER PAGE CSS END*/

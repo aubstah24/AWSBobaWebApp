@@ -13,9 +13,9 @@ export const CartProductList = (props) => {
                 Your Cart Items
             </Header>
             <Container>
-                {PRODUCTS.map((product) => {
+                {PRODUCTS.map((product, key ) => {
                         if (cartItems[product.id] !== 0) {
-                            return <CartProductRow data={product}/>;
+                            return <CartProductRow data={product} key={product.id}/>;
                         }
                     }
                 )}

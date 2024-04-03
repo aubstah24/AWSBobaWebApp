@@ -11,7 +11,6 @@ import {LocationPage} from "./Pages/LocationPage";
 import TopMenu from "./TopMenu";
 import {CartPage} from "./Pages/CartPage";
 import LoginPage from "./Pages/LoginPage";
-import {PRODUCTS} from "./data/products";
 import {ContextProvider} from "./Cart/CartContext";
 
 function App() {

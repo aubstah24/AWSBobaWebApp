@@ -2,7 +2,7 @@ import {
     Image,
     Button,
     Container,
-    Header
+    Header, Grid, Card, CardHeader, CardContent, CardMeta, CardDescription
 } from "semantic-ui-react";
 import {useContext} from "react";
 import {CartContext} from "../Cart/CartContext";
@@ -13,17 +13,22 @@ export const DrinkItem = (props) => {
     const { addToCart } = useContext(CartContext);
 
     return (
-        <div>
-            <Image src={img} style={{width: "100%"}} />
-            <Container fluid>
-                <Header as='h2' textAlign="center">{drink}</Header>
-                <span>{description}</span>
-                <p>${price}</p>
-                {caffeine === "TRUE" ? "Contains Caffeine" : "Caffeine-Free"}
-                <br/>
-                {includesDairy === "TRUE" ? "Contains Dairy" : "Dairy-Free"}
-            </Container>
-            <Button onClick={() => addToCart(id)}>Add To Cart</Button>
+        <div key={id} className="product">
+            <Card>
+                <Header as='h2' textAlign='center'>{drink}</Header>
+                    <Image src={img} size="large" centered="centered"/>
+                    <Container fluid>
+                        <CardDescription>{description}</CardDescription>
+                        <p>${price}</p>
+
+                        <CardMeta>
+                            {caffeine === "TRUE" ? "Contains Caffeine" : "Caffeine-Free"}
+                            <br/>
+                            {includesDairy === "TRUE" ? "Contains Dairy" : "Dairy-Free"}
+                        </CardMeta>
+                    </Container>
+                    <Button onClick={() => addToCart(id)} color='black'>Add To Cart</Button>
+            </Card>
         </div>
-    )
+    );
 }

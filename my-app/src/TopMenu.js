@@ -16,7 +16,7 @@ export default class TopMenu extends React.Component {
   render() {
 
     const { activeItem } = this.state;
-    const count = GetCartTotal();
+
 
 
       return (
@@ -59,7 +59,9 @@ export default class TopMenu extends React.Component {
             <Menu.Item fitted>
                 <Button circular>
                     <Link to="/cart"><Image style={{width:"2.5rem", height:"auto"}} src={bobaicon}/>
-                    <Badge style={{justifyContent: "right", display: "flex"}}>{count}</Badge>
+                    <Badge style={{justifyContent: "right", display: "flex"}}>
+                        {(<GetCartTotal/> === 0) ? 0: <GetCartTotal/>}
+                    </Badge>
                     </Link>
                 </Button>
             </Menu.Item>

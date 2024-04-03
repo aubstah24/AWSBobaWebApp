@@ -7,13 +7,9 @@ import {DrinkItem} from "../data/DrinkItem";
 export function OnlineOrderingPage() {
 
     return (
-        <div>
-            <div>
-                <Header as="h1" textAlign="center">ORDER ONLINE HERE</Header>
-            </div>
-            <div>
-                {PRODUCTS.map((product) => ( <DrinkItem data={product}/>))}
-            </div>
+        <div className="onlineorderingpage">
+            <Header as="h1" textAlign="center">ORDER ONLINE HERE</Header>
+            {PRODUCTS.map((product, key) => ( <DrinkItem data={product} key={product.id}/>))}
         </div>
     )
 
