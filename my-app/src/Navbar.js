@@ -1,20 +1,23 @@
 import {Link , useMatch, useResolvedPath} from "react-router-dom";
-import {Container} from "semantic-ui-react";
+import {Dropdown, Icon, Image, Item} from "semantic-ui-react";
+import icon from './images/signinIcon.png';
 
 export default function Navbar() {
     const path = window.location.pathname
     return (
-        <Container className='navcontainer'>
+        <div className='navcontainer'>
             <nav className="nav">
                 <Link to="/" className="site-title">Usui Boba Shop</Link>
                 <ul>
                     <CustomLink to="/">HOME</CustomLink>
                     <CustomLink to="/menu">MENU</CustomLink>
-                    <CustomLink to="/order">ONLINE ORDER</CustomLink>
+                    <Link to="https://buy.stripe.com/test_14k7sUdrHfQx5fG145">ONLINE ORDER</Link>
                     <CustomLink to="/about">ABOUT US</CustomLink>
+                    <CustomLink to="/location">LOCATION</CustomLink>
                 </ul>
+                <i class="fas fa-user-circle"></i>
             </nav>
-        </Container>
+        </div>
     )
 }
 

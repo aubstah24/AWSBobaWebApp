@@ -5,8 +5,8 @@ import React from "react"
 export default function Footer() {
 
     return (
-        <Container className='footerheader'>
-            <Grid className='footergrid'>
+        <Container className='footer'>
+            <Grid>
                 <GridColumn>
                     <p>AWS Boba Website Mock</p>
                     <p>Email us at bobawebsite@gmail.com</p>

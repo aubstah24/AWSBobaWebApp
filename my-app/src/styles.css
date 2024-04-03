@@ -2,24 +2,43 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: beige;
+    margin: 10px;
+    iframe#webpack-dev-server-client-overlay{display:none!important}
+}
+
+.grid {
+    width: 100%;
+    justify-items: center;
+}
+
+
+/*NAVBAR CSS*/
 .navcontainer {
     padding: 20px;
-    background-color: #AD7924;
-    max-width: 110px;
-    margin: 0 auto;
-    height: 100%;
+    background-color: white;
+    justify-items: right;
+    justify-content: right;
+    box-shadow: 20px 20px 5px rgba(0, 0, 0, 0.2);
 }
 
 .nav {
     color: black;
     display: flex;
-    justify-content: space-between;
     gap: 2rem;
     align-items: center; /* Added align-items to center items vertically */
 }
 
 .site-title {
     font-size: 3rem;
+    font-weight: bold;
+    color: black;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
 }
 
 .nav a {
@@ -27,15 +46,15 @@
     text-decoration: none;
     height: 100%;
     display: flex;
-    align-items: center;
     padding: .25rem;
 }
 
 .nav ul {
     padding: 0;
-    margin: 3px;
+    margin: 5px;
     list-style: none;
-    display: flex;
+    float: right;
+    display: inline-flex;
     gap: 1rem;
 }
 
@@ -47,16 +66,153 @@
     background-color: saddlebrown;
 }
 
+
+
 .pageheader {
     padding: 20px;
     text-align: center;
 }
 
+.profileicon {
+    float: right;
+}
+/*NAVBAR CSS END*/
+
+/*
+LOGIN PAGE CSS
+*/
+
+.login {
+    background-color: #f2bb7e;
+    width: 100%;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+    display: inline-grid;
+    text-align: center;
+}
+
+
+.register {
+    background-color: #f2bb7e;
+    width: 100%;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+    display: inline-grid;
+    text-align: center;
+}
+
+input {
+    width: 300px;
+}
+
+/*LOGIN PAGE CSS END*/
+
+/*LANDING PAGE CSS*/
+body {
+    background-image: url("./images/background.png");
+    background-size: cover;
+    background-repeat: repeat;
+    width: 100%;
+}
+
+.welcome {
+    justify-content: center;
+    align-items: center;
+    text-wrap: inherit;
+    text-align: center;
+    padding: 250px;
+}
+
+
+.image[alt="inside"] {
+    display: flex;
+}
+.image[alt="matcha"] {
+    width: 100%;
+}
+
+.info {
+    background-color: #DAA06D;
+}
+
+.coffeesection {
+    text-align: left;
+    justify-items: center;
+    padding-top: 20%;
+}
+
+.gridgallery {
+    padding: 20px;
+    margin: 20px;
+}
+/*LANDING PAGE CSS END*/
+
+
+
+/*MENU PAGE CSS*/
 .menupage {
-    background-color: white;
+    background-color: #DAA06D;
     justify-content: left;
     display: flex; /* Changed to flex for proper alignment */
     flex-wrap: wrap; /* Allow items to wrap to the next line on small screens */
+}
+
+.sweetnesslevel {
+    justify-content: flex-start;
+    padding-top: 30px;
+    margin: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.cards {
+    display: flex;
+    justify-content: space-between;
+    align-content: space-between;
+    width: 100%;
+    padding-top: 30px;
+}
+
+.image {
+    width: 20%;
+}
+
+.box {
+    padding: 20px 10px 20px 10px;
+    margin: 5px;
+    width: 18%;
+    text-align: center;
+}
+
+#sweetfull {
+    background-color: #7B3F00;
+
+}
+
+#sweet3 {
+    background-color: #a85803;
+
+}
+
+#sweethalf {
+    background-color: #d16e04;
+
+}
+
+#sweetquarter {
+    background-color: #d98930;
+
+}
+
+#unsweet {
+    background-color: #f2bb7e;
+
 }
 
 .card image {
@@ -69,6 +225,46 @@
     margin: 10px;
 }
 
+/*MENU PAGE CSS END*/
+
+/*ORDER PAGE CSS*/
+.onlineorderingpage {
+    display: flex;
+}
+.card {
+    padding: 10px;
+    width: 100%;
+}
+
+
+.eachitem {
+    width: 100%;
+    justify-content: space-between;
+    text-align: center;
+    padding: 10px;
+}
+
+
+/*ORDER PAGE CSS END*/
+
+
+/*ABOUT US PAGE CSS*/
+.location {
+    padding: 20px;
+    display: grid;
+    place-items: center;
+}
+
+.location ul {
+    list-style: none;
+}
+
+.bio {
+    text-align: center;
+}
+/*ABOUT US PAGE CSS END*/
+
+/*TABLET CSS GROUP*/
 @media (max-width: 768px) {
     .nav ul {
         margin-right: 30px;
@@ -76,10 +272,28 @@
 
     .site-title {
         font-size: 2rem;
+        text-wrap: unset;
+        line-height: 30px;
+    }
+
+    .welcome {
+        position: absolute;
+        top: 20%;
+        right: 50%;
+        text-wrap: inherit;
+        width: 20%;
+        text-align: center;
+    }
+
+    .intro {
+        height: 100%;
+        padding: 60%;
     }
 }
 
+/*PHONE CSS GROUP*/
 @media (max-width: 600px) {
+
     .navcontainer {
         max-width: 100%; /* Allow the container to take the full width on small screens */
         padding: 10px;
@@ -104,4 +318,30 @@
         text-wrap: unset;
         line-height: 30px;
     }
+
+
+    /*LANDING PAGE CSS*/
+    .welcome {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .grid {
+        display: flex;
+    }
+
+    /*ABOUT US PAGE CSS*/
+    .form {
+        width: 100%;
+    }
+
+}
+
+
+
+
+.footer {
+    color: black;
+    align-items: center;
+    text-align: center;
 }
