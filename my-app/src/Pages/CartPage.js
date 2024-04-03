@@ -25,41 +25,6 @@ export const CartPage = () => {
     return (
         <Container className="productContainer" style={{backgroundColor: "white"}}>
             <p>Your cart is empty.</p>
-
-
-            <ListGroup>
-                {
-                    cart.map((products) => (
-                        <ListGroup.Item key={products.id}>
-                            <GridRow>
-                                <GridColumn>
-                                    <Image src={products.img} fluid rounded size="small"/>
-                                </GridColumn>
-                                <GridColumn>
-                                    <span>{products.drink}</span>
-                                </GridColumn>
-                                <GridColumn>
-                                    $ {products.price}
-                                </GridColumn>
-                                <GridColumn>
-                                    <Button>-</Button>
-                                    <span style={{padding: "10px"}}>5</span>
-                                    <Button>+</Button>
-                                </GridColumn>
-                            </GridRow>
-                        </ListGroup.Item>
-                    ))
-                }
-            </ListGroup>
-
-            <div className="summary">
-                <span>Subtotal ({cart.length}) items</span>
-                <span> Total: $ {cart.length * cart.items.price} </span>
-            </div>
-            <Button disabled={cart.length === 0}>
-                Proceed to Checkout
-            </Button>
         </Container>
-
     )
 }

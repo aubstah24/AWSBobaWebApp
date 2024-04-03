@@ -14,11 +14,12 @@ export const CartProductList = (props) => {
             </Header>
             <Container>
                 {PRODUCTS.map((product) => {
-                    if (cartItems[product.id] !== 0) {
-                        return <CartProductRow data={product}/>;
+                        if (cartItems[product.id] !== 0) {
+                            return <CartProductRow data={product}/>;
+                        }
                     }
-                }
                 )}
             </Container>
         </div>
     )
+}

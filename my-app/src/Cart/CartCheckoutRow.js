@@ -5,11 +5,9 @@ const CartCheckoutRow = () => {
     return (
         <Grid>
             <GridRow>
-                <GridColumn>
-                    <Button>
-                        Checkout
-                    </Button>
-                </GridColumn>
+                <Button>
+                    Checkout
+                </Button>
             </GridRow>
         </Grid>
     );
