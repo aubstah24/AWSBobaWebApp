@@ -1,11 +1,10 @@
 import React, {useContext} from 'react';
 import {Link} from "react-router-dom";
-import {Header, Menu, Image, Button} from 'semantic-ui-react';
+import {Button, Header, Image, Menu} from 'semantic-ui-react';
 import AuthComponent from './AuthComponent';
 import bobaicon from './images/boba-cart.png';
 import {Badge} from "@aws-amplify/ui-react";
-import CartContext from "./Cart/CartContext";
-
+import {CartContext} from "./Cart/CartContext";
 
 
 export default class TopMenu extends React.Component {
@@ -17,10 +16,10 @@ export default class TopMenu extends React.Component {
   render() {
 
     const { activeItem } = this.state;
-    const {cart} = useContext(CartContext);
+    const count = GetCartTotal();
 
 
-    return (
+      return (
     <div className="navcontainer">
         <Header as="h1"><Link to="/" className="site-title">Usui Boba Shop</Link></Header>
         <Menu borderless pointing secondary stackable className="nav">
@@ -60,7 +59,7 @@ export default class TopMenu extends React.Component {
             <Menu.Item fitted>
                 <Button circular>
                     <Link to="/cart"><Image style={{width:"2.5rem", height:"auto"}} src={bobaicon}/>
-                    <Badge style={{justifyContent: "right", display: "flex"}}>{cart.length}</Badge>
+                    <Badge style={{justifyContent: "right", display: "flex"}}>{count}</Badge>
                     </Link>
                 </Button>
             </Menu.Item>
@@ -69,6 +68,11 @@ export default class TopMenu extends React.Component {
         </div>
     );
   }
+}
+
+const GetCartTotal = (props) => {
+    const {cartItems} = useContext(CartContext);
+    return Number(cartItems.length);
 }
 
 

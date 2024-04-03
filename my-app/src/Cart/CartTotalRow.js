@@ -1,10 +1,10 @@
 import React, {useContext} from 'react';
-import {Button, Grid, GridColumn, GridRow, Header} from "semantic-ui-react";
+import {Button, Grid, GridRow, Header} from "semantic-ui-react";
 import {CartContext} from "./CartContext";
 
 const CartTotalRow = (props) => {
 
-    const {cartItems, getTotalCost} = useContext(CartContext);
+    const { getTotalCost} = useContext(CartContext);
 
     const totalCost = getTotalCost();
     const tax = {totalCost} * 0.0047;

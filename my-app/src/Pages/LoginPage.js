@@ -1,8 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import {Link, Navigate} from "react-router-dom";
-import {LandingPage} from "./LandingPage";
-import signUpPage, {SignUpPage} from "./SignUpPage";
-import {Button, Container, Header, Input} from "semantic-ui-react";
+import React from 'react';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import { Amplify } from 'aws-amplify';
 import awsExports from '../aws-exports';

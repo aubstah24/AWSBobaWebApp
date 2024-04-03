@@ -1,4 +1,4 @@
-import {Button, Container, Divider, Grid, GridColumn, GridRow, Header, Image} from "semantic-ui-react";
+import {Button, Grid, GridColumn, GridRow, Header, Image} from "semantic-ui-react";
 import React from "react";
 import inside from "../images/boba_inside.jpg";
 import matcha from "../images/matcha_landing.png";

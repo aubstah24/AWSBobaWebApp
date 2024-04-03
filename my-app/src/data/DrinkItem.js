@@ -5,12 +5,12 @@ import {
     Header
 } from "semantic-ui-react";
 import {useContext} from "react";
+import {CartContext} from "../Cart/CartContext";
 
 
 export const DrinkItem = (props) => {
     const { id, drink, price, img, description, caffeine, includesDairy } = props.data;
-    const { addToCart, cartItems } = useContext(CartContext);
-    const count = cartItems[id]
+    const { addToCart } = useContext(CartContext);
 
     return (
         <div>

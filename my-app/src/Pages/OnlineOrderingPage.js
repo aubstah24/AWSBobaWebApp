@@ -1,6 +1,5 @@
-import {CardGroup, Grid, GridColumn, GridRow, Header} from "semantic-ui-react";
+import { Header} from "semantic-ui-react";
 import React from "react";
-import products from "../data/items.json";
 import {PRODUCTS} from "../data/products";
 import {DrinkItem} from "../data/DrinkItem";
 

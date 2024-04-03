@@ -1,14 +1,9 @@
 import {
     Container,
-    Divider,
-    Form,
-    FormButton,
-    FormField,
     Grid, GridColumn,
     GridRow,
     Header,
-    Image,
-    TextArea
+    Image
 } from "semantic-ui-react";
 import React from "react";
 import location from "../images/location_filler.png";

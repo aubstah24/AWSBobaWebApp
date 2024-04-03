@@ -1,6 +1,4 @@
-import {createContext, useContext, useEffect, useState} from "react";
-import products from "../src/data/items.json";
-import * as props from "./ShoppingCartContext";
+import {createContext, useContext, useState} from "react";
 
 
 export const ShoppingCartContext = createContext({

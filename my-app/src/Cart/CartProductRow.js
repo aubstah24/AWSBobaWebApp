@@ -1,11 +1,12 @@
 import React, {useContext} from 'react';
 import {Button, Grid, GridColumn, GridRow, Header, Image, Input} from "semantic-ui-react";
-import {product} from '../data/items.json'
 import {CartContext} from "./CartContext";
 
 const CartProductRow = (props) => {
     const { id, drink, price, img } = props.data;
-    const {cartItems, addToCart, removeFromCart} = useContext(CartContext);
+    const {cartItems, addToCart, removeFromCart, getItemCount, updateCartCount} = useContext(CartContext);
+
+    const count = getItemCount(id);
 
     return (
         <div className="row product">

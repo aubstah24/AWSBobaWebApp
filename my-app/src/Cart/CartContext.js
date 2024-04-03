@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {PRODUCTS} from "../data/products";
 
-export const CartContext = React.createContext();
+export const CartContext = React.createContext(null);
 
 const getDefaultCart = () => {
     let cart = {};
@@ -38,7 +38,18 @@ export const ContextProvider = (props) => {
         return total;
     }
 
-    const contextValue = {cartItems, addToCart, removeFromCart, updateCartCount, getTotalCost};
+    const getItemCount = (id) => {
+        let count = 0;
+        for (const item of cartItems) {
+            if (cartItems[item] === id) {
+                count +=1;
+            }
+        }
+        return count;
+    }
+
+    const contextValue = {cartItems, addToCart, removeFromCart, updateCartCount, getTotalCost, getItemCount};
+
 
     return <CartContext.Provider value={contextValue}>{props.children}</CartContext.Provider>
 }
