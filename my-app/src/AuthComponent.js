@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import { Icon, Dropdown, DropdownItem, DropdownMenu } from 'semantic-ui-react';
 import {Link } from "react-router-dom";
 import LoginPage from './Pages/LoginPage'
-import { Amplify, Auth } from 'aws-amplify';
-import awsExports from '../aws-exports';
+import { Amplify } from 'aws-amplify';
+import awsExports from './aws-exports';
 
 Amplify.configure(awsExports);
-Auth.configure(awsExports);
 
 function AuthComponent() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

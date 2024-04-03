@@ -19,13 +19,17 @@ import milk from '../images/milk.jpg';
 import oat from '../images/oatmilk.jpg';
 import soy from '../images/soymilk.jpg';
 import coco from '../images/cocomilk.jpg';
-
+import pdfFile from '../BobaDrinkMenu.pdf'
+import {Page, Document} from "react-pdf";
+import {UploadImage} from "../UploadImage";
 
 export const MenuPage = () => {
 
     return (
         <Container className='menupage' style={{width: '100%'}}>
             <Header className='pageheader' as='h1'>OUR MENU</Header>
+
+            <UploadImage/>
 
             <Header as="h3">Select your sweetness:</Header>
             <div className='container'>
@@ -35,7 +39,7 @@ export const MenuPage = () => {
                 <div className='box' id='sweetquarter'>25% Sweet</div>
                 <div className='box' id='unsweet'>0% Sweet</div>
             </div>
-'
+            '
             <Header as="h3">Topping selections:</Header>
             <Table celled fixed singleLine>
                 <TableHeader>
@@ -108,61 +112,65 @@ export const MenuPage = () => {
             </Grid>
 
             <div className="cards">
-            <Grid>
-                <GridRow columns={2}>
-                    <GridColumn>
-                        <Card.Group>
-                            <Card fluid>
-                                <Image floated="left" src={filler} alt="Filler"/>
-                                <Card.Content>
-                                    <Card.Header>BOBA DRINK EXAMPLE 1</Card.Header>
-                                    <p>Here is a description of the boba like what flavors are in this and that it has syrups or
-                                        extra sauces inside.</p>
-                                </Card.Content>
-                            </Card>
-                        </Card.Group>
-                    </GridColumn>
-                    <GridColumn>
-                        <Card.Group>
-                            <Card fluid>
-                                <Image floated="left" src={coffee} alt="Filler"/>
-                                <Card.Content>
-                                    <Card.Header>COFFEE DRINK EXAMPLE 2</Card.Header>
-                                    <p>Here is a description of the boba like what flavors are in this and that it has syrups or
-                                        extra sauces inside.</p>
-                                </Card.Content>
-                            </Card>
-                        </Card.Group>
-                    </GridColumn>
-                </GridRow>
+                <Grid>
+                    <GridRow columns={2}>
+                        <GridColumn>
+                            <Card.Group>
+                                <Card fluid>
+                                    <Image floated="left" src={filler} alt="Filler"/>
+                                    <Card.Content>
+                                        <Card.Header>BOBA DRINK EXAMPLE 1</Card.Header>
+                                        <p>Here is a description of the boba like what flavors are in this and that it
+                                            has syrups or
+                                            extra sauces inside.</p>
+                                    </Card.Content>
+                                </Card>
+                            </Card.Group>
+                        </GridColumn>
+                        <GridColumn>
+                            <Card.Group>
+                                <Card fluid>
+                                    <Image floated="left" src={coffee} alt="Filler"/>
+                                    <Card.Content>
+                                        <Card.Header>COFFEE DRINK EXAMPLE 2</Card.Header>
+                                        <p>Here is a description of the boba like what flavors are in this and that it
+                                            has syrups or
+                                            extra sauces inside.</p>
+                                    </Card.Content>
+                                </Card>
+                            </Card.Group>
+                        </GridColumn>
+                    </GridRow>
 
-                <GridRow columns={2}>
-                    <GridColumn>
-                        <Card.Group>
-                            <Card fluid>
-                                <Image floated="left" src={filler} alt="Filler"/>
-                                <Card.Content>
-                                    <Card.Header>SUBSTITUTES FOR MILK</Card.Header>
-                                    <p>Here is a description of the boba like what flavors are in this and that it has syrups or
-                                        extra sauces inside.</p>
-                                </Card.Content>
-                            </Card>
-                        </Card.Group>
-                    </GridColumn>
-                    <GridColumn>
-                        <Card.Group>
-                            <Card fluid>
-                                <Image floated="left" src={coffee} alt="Filler"/>
-                                <Card.Content>
-                                    <Card.Header>COFFEE DRINK EXAMPLE 2</Card.Header>
-                                    <p>Here is a description of the boba like what flavors are in this and that it has syrups or
-                                        extra sauces inside.</p>
-                                </Card.Content>
-                            </Card>
-                        </Card.Group>
-                    </GridColumn>
-                </GridRow>
-            </Grid>
+                    <GridRow columns={2}>
+                        <GridColumn>
+                            <Card.Group>
+                                <Card fluid>
+                                    <Image floated="left" src={filler} alt="Filler"/>
+                                    <Card.Content>
+                                        <Card.Header>SUBSTITUTES FOR MILK</Card.Header>
+                                        <p>Here is a description of the boba like what flavors are in this and that it
+                                            has syrups or
+                                            extra sauces inside.</p>
+                                    </Card.Content>
+                                </Card>
+                            </Card.Group>
+                        </GridColumn>
+                        <GridColumn>
+                            <Card.Group>
+                                <Card fluid>
+                                    <Image floated="left" src={coffee} alt="Filler"/>
+                                    <Card.Content>
+                                        <Card.Header>COFFEE DRINK EXAMPLE 2</Card.Header>
+                                        <p>Here is a description of the boba like what flavors are in this and that it
+                                            has syrups or
+                                            extra sauces inside.</p>
+                                    </Card.Content>
+                                </Card>
+                            </Card.Group>
+                        </GridColumn>
+                    </GridRow>
+                </Grid>
             </div>
         </Container>
     )
