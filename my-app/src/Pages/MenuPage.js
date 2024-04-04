@@ -19,9 +19,9 @@ import milk from '../images/milk.jpg';
 import oat from '../images/oatmilk.jpg';
 import soy from '../images/soymilk.jpg';
 import coco from '../images/cocomilk.jpg';
-import pdfFile from '../BobaDrinkMenu.pdf'
+import pdfFile from '../data/BobaDrinkMenu.pdf'
 import {Page, Document} from "react-pdf";
-import {UploadImage} from "../UploadImage";
+import {UploadImage} from "../Admin/UploadImage";
 
 export const MenuPage = () => {
 
