@@ -5,6 +5,7 @@ import AuthComponent from './AuthComponent';
 import bobaicon from './images/boba-cart.png';
 import {Badge} from "@aws-amplify/ui-react";
 import {CartContext} from "./Cart/CartContext";
+import {PRODUCTS} from "./data/products";
 
 
 export default class TopMenu extends React.Component {
@@ -60,7 +61,7 @@ export default class TopMenu extends React.Component {
                 <Button circular>
                     <Link to="/cart"><Image style={{width:"2.5rem", height:"auto"}} src={bobaicon}/>
                     <Badge style={{justifyContent: "right", display: "flex"}}>
-                        {(<GetCartTotal/> === 0) ? 0: <GetCartTotal/>}
+                        <GetCartTotal/>
                     </Badge>
                     </Link>
                 </Button>
@@ -74,7 +75,18 @@ export default class TopMenu extends React.Component {
 
 const GetCartTotal = (props) => {
     const {cartItems} = useContext(CartContext);
-    return Number(cartItems.length);
+    let total = 0;
+    for (const item in cartItems) {
+        if (cartItems[item] > 0) {
+            total = total + cartItems[item];
+        }
+    }
+
+    if (total === 0) {
+        return 0;
+    } else {
+        return total;
+    }
 }
 
 

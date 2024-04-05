@@ -13,14 +13,24 @@ const getDefaultCart = () => {
 
 export const ContextProvider = (props) => {
     const [cartItems, setCartItems] = useState(getDefaultCart());
+    {/* cartItems =  */}
+    // const addToCart = (id) => {
+    //     setCartItems((prevState) => ({ ...prevState, [id]: prevState[id] + 1}));
+    // }
 
     const addToCart = (id) => {
-        setCartItems((prevState) => ({ ...prevState, [id]: prevState[id] + 1}));
+        setCartItems((cartItems) => ({...cartItems, [id]: cartItems[id] + 1}))
+        console.log(cartItems);
+        console.log(cartItems[id]);
     }
 
     const removeFromCart = (id) => {
-        setCartItems((prevState) => ({ ...prevState, [id]: prevState[id] - 1}));
+        setCartItems((cartItems) => ({...cartItems, [id]: cartItems[id] - 1}))
     }
+
+    // const removeFromCart = (id) => {
+    //     setCartItems((prevState) => ({ ...prevState, [id]: prevState[id] - 1}));
+    // }
 
     const updateCartCount = (newCount, id) => {
         setCartItems((prevState) => ({...prevState, [id]: newCount }))
