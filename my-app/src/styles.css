@@ -242,7 +242,17 @@ body {
     width: 100%;
 }
 
+.totalrow {
+    justify-content: space-between;
+    text-align: center;
+    align-content: center;
+    padding: 40px;
+}
 
+.cartinput {
+    width: 50px;
+    text-align: center;
+}
 
 /*ORDER PAGE CSS END*/
 

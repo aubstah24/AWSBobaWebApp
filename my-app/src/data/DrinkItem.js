@@ -2,7 +2,7 @@ import {
     Image,
     Button,
     Container,
-    Header, Grid, Card, CardHeader, CardContent, CardMeta, CardDescription
+    Header, Card, CardMeta, CardDescription
 } from "semantic-ui-react";
 import {useContext} from "react";
 import {CartContext} from "../Cart/CartContext";
@@ -16,7 +16,7 @@ export const DrinkItem = (props) => {
         <div key={id} className="product">
             <Card>
                 <Header as='h2' textAlign='center'>{drink}</Header>
-                    <Image src={img} size="large" centered="centered"/>
+                    <Image src={img} size="large" centered={true}/>
                     <Container fluid>
                         <CardDescription>{description}</CardDescription>
                         <p>${price}</p>

@@ -20,7 +20,7 @@ export const LandingPage = () => {
                 </GridRow>
                 <GridRow columns={2} className="info">
                     <GridColumn>
-                        <Image src={inside} alt={inside}/>
+                        <Image src={inside} alt={inside} fluid/>
                     </GridColumn>
                     <GridColumn className="coffeesection">
                         <Header as="h2">
@@ -37,41 +37,42 @@ export const LandingPage = () => {
                         <p>There is a whole world when you talk about Green Tea.  We have our high end matcha powder as well as our hojicha blend.  We have green tea for our tea-based boba drinks or our plain hot tea.  </p>
                     </GridColumn>
                     <GridColumn>
-                        <Image src={matcha} alt={matcha} />
+                        <Image src={matcha} alt={matcha} fluid />
                     </GridColumn>
                 </GridRow>
             </Grid>
 
+            <br/><br/>
 
 
             <Grid>
                 <Header as="h2" className="gridgallery">SOME OF OUR FAVORITES...</Header>
                 <GridRow columns={4}>
                     <GridColumn>
-                        <Image src={gallery} alt={gallery} circular/>
+                        <Image src={gallery} alt={gallery} circular fluid/>
                     </GridColumn>
                     <GridColumn>
-                        <Image src={gallery} alt={gallery} circular/>
+                        <Image src={gallery} alt={gallery} circular fluid/>
                     </GridColumn>
                     <GridColumn>
-                        <Image src={gallery} alt={gallery} circular/>
+                        <Image src={gallery} alt={gallery} circular fluid/>
                     </GridColumn>
                     <GridColumn>
-                        <Image src={gallery} alt={gallery} circular/>
+                        <Image src={gallery} alt={gallery} circular fluid/>
                     </GridColumn>
                 </GridRow>
                 <GridRow columns={4}>
                     <GridColumn>
-                        <Image src={gallery} alt={gallery} circular/>
+                        <Image src={gallery} alt={gallery} circular fluid/>
                     </GridColumn>
                     <GridColumn>
-                        <Image src={gallery} alt={gallery} circular/>
+                        <Image src={gallery} alt={gallery} circular fluid/>
                     </GridColumn>
                     <GridColumn>
-                        <Image src={gallery} alt={gallery} circular/>
+                        <Image src={gallery} alt={gallery} circular fluid/>
                     </GridColumn>
                     <GridColumn>
-                        <Image src={gallery} alt={gallery} circular/>
+                        <Image src={gallery} alt={gallery} circular fluid/>
                     </GridColumn>
                 </GridRow>
             </Grid>
