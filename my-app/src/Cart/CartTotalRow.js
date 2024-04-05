@@ -2,25 +2,25 @@ import React, {useContext} from 'react';
 import {Button, Grid, GridRow, Header} from "semantic-ui-react";
 import {CartContext} from "./CartContext";
 
-const CartTotalRow = (props) => {
+const CartTotalRow = () => {
 
     const { getTotalCost} = useContext(CartContext);
 
     const totalCost = getTotalCost();
-    const tax = {totalCost} * 0.0047;
+    const tax = totalCost * 0.047;
 
     return (
-        <div>
+        <div className="totalrow">
             {totalCost > 0 ? (
             <Grid>
                 <GridRow>
-                        Subtotal: ${totalCost}
+                        Subtotal: ${totalCost.toFixed(2)}
                 </GridRow>
                 <GridRow>
-                    Tax: ${tax}
+                    Tax: ${tax.toFixed(2)}
                 </GridRow>
                 <GridRow>
-                    Total: ${totalCost+tax}
+                    Total: ${(totalCost+tax).toFixed(2)}
                 </GridRow>
                 <GridRow>
                         <Button>

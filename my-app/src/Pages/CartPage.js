@@ -6,9 +6,9 @@ import {CartContext} from "../Cart/CartContext";
 
 
 export const CartPage = () => {
-    const {cartItems} = useContext(CartContext);
+    const cartTotal = GetCartTotal();
 
-    if (cartItems.length > 0) {
+    if (cartTotal > 0) {
         return (
             <Container className="productContainer" style={{backgroundColor: "white"}}>
                 <CartProductList/>
@@ -22,4 +22,19 @@ export const CartPage = () => {
             <p>Your cart is empty.</p>
         </Container>
     )
+}
+
+const GetCartTotal = () => {
+    const {cartItems} = useContext(CartContext);
+    let total = 0;
+    for (const item in cartItems) {
+        if (cartItems[item] > 0) {
+            total = total + cartItems[item];
+        }
+    }
+    if (total === 0) {
+        return 0;
+    } else {
+        return total;
+    }
 }

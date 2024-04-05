@@ -4,31 +4,26 @@ import {CartContext} from "./CartContext";
 
 const CartProductRow = (props) => {
     const { id, drink, price, img } = props.data;
-    const {cartItems, addToCart, removeFromCart, getItemCount, updateCartCount} = useContext(CartContext);
-
-    const count = getItemCount(id);
+    const {cartItems, addToCart, removeFromCart, updateCartCount} = useContext(CartContext);
 
     return (
         <div className="row product">
             <Grid>
-                <GridRow>
+                <GridRow columns={4}>
                     <GridColumn>
-                        <Image src={img} fluid/>
+                        <Image src={img} size="large" fluid/>
                     </GridColumn>
                     <GridColumn>
                         <Header as='h2'>{drink}</Header>
                     </GridColumn>
                     <GridColumn>
-                        <Header as='h5'>{count}</Header>
+                        <Header as="h3">${price}</Header>
                     </GridColumn>
                     <GridColumn>
-                        <p>${price}</p>
+                        <Button onClick={() => removeFromCart(id)}> - </Button>
+                        <Input className="cartinput" value={cartItems[id]} onChange={(e) => updateCartCount(Number(e.target.value))}/>
+                        <Button onClick={() => addToCart(id)}> + </Button>
                     </GridColumn>
-                </GridRow>
-                <GridRow>
-                    <Button onClick={() => removeFromCart(id)}> - </Button>
-                    <Input value={cartItems[id]} onChange={(e) => updateCartCount(Number(e.target.value))}/>
-                    <Button onClick={() => addToCart(id)}> + </Button>
                 </GridRow>
             </Grid>
         </div>

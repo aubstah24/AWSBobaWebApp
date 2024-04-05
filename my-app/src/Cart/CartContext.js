@@ -5,7 +5,7 @@ export const CartContext = React.createContext(null);
 
 const getDefaultCart = () => {
     let cart = {};
-    for (let i = 1; i < PRODUCTS.length; i++) {
+    for (let i = 1; i < PRODUCTS.length+1; i++) {
         cart[i] = 0;
     }
     return cart;
@@ -13,15 +13,16 @@ const getDefaultCart = () => {
 
 export const ContextProvider = (props) => {
     const [cartItems, setCartItems] = useState(getDefaultCart());
-    {/* cartItems =  */}
+    {/* cartItems =  [1: #, 2: #, 3: # ...] || cartItems[id] = # of items with that id */}
     // const addToCart = (id) => {
     //     setCartItems((prevState) => ({ ...prevState, [id]: prevState[id] + 1}));
     // }
 
     const addToCart = (id) => {
         setCartItems((cartItems) => ({...cartItems, [id]: cartItems[id] + 1}))
+        console.log("ADD: Cart Items array: \n");
         console.log(cartItems);
-        console.log(cartItems[id]);
+        console.log("ADD: Card items[id]" + cartItems[id]);
     }
 
     const removeFromCart = (id) => {
@@ -38,27 +39,17 @@ export const ContextProvider = (props) => {
 
     const getTotalCost = () => {
         let total = 0;
-        for (const item in cartItems) {
-            if (cartItems[item] > 0) {
-                let itemInfo = PRODUCTS.find((product) => product.id === Number.item);
-                total += cartItems[item] * itemInfo.price
+        for (let i = 1; i < PRODUCTS.length+1; i++) {
+            if (cartItems[i] > 0) {
+                let itemInfo = PRODUCTS.find((product) => product.id === i);
+                total += itemInfo.price * cartItems[i];
             }
         }
 
         return total;
     }
 
-    const getItemCount = (id) => {
-        let count = 0;
-        for (const item of cartItems) {
-            if (cartItems[item] === id) {
-                count +=1;
-            }
-        }
-        return count;
-    }
-
-    const contextValue = {cartItems, addToCart, removeFromCart, updateCartCount, getTotalCost, getItemCount};
+    const contextValue = {cartItems, addToCart, removeFromCart, updateCartCount, getTotalCost};
 
 
     return <CartContext.Provider value={contextValue}>{props.children}</CartContext.Provider>
