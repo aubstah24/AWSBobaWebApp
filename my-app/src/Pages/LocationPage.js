@@ -10,7 +10,7 @@ import location from "../images/location_filler.png";
 
 export const LocationPage = () => {
     return (
-        <Container className='menupage' style={{width: '100%'}}>
+        <Container style={{width: '100%', backgroundColor: "#DAA06D", padding: "30px"}}>
             <Grid className="location">
                 <GridRow columns={2}>
                     <GridColumn width={6}>
@@ -21,19 +21,19 @@ export const LocationPage = () => {
                         </div>
 
                         <div style={{padding: '20px'}}>
-                            <p>1234 Pensacola Ave</p>
-                            <p>Honolulu, HI 96815</p>
+                            <p>1116 South King Street</p>
+                            <p>Honolulu, HI 96814</p>
                         </div>
 
                         <Header as="h4">STORE HOURS:</Header>
                         <ul>
-                            <li>Sunday: 11am - 3pm</li>
-                            <li>Monday: 7am - 3pm</li>
-                            <li>Tuesday: 7am - 3pm</li>
-                            <li>Wednesday: 7am - 3pm</li>
-                            <li>Thursday: 7am - 3pm</li>
-                            <li>Friday: 7am - 3pm</li>
-                            <li>Saturday: 11am - 3pm</li>
+                            <li>Sunday: 12pm - 5pm</li>
+                            <li>Monday: 11am - 3pm</li>
+                            <li>Tuesday: 11am - 3pm</li>
+                            <li>Wednesday: 11am - 3pm</li>
+                            <li>Thursday: 11am - 3pm</li>
+                            <li>Friday: 11am - 3pm</li>
+                            <li>Saturday: 12pm - 5pm</li>
                         </ul>
                     </GridColumn>
                     <GridColumn width={10}>
