@@ -73,20 +73,9 @@ export default class TopMenu extends React.Component {
   }
 }
 
-const GetCartTotal = (props) => {
+const GetCartTotal = () => {
     const {cartItems} = useContext(CartContext);
-    let total = 0;
-    for (const item in cartItems) {
-        if (cartItems[item] > 0) {
-            total = total + cartItems[item];
-        }
-    }
-
-    if (total === 0) {
-        return 0;
-    } else {
-        return total;
-    }
+    return cartItems.length
 }
 
 

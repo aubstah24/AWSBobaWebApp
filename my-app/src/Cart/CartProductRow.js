@@ -3,7 +3,7 @@ import {Button, Grid, GridColumn, GridRow, Header, Image, Input} from "semantic-
 import {CartContext} from "./CartContext";
 
 const CartProductRow = (props) => {
-    const { id, drink, price, img } = props.data;
+
     const {cartItems, addToCart, removeFromCart, updateCartCount} = useContext(CartContext);
 
     return (
@@ -11,18 +11,18 @@ const CartProductRow = (props) => {
             <Grid>
                 <GridRow columns={4}>
                     <GridColumn>
-                        <Image src={img} size="large" fluid/>
+                        <Image src={props.img} size="large" fluid/>
                     </GridColumn>
                     <GridColumn>
-                        <Header as='h2'>{drink}</Header>
+                        <Header as='h2'>{props.drink}</Header>
                     </GridColumn>
                     <GridColumn>
-                        <Header as="h3">${price}</Header>
+                        <Header as="h3">${props.price}</Header>
                     </GridColumn>
                     <GridColumn>
-                        <Button onClick={() => removeFromCart(id)}> - </Button>
-                        <Input className="cartinput" value={cartItems[id]} onChange={(e) => updateCartCount(Number(e.target.value))}/>
-                        <Button onClick={() => addToCart(id)}> + </Button>
+                        <Button onClick={() => removeFromCart(props)}> - </Button>
+                        <Input className="cartinput" value={cartItems[props]} onChange={(e) => updateCartCount(Number(e.target.value))}/>
+                        <Button onClick={() => addToCart(props)}> + </Button>
                     </GridColumn>
                 </GridRow>
             </Grid>

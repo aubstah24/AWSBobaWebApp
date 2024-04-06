@@ -37,7 +37,7 @@ export const PRODUCTS = [
         defaultAtr: "Sweeteners available at pick-up",
         caffeine: "TRUE",
         includesDairy: "FALSE",
-        milkOption: []
+        flavor: ""
     },
     {
         id: 4,
