@@ -7,3 +7,11 @@ To start this app:
 
 2) Run the following command in terminal
 ```npm run start```
+
+
+Dependencies: 
+```npm install react-pdf```
+```npm install```
+```npm install react-bootstrap```
+```npm install --save react-router-dom```
+```npm install semantic-ui```
