@@ -23,13 +23,13 @@ const CartTotalRow = () => {
                     Total: ${(totalCost+tax).toFixed(2)}
                 </GridRow>
                 <GridRow>
-                        <Button>
-                            Checkout
-                        </Button>
+                    <a href="https://buy.stripe.com/test_00g00s5Zf6fXdMc9AC">
+                        <Button>Checkout</Button>
+                    </a>
                 </GridRow>
             </Grid>)
                 : (<Header>Your Cart is Empty</Header>
-            )}
+                )}
         </div>
     );
 }

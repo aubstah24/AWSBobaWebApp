@@ -1,8 +1,8 @@
 import { Container} from 'semantic-ui-react';
 import React, {useContext} from "react";
-import CartTotalRow from "../Cart/CartTotalRow";
-import {CartProductList} from "../Cart/CartProductList";
-import {CartContext} from "../Cart/CartContext";
+import CartTotalRow from "./CartTotalRow";
+import {CartProductList} from "./CartProductList";
+import {CartContext} from "./CartContext";
 
 
 export const CartPage = () => {
