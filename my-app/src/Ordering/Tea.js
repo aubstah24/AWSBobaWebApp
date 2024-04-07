@@ -16,6 +16,7 @@ import {
 import {useContext, useState} from "react";
 import {CartContext} from "../Cart/CartContext";
 import {teaflavors} from "../data/teaflavors";
+import { v4 as uuidv4 } from 'uuid';
 
 
 export const Tea = (props) => {
@@ -28,15 +29,7 @@ export const Tea = (props) => {
         setFlavor(value);
     };
 
-    const handleModal = () => {
-        return {
-            id: {id},
-            drink: {drink},
-            price: {price},
-            img: {img},
-            flavor: {flavor}
-        };
-    }
+    const uuid = uuidv4();
 
     return (
         <div key={id} className="product">
@@ -78,11 +71,15 @@ export const Tea = (props) => {
                     </ModalContent>
                     <ModalActions>
                         <Button onClick={() => addToCart({
+                            key: {uuid},
                             id: {id},
                             drink: {drink},
                             price: {price},
                             img: {img},
-                            flavor: {teaFlavor}
+                            flavor: {teaFlavor},
+                            topping: null,
+                            milk: null,
+                            sweet: null
                         })} primary>Add to Cart</Button>
                     </ModalActions>
                 </Modal>

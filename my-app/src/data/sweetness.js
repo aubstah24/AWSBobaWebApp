@@ -1,21 +1,26 @@
-export const SWEETNESS = [
+export const sweetnessOptions = [
     {
-        id: 1,
-        level: "100%"
+        key: 1,
+        text: "100%",
+        value: "1"
     },
     {
-        id: 2,
-        level: "75%"
+        key: 2,
+        text: "75%",
+        value: 2
     },
     {
-        id: 3,
-        level: "50%"
+        key: 3,
+        text: "50%",
+        value: 3
     },
     {
-        id: 4,
-        level: "25%"
+        key: 4,
+        text: "25%",
+        value: 4
     },
     {
-        id: 5,
-        level: "0%"
+        key: 5,
+        text: "0%",
+        value: 5
     }]

@@ -2,7 +2,7 @@ export const TOPPINGS = [
     {
         id: 1,
         topping: "Small Boba",
-        price: 1.00
+        price: 0.00
     },
     {
         id: 2,
@@ -27,5 +27,5 @@ export const TOPPINGS = [
     {
         id: 6,
         topping: "Regular Boba",
-        price: 1.00
+        price: 0.00
     }]

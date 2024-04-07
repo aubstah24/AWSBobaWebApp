@@ -15,9 +15,18 @@ export const CartProductList = (props) => {
                 Your Cart Items
             </Header>
             <Container>
-                {cartItems.map((product) => {
-                    return <CartProductRow data={cartItems[product]}/>;
-                    }
+                {cartItems.map((item) => (
+                    <CartProductRow
+                        key={item.key}
+                        id={item.key}
+                        drink={item.drink}
+                        price={item.price}
+                        img={item.img}
+                        flavor={item.flavor}
+                        topping={item.topping}
+                        milk={item.milk}
+                        sweet={item.sweet}/>
+                    )
                 )}
             </Container>
         </div>
