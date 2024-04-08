@@ -18,7 +18,7 @@ export const CartProductList = (props) => {
                 {cartItems.map((item) => (
                     <CartProductRow
                         key={item.key}
-                        id={item.key}
+                        id={item.id}
                         drink={item.drink}
                         price={item.price}
                         img={item.img}

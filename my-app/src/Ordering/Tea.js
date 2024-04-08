@@ -32,7 +32,7 @@ export const Tea = (props) => {
     const uuid = uuidv4();
 
     return (
-        <div key={id} className="product">
+        <div className="product">
             <Card fluid>
                 <Header as='h2' textAlign='center' style={{paddingTop: "15px"}}>{drink}</Header>
                 <Image src={img} size="large" centered={true}/>

@@ -4,22 +4,10 @@ import {CartContext} from "./CartContext";
 
 
 
-const CartProductRow = ({id, drink, price, flavor, sweet, topping, milk, img}) => {
+const CartProductRow = (props) => {
+    const {id, drink, price, flavor, sweet, topping, milk, img} = props.data
     const {cartItems, addToCart, removeFromCart, updateCartCount} = useContext(CartContext);
 
-    // const getPrice = () => {
-    //     let total = 0;
-    //     if (topping === null && milk === null) {
-    //         return price;
-    //     } else if (topping !== null) {
-    //         // for each item in topping, compare to each item in TOPPINGS
-    //         TOPPINGS.map((top) => {
-    //             for (const item in topping) {
-    //                 if (item.id === top.id) {
-    //                     total += top.price;
-    //                 }
-    //             }
-    //         })
     //     } else if (milk !== null) {
     //         MILKOPTIONS.map((opt) => {
     //             if (milk === opt.milk) {
