@@ -4,10 +4,12 @@ import {CartContext} from "./CartContext";
 
 
 
-const CartProductRow = (props) => {
-    const {idx1, idx2, drink, price, flavor, sweet, topping, milk, img} = props.data
-    const {cartItems, addToCart, removeFromCart, updateCartCount} = useContext(CartContext);
+const CartProductRow = ({idx1, idx2, drink, price, flavor, sweet, topping, milk, img}) => {
+    const {cartItems, removeFromCart} = useContext(CartContext);
 
+    console.log("INDICES" + idx1 + "   " + idx2);
+    console.log("cartItem at Index:   ")
+    console.log(cartItems[idx1][idx2]);
     //     } else if (milk !== null) {
     //         MILKOPTIONS.map((opt) => {
     //             if (milk === opt.milk) {

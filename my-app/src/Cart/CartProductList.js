@@ -3,7 +3,6 @@ import CartProductRow from './CartProductRow';
 import {Container, Header} from "semantic-ui-react";
 import {PRODUCTS} from "../data/products";
 import {CartContext} from "./CartContext";
-import cartProductRow from "./CartProductRow";
 
 export const CartProductList = (props) => {
     const {cartItems} = useContext(CartContext);
@@ -14,22 +13,22 @@ export const CartProductList = (props) => {
                 Your Cart Items
             </Header>
             <Container>
+                {cartItems.map((idx1, idx2) => (
+                    //cartItems[idx1][idx2]:: [[{id: 1}, {drink: Tea}, {price: 3}, {img: ./img/img.png}, {milk: null}, {sweet: null}, {flavor: teaflavor}, {topping: null}]]
+                    <CartProductRow idx1={idx1} idx2={idx2}
+                                    drink={cartItems[idx1][idx2].drink}
+                                    price={cartItems[idx1][idx2].price}
+                                    img={cartItems[idx1][idx2].img}
+                                    milk={cartItems[idx1][idx2].milk}
+                                    sweet={cartItems[idx1][idx2].sweet}
+                                    flavor={cartItems[idx1][idx2].flavor}
+                                    topping={cartItems[idx1][idx2].topping}
+                                    />
+                ))}
 
-                if (cartItems.length) {
-                    cartItems.map((innerArray, idx1) => {
-                        console.log("CARTPRODUCTLIST\n")
-                        console.log(idx1)
-                        console.log(innerArray)
-                    return innerArray.map((product, idx2) => {
-                        console.log(idx2)
-                        console.log(product)
-                        return (
-                            <CartProductRow data={product} product={product} index={[idx1, idx2]} />
-                        )
-                    })
-                })}
 
             </Container>
         </div>
     )
 }
+
