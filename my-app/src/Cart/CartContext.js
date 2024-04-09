@@ -6,10 +6,8 @@ export const CartContext = React.createContext(null);
 
 export const ContextProvider = (props) => {
     const [cartItems, setCartItems] = useState([]);
-    {/* cartItems =  [{key, id, price...}, {key, id, price...}, ...] || cartItems.length = length of array*/}
-    const [toppings, setToppings] = useState();
-    const [milk, setMilk] = useState();
-    const [cartCount, setCartCount] = useState([]);
+    {/* cartItems =  [[key, id, price...], [key, id, price...], ...] */}
+
 
     const addToCart = (item) => {
         setCartItems([...cartItems, item])
@@ -20,8 +18,8 @@ export const ContextProvider = (props) => {
 
     }
 
-    const removeFromCart = (itemToRemove) => {
-        const updatedCart = cartItems.filter((item) => item.key !== itemToRemove.id);
+    const removeFromCart = (idx1, idx2) => {
+        const updatedCart = cartItems.splice(cartItems[idx1][idx2], 1);
         setCartItems(updatedCart);
 
     }
@@ -33,8 +31,11 @@ export const ContextProvider = (props) => {
 
     const getTotalCost = () => {
         let total = 0;
-        for (const item in cartItems) {
-            total += item.price;
+        for (let i = 0; i < cartItems.length; i++) {
+            console.log("GET COST [ITEM]\n")
+            console.log(cartItems[i])
+            total += cartItems[i][2].price;
+            console.log(total);
         }
         return total;
     }

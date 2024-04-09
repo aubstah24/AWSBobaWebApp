@@ -7,7 +7,6 @@ import cartProductRow from "./CartProductRow";
 
 export const CartProductList = (props) => {
     const {cartItems} = useContext(CartContext);
-    let cartLength = GetCartTotal;
 
     return (
         <div>
@@ -15,29 +14,22 @@ export const CartProductList = (props) => {
                 Your Cart Items
             </Header>
             <Container>
-                {cartItems.map((item) => (
-                    <CartProductRow
-                        key={item.key}
-                        id={item.id}
-                        drink={item.drink}
-                        price={item.price}
-                        img={item.img}
-                        flavor={item.flavor}
-                        topping={item.topping}
-                        milk={item.milk}
-                        sweet={item.sweet}/>
-                    )
-                )}
+
+                if (cartItems.length) {
+                    cartItems.map((innerArray, idx1) => {
+                        console.log("CARTPRODUCTLIST\n")
+                        console.log(idx1)
+                        console.log(innerArray)
+                    return innerArray.map((product, idx2) => {
+                        console.log(idx2)
+                        console.log(product)
+                        return (
+                            <CartProductRow data={product} product={product} index={[idx1, idx2]} />
+                        )
+                    })
+                })}
+
             </Container>
         </div>
     )
-}
-function GetCartTotal(){
-    const {cartItems} = useContext(CartContext);
-
-    if (cartItems.length === 0) {
-        return 0;
-    } else {
-        return cartItems.length;
-    }
 }

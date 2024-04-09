@@ -5,7 +5,7 @@ import {CartContext} from "./CartContext";
 
 
 const CartProductRow = (props) => {
-    const {id, drink, price, flavor, sweet, topping, milk, img} = props.data
+    const {idx1, idx2, drink, price, flavor, sweet, topping, milk, img} = props.data
     const {cartItems, addToCart, removeFromCart, updateCartCount} = useContext(CartContext);
 
     //     } else if (milk !== null) {
@@ -36,28 +36,9 @@ const CartProductRow = (props) => {
                     </GridColumn>
                     <GridColumn>
                         <Input className="cartinput" value="1x"/>
-                        <Button onClick={() => removeFromCart({
-                            id: {id},
-                            drink: {drink},
-                            price: {price},
-                            img: {img},
-                            flavor: {flavor},
-                            topping: {topping},
-                            milk: {milk},
-                            sweet: {sweet}
-                        })}> Remove From Cart </Button>
-                        {/*<Input  className="cartinput" value={cartItems[props]} onChange={(e) => updateCartCount(Number(e.target.value))}/>*/}
-                        {/*<Button primary onClick={() => addToCart({*/}
-                        {/*    key: {key},*/}
-                        {/*    id: {id},*/}
-                        {/*    drink: {name},*/}
-                        {/*    price: {price},*/}
-                        {/*    img: {img},*/}
-                        {/*    flavor: {flavor},*/}
-                        {/*    topping: {topping},*/}
-                        {/*    milk: {milk},*/}
-                        {/*    sweet: {sweet}*/}
-                        {/*})}> + </Button>*/}
+                        <Button onClick={() => removeFromCart(idx1, idx2)}>Remove from cart
+                        </Button>
+
                     </GridColumn>
                 </GridRow>
             </Grid>

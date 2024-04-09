@@ -29,8 +29,6 @@ export const Tea = (props) => {
         setFlavor(value);
     };
 
-    const uuid = uuidv4();
-
     return (
         <div className="product">
             <Card fluid>
@@ -70,17 +68,7 @@ export const Tea = (props) => {
                         </ModalDescription>
                     </ModalContent>
                     <ModalActions>
-                        <Button onClick={() => addToCart({
-                            key: {uuid},
-                            id: {id},
-                            drink: {drink},
-                            price: {price},
-                            img: {img},
-                            flavor: {teaFlavor},
-                            topping: null,
-                            milk: null,
-                            sweet: null
-                        })} primary>Add to Cart</Button>
+                        <Button onClick={() => addToCart([{id}, {drink}, {price}, {img}, {teaFlavor}, null, null, null])} primary>Add to Cart</Button>
                     </ModalActions>
                 </Modal>
             </Card>
