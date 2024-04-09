@@ -16,11 +16,10 @@ import {
 import {useContext, useState} from "react";
 import {CartContext} from "../Cart/CartContext";
 import {teaflavors} from "../data/teaflavors";
-import { v4 as uuidv4 } from 'uuid';
 
 
 export const Tea = (props) => {
-    const { id, drink, price, img, description, caffeine, includesDairy, defaultAtr, flavor } = props.data;
+    const { id, drink, price, img, description, caffeine, includesDairy, defaultAtr } = props.data;
     const { addToCart } = useContext(CartContext);
     const [open, setOpen] = useState(false);
     const [teaFlavor, setFlavor] = useState();
@@ -68,7 +67,7 @@ export const Tea = (props) => {
                         </ModalDescription>
                     </ModalContent>
                     <ModalActions>
-                        <Button onClick={() => addToCart([{id}, {drink}, {price}, {img}, {teaFlavor}, null, null, null])} primary>Add to Cart</Button>
+                        <Button onClick={() => addToCart([{id}, {drink}, {price}, {img}, {}, {}, {teaFlavor}, {}])} primary>Add to Cart</Button>
                     </ModalActions>
                 </Modal>
             </Card>

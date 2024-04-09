@@ -18,7 +18,6 @@ import React, {useContext, useState} from "react";
 import {CartContext} from "../Cart/CartContext";
 import {TOPPINGS} from "../data/toppings";
 import {sweetnessOptions} from "../data/sweetness";
-import {v4 as uuidv4} from "uuid";
 
 
 export const MilkTea = (props) => {
@@ -50,7 +49,6 @@ export const MilkTea = (props) => {
         }
     };
 
-    const uuid = uuidv4();
 
     const getPrice = () => {
         let total = {price};

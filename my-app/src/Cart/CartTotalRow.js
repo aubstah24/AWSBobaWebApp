@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {Button, Grid, GridRow, Header} from "semantic-ui-react";
+import {Button, Form, FormInput, Grid, GridRow, Header, Input, TextArea} from "semantic-ui-react";
 import {CartContext} from "./CartContext";
 
 const CartTotalRow = () => {
@@ -14,6 +14,11 @@ const CartTotalRow = () => {
             {totalCost > 0 ? (
             <Grid>
                 <GridRow>
+                    <Form>
+                        <TextArea placeholder="Additional Requests"/>
+                    </Form>
+                </GridRow>
+                <GridRow>
                         Subtotal: ${totalCost.toFixed(2)}
                 </GridRow>
                 <GridRow>
@@ -24,7 +29,7 @@ const CartTotalRow = () => {
                 </GridRow>
                 <GridRow>
                     <a href="https://buy.stripe.com/test_00g00s5Zf6fXdMc9AC">
-                        <Button>Checkout</Button>
+                        <Button color="black">Checkout</Button>
                     </a>
                 </GridRow>
             </Grid>)

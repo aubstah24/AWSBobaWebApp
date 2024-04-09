@@ -18,8 +18,8 @@ export const ContextProvider = (props) => {
 
     }
 
-    const removeFromCart = (idx1, idx2) => {
-        const updatedCart = cartItems.splice(cartItems[idx1][idx2], 1);
+    const removeFromCart = (idx1) => {
+        const updatedCart = cartItems.splice(cartItems[idx1], 1);
         setCartItems(updatedCart);
 
     }
