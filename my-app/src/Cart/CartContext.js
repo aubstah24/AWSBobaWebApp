@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {PRODUCTS} from "../data/products";
 
 export const CartContext = React.createContext(null);
 
@@ -32,10 +31,7 @@ export const ContextProvider = (props) => {
     const getTotalCost = () => {
         let total = 0;
         for (let i = 0; i < cartItems.length; i++) {
-            console.log("GET COST [ITEM]\n")
-            console.log(cartItems[i])
             total += cartItems[i][2].price;
-            console.log(total);
         }
         return total;
     }

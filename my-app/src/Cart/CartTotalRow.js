@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {Button, Form, FormInput, Grid, GridRow, Header, Input, TextArea} from "semantic-ui-react";
+import {Button, Form, Grid, GridRow, Header, TextArea} from "semantic-ui-react";
 import {CartContext} from "./CartContext";
 
 const CartTotalRow = () => {

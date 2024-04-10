@@ -21,13 +21,12 @@ import {sweetnessOptions} from "../data/sweetness";
 
 
 export const MilkTea = (props) => {
-    const { id, drink, price, img, description, caffeine, includesDairy, category, defaultAtr } = props.data;
+    const { id, drink, price, img, description, caffeine, includesDairy, defaultAtr } = props.data;
     const { addToCart } = useContext(CartContext);
     const [open, setOpen] = useState(false);
-    const [toppings, setTopping] = useState([]);
     const [sweetness, setSweetness] = useState();
     const [checked, setChecked] = useState([]);
-
+    const topping = [];
 
     const handleDropdown = (e, { value }) => {
         setSweetness(value);
@@ -36,15 +35,15 @@ export const MilkTea = (props) => {
     const handleCheckbox = (e) => {
         if (e.target.checked) {
             setChecked([...checked, e.target.value]);
-            setTopping([...toppings, e.target.value]);
+            topping.push(e.target.value);
             console.log("Toppings Array: ");
-            console.log(toppings)
+            console.log(topping)
             console.log(e.target.value)
         } else {
             setChecked(checked.filter((item) => item !== e.target.value));
-            setTopping(toppings.filter((item) => item !== e.target.value));
+            topping.filter((item) => item !== e.target.value);
             console.log("Toppings ADJUSTED: ");
-            console.log(toppings)
+            console.log(topping)
             console.log(e.target.value)
         }
     };
@@ -53,11 +52,11 @@ export const MilkTea = (props) => {
     const getPrice = () => {
         let total = {price};
 
-        if (!toppings.length) {
+        if (!topping.length) {
             return total;
         } else {
-            TOPPINGS.map((top) => {
-                for (const item in toppings) {
+            TOPPINGS.forEach((top) => {
+                for (const item in topping) {
                     if (item === top.id) {
                         total += top.price;
                     }
@@ -76,7 +75,7 @@ export const MilkTea = (props) => {
                 <Container fluid>
                     <CardDescription>{description}</CardDescription>
                     <p>{defaultAtr}</p>
-                    <p>${price}</p>
+                    <p>${getPrice}</p>
                     <CardMeta>
                         {caffeine === "TRUE" ? "Contains Caffeine" : "Caffeine-Free"}
                         <br/>
@@ -84,18 +83,12 @@ export const MilkTea = (props) => {
                     </CardMeta>
                 </Container>
                 {/*default regular will have regular boba as topping == id=6
-                   sweetness default is 50% == id=3 */}
-                <Button onClick={() => addToCart({
-                    key: {uuid},
-                    id: {id},
-                    drink: {drink},
-                    price: {price},
-                    img: {img},
-                    flavor: null,
-                    topping: [6],
-                    milk: null,
-                    sweet: 3
-                })} color='black'>Add To Cart</Button>
+                   sweetness default is 50% == id=3
+                   [{id: 1}, {drink: Tea}, {price: 3}, {img: ./img/img.png}, {milk: milk}, {sweet: sweet}, {flavor: teaFlavor}, {topping: topping}
+                   */}
+                <Button onClick={() => addToCart([{id}, {drink}, {price}, {img}, {}, {sweet: 3}, {}, {topping: [6]}])} color='black'>
+                    Add To Cart
+                </Button>
                 <Modal
                     centered={false}
                     open={open}
@@ -136,17 +129,7 @@ export const MilkTea = (props) => {
                         </ModalDescription>
                     </ModalContent>
                     <ModalActions>
-                        <Button onClick={() => addToCart({
-                            key: {uuid},
-                            id: {id},
-                            drink: {drink},
-                            price: {price},
-                            img: {img},
-                            flavor: null,
-                            topping: {toppings},
-                            milk: null,
-                            sweet: {sweetness}
-                        })} primary>Add To Cart</Button>
+                        <Button onClick={() => addToCart([{id}, {drink}, {price}, {img}, {}, {sweetness}, {}, {topping}])} primary>Add To Cart</Button>
                     </ModalActions>
                 </Modal>
             </Card>
