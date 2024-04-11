@@ -1,10 +1,14 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
+import {TOPPINGS} from "../data/toppings";
 
 export const CartContext = React.createContext(null);
 
 
 export const ContextProvider = (props) => {
     const [cartItems, setCartItems] = useState([]);
+    const [topping, setTopping] = useState([]);
+    const itemCost = 0.00;
+    const [cost, setCost] = useState([]);
     {/* cartItems =  [[key, id, price...], [key, id, price...], ...] */}
 
 
@@ -12,14 +16,17 @@ export const ContextProvider = (props) => {
         setCartItems([...cartItems, item])
         console.log("ADD: Cart Items array: \n");
         console.log(cartItems);
-        console.log("ADD: Cart [1] \n")
-        console.log(cartItems[1]);
 
     }
 
     const removeFromCart = (idx1) => {
-        const updatedCart = cartItems.splice(cartItems[idx1], 1);
-        setCartItems(updatedCart);
+        let count = getCartCount();
+        if (count === 1) {
+            setCartItems([])
+        } else {
+            const updatedCart = cartItems.splice(cartItems[idx1], 1);
+            setCartItems(updatedCart);
+        }
 
     }
 
@@ -32,12 +39,59 @@ export const ContextProvider = (props) => {
         let total = 0;
         for (let i = 0; i < cartItems.length; i++) {
             total += cartItems[i][2].price;
+
+            if (cartItems[i][7].length !== 0) {
+                let temp = getToppingTotal(i);
+                console.log("TEMP: ", temp);
+                total = total + temp;
+            }
         }
+
         return total;
     }
 
+    const getToppingTotal = (index) => {
+        let total = 0.00;
+        let temp = cartItems[index][7]
+        console.log("TEMP: ", temp);
+        for (let i = 0; i < temp.topping.length; i++) {
+            let token = TOPPINGS.filter((item) => (item.id === temp.topping[i]))
+            let priceVar = parseFloat(token[0].price);
+            total = total + priceVar;
+        }
+        console.log("TOPPING TOTAL: ", total);
+        return total;
+    }
 
-    const contextValue = {cartItems, addToCart, removeFromCart, updateCartCount, getTotalCost};
+    const getTotalPrice = (index) => {
+        let total = 0.00;
+        console.log("TOKEN PRICE: ", cartItems[index][2].price);
+        let itemPrice = parseFloat(cartItems[index][2].price);
+        total = total + itemPrice;
+        setCost([...cost, Number(total)])
+        console.log("ITEM TOTAL: ", total);
+        return total;
+    }
+
+    const getCartCount = () => {
+        if (cartItems.length === 0) {
+            return 0;
+        } else {
+            return cartItems.length;
+        }
+    }
+
+    const updateTopping = (value) => {
+        setTopping([...topping, Number(value)])
+    }
+
+    const removeTopping = (id) => {
+        setTopping(topping.filter((item) => item !== id));
+
+    }
+
+
+    const contextValue = {cartItems, topping, getTotalPrice, updateTopping, removeTopping, addToCart, removeFromCart, updateCartCount, getTotalCost, getCartCount, getToppingTotal};
 
 
     return <CartContext.Provider value={contextValue}>{props.children}</CartContext.Provider>

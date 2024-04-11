@@ -67,7 +67,7 @@ export const Tea = (props) => {
                         </ModalDescription>
                     </ModalContent>
                     <ModalActions>
-                        <Button onClick={() => addToCart([{id}, {drink}, {price}, {img}, {}, {}, {teaFlavor}, {}])} color="black">Add to Cart</Button>
+                        <Button onClick={() => addToCart([{id}, {drink}, {price}, {img}, {}, {}, {teaFlavor}, []])} color="black">Add to Cart</Button>
                     </ModalActions>
                 </Modal>
             </Card>

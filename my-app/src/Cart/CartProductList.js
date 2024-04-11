@@ -5,27 +5,27 @@ import {sweetnessOptions} from "../data/sweetness";
 import {MILKOPTIONS} from "../data/milkoptions";
 import {CartContext} from "./CartContext";
 
-export const CartProductList = (props) => {
+export const CartProductList = () => {
     const {cartItems, removeFromCart} = useContext(CartContext);
 
     const getSweetness = (id) => {
-        return sweetnessOptions.filter((item) => item.id === id);
+        let temp = sweetnessOptions.filter((item) => item.key === id);
+        return temp.text;
     }
 
-    const getToppings = (id) => {
-        const top = TOPPINGS.filter((item) => item.id === id);
-        return top[0].topping;
-    }
+
     const listToppings = (array) => {
-        const toppings = []
+        const tempList = []
         for (let i = 0; i < array.topping.length; i++) {
-            toppings.push(getToppings(array.topping[i]));
+            tempList.push(array.topping[i]);
         }
         return (<div>
                 <p>Toppings: </p>
-                {toppings.map((top) => (
-                        <p>{top}</p>
-                    )
+                {tempList.map((top) => {
+                    let temp = TOPPINGS.filter((item) => item.id === top);
+                    console.log(temp);
+                        return <p>+${temp[0].price} ({temp[0].topping})</p>
+                    }
                 )}
         </div>);
         //toppings = [Regular Boba, Lychee Jelly, ...]
@@ -36,15 +36,17 @@ export const CartProductList = (props) => {
     }
 
 
+
     return (
         <div>
             <Header as='h1'>
                 Your Cart Items
             </Header>
             <Container>
-                {cartItems.map((item, index) => (
-       //cartItems[idx1][idx2]:: [[{id: 1}, {drink: Tea}, {price: 3}, {img: ./img/img.png}, {milk: null}, {sweet: null}, {flavor: teaflavor}, {topping: null}]]
-                    <Grid>
+                {cartItems.map((item, index) => {
+                    return (
+                    //cartItems[idx1][idx2]:: [[{id: 1}, {drink: Tea}, {price: 3}, {img: ./img/img.png}, {milk: null}, {sweet: null}, {flavor: teaflavor}, {topping: null}]]
+                    <Grid key={index}>
                         <GridRow columns={4}>
                             <GridColumn>
                                 <Image src={item[3].img} fluid/>
@@ -60,18 +62,18 @@ export const CartProductList = (props) => {
                                 {(!item[4].milk) ? null : (<p>Milk Substitute: {getMilk(item[4].milk)}</p>)}
                             </GridColumn>
                             <GridColumn>
-                                <Header as="h3" textAlign="right">${item[2].price.toFixed(2)}</Header>
+                                <Header as="h3" textAlign="right">${item[2].price}</Header>
                             </GridColumn>
-                            <GridColumn style={{ justifyContent: "space-between" }}>
-                                <Button style={{padding: "15px"}} onClick={() => removeFromCart(index)} color="red">Remove from cart</Button>
+                            <GridColumn style={{justifyContent: "space-between"}}>
+                                <Button style={{padding: "15px"}} onClick={() => removeFromCart(index)} color="red">Remove
+                                    from cart</Button>
                             </GridColumn>
                         </GridRow>
                     </Grid>
-                ))}
+                    )})}
 
 
             </Container>
         </div>
     )
 }
-
