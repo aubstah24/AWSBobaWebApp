@@ -10,7 +10,9 @@ export const CartProductList = () => {
 
     const getSweetness = (id) => {
         let temp = sweetnessOptions.filter((item) => item.key === id);
-        return temp.text;
+        console.log(id)
+        console.log(temp[0].text);
+        return temp[0].text;
     }
 
 
@@ -58,7 +60,7 @@ export const CartProductList = () => {
                                     (<p>{listToppings(item[7])}</p>)
                                     :
                                     (<p>Tea: {item[6].teaFlavor}</p>)}
-                                {(!item[5].sweetness) ? null : (<p>{getSweetness(item[5].sweetness)} sweet</p>)}
+                                {(!item[5].sweetness) ? null : (<p>({getSweetness(item[5].sweetness)} sweet)</p>)}
                                 {(!item[4].milk) ? null : (<p>Milk Substitute: {getMilk(item[4].milk)}</p>)}
                             </GridColumn>
                             <GridColumn>
