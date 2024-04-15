@@ -18,11 +18,12 @@ import React, {useContext, useState} from "react";
 import {CartContext} from "../Cart/CartContext";
 import {TOPPINGS} from "../data/toppings";
 import {sweetnessOptions} from "../data/sweetness";
+import {func} from "prop-types";
 
 
 export const MilkTea = (props) => {
     const { id, drink, price, img, description, caffeine, includesDairy, defaultAtr } = props.data;
-    const { addToCart, updateTopping, removeTopping, topping } = useContext(CartContext);
+    const { addToCart, updateTopping, removeTopping, topping, resetOptions } = useContext(CartContext);
     const [open, setOpen] = useState(false);
     const [sweetness, setSweetness] = useState();
     const [checked, setChecked] = useState([]);
@@ -35,16 +36,22 @@ export const MilkTea = (props) => {
     const handleCheckbox = (e, { value }) => {
         if (e.target.checked) {
             setChecked([...checked, e.target.value]);
-            updateTopping(value)
+            updateTopping(e.target.value)
             console.log("Toppings Array: ");
             console.log(topping)
         } else {
             setChecked(checked.filter((item) => item !== e.target.value));
-            removeTopping(value);
-            console.log("Toppings ADJUSTED: ");
-            console.log(topping)
+            removeTopping(e.target.value);
         }
     };
+
+    const handleModal = (e) => {
+        addToCart([{id}, {drink}, {price}, {img}, {}, {sweetness}, {}, {topping}])
+        e.preventDefault();
+        resetOptions();
+        setSweetness(prevState => {})
+        setOpen(false);
+    }
 
     return (
         <div className="product">
@@ -106,10 +113,11 @@ export const MilkTea = (props) => {
                         </ModalDescription>
                     </ModalContent>
                     <ModalActions>
-                        <Button onClick={() => addToCart([{id}, {drink}, {price}, {img}, {}, {sweetness}, {}, {topping}])} primary>Add To Cart</Button>
+                        <Button onClick={handleModal} primary>Add To Cart</Button>
                     </ModalActions>
                 </Modal>
             </Card>
         </div>
     );
 }
+

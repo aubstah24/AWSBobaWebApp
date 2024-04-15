@@ -83,15 +83,25 @@ export const ContextProvider = (props) => {
 
     const updateTopping = (value) => {
         setTopping([...topping, Number(value)])
+        console.log("Added Topping: ", value)
     }
 
     const removeTopping = (id) => {
-        setTopping(topping.filter((item) => item !== id));
+        let temp = topping.filter((item) => item[0] !== id)
+        setTopping(temp);
+        console.log("Topping Before: ", topping)
+        console.log("Removed Topping: ", id)
+        console.log("Array is now: ", temp)
 
     }
 
+    const resetOptions = () => {
+        setTopping([]);
+    }
 
-    const contextValue = {cartItems, topping, getTotalPrice, updateTopping, removeTopping, addToCart, removeFromCart, updateCartCount, getTotalCost, getCartCount, getToppingTotal};
+
+
+    const contextValue = {cartItems, topping, getTotalPrice, resetOptions, updateTopping, removeTopping, addToCart, removeFromCart, updateCartCount, getTotalCost, getCartCount, getToppingTotal};
 
 
     return <CartContext.Provider value={contextValue}>{props.children}</CartContext.Provider>

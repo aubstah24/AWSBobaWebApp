@@ -28,6 +28,13 @@ export const Tea = (props) => {
         setFlavor(value);
     };
 
+    const handleModal = (e) => {
+        addToCart([{id}, {drink}, {price}, {img}, {}, {}, {teaFlavor}, []])
+        e.preventDefault();
+        setFlavor(prevState => {});
+        setOpen(false);
+    }
+
     return (
         <div className="product">
             <Card fluid>
@@ -67,7 +74,7 @@ export const Tea = (props) => {
                         </ModalDescription>
                     </ModalContent>
                     <ModalActions>
-                        <Button onClick={() => addToCart([{id}, {drink}, {price}, {img}, {}, {}, {teaFlavor}, []])} color="black">Add to Cart</Button>
+                        <Button onClick={handleModal} color="black">Add to Cart</Button>
                     </ModalActions>
                 </Modal>
             </Card>
