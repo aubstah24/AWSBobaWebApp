@@ -18,7 +18,6 @@ import React, {useContext, useState} from "react";
 import {CartContext} from "../Cart/CartContext";
 import {TOPPINGS} from "../data/toppings";
 import {sweetnessOptions} from "../data/sweetness";
-import {func} from "prop-types";
 
 
 export const MilkTea = (props) => {

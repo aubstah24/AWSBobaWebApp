@@ -152,6 +152,17 @@ body {
 
 
 /*MENU PAGE CSS*/
+.pdfUpload {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px;
+    flex-direction: column;
+}
+.react-pdf__Page__textContent{
+    display: none;
+}
+
 .menupage {
     background-color: #DAA06D;
     justify-content: left;

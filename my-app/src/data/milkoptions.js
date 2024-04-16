@@ -1,26 +1,31 @@
-export const MILKOPTIONS = [
+export const milkoptions = [
     {
-        id: 1,
-        milk: "Oat Milk",
+        key: 1,
+        text: "Oat Milk",
+        value: "Oat Milk",
         price: 1.00
     },
     {
-        id: 2,
-        milk: "Coconut Milk",
+        key: 2,
+        text: "Coconut Milk",
+        value: "Coconut Milk",
         price: 1.00
     },
     {
-        id: 3,
-        milk: "Soy Milk",
+        key: 3,
+        text: "Soy Milk",
+        value: "Soy Milk",
         price: 1.00
     },
     {
-        id: 4,
-        milk: "Almond Milk",
+        key: 4,
+        text: "Almond Milk",
+        value: "Almond Milk",
         price: 1.00
     },
     {
-        id: 5,
-        topping: "2% Milk",
+        key: 5,
+        text: "2% Milk",
+        value: "2% Milk",
         price: 1.00
     }]

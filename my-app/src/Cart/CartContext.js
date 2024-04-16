@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useState} from 'react';
 import {TOPPINGS} from "../data/toppings";
 
 export const CartContext = React.createContext(null);
@@ -7,8 +7,8 @@ export const CartContext = React.createContext(null);
 export const ContextProvider = (props) => {
     const [cartItems, setCartItems] = useState([]);
     const [topping, setTopping] = useState([]);
-    const itemCost = 0.00;
     const [cost, setCost] = useState([]);
+    // eslint-disable-next-line
     {/* cartItems =  [[key, id, price...], [key, id, price...], ...] */}
 
 

@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import {Button, Container, Grid, GridColumn, GridRow, Header, Image} from "semantic-ui-react";
 import {TOPPINGS} from "../data/toppings";
 import {sweetnessOptions} from "../data/sweetness";
-import {MILKOPTIONS} from "../data/milkoptions";
+import {milkoptions} from "../data/milkoptions";
 import {CartContext} from "./CartContext";
 
 export const CartProductList = () => {
@@ -34,7 +34,10 @@ export const CartProductList = () => {
     }
 
     const getMilk = (id) => {
-        return MILKOPTIONS.filter((item) => item.id === id);
+        let temp = milkoptions.filter((item) => item.key === id);
+        console.log(id)
+        console.log(temp[0].text);
+        return temp[0].text;
     }
 
 

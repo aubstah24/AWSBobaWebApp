@@ -5,7 +5,6 @@ import AuthComponent from './AuthComponent';
 import bobaicon from './images/boba-cart.png';
 import {Badge} from "@aws-amplify/ui-react";
 import {CartContext} from "./Cart/CartContext";
-import {PRODUCTS} from "./data/products";
 
 
 export default class TopMenu extends React.Component {
