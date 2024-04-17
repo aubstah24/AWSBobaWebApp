@@ -10,7 +10,10 @@ export const PRODUCTS = [
         defaultAtr: "Sweeteners available at pick-up",
         caffeine: "TRUE",
         includesDairy: "FALSE",
-        milkOption: []
+        milk: null,
+        sweet: null,
+        flavor: null,
+        topping: null
     },
     {
         id: 2,
@@ -23,8 +26,10 @@ export const PRODUCTS = [
         defaultAtr: "All basic milk tea includes regular boba",
         caffeine: "TRUE",
         includesDairy: "TRUE",
-        milkOption: []
-
+        milk: null,
+        sweet: null,
+        flavor: null,
+        topping: null
     },
     {
         id: 3,
@@ -37,7 +42,10 @@ export const PRODUCTS = [
         defaultAtr: "Sweeteners available at pick-up",
         caffeine: "TRUE",
         includesDairy: "FALSE",
-        milkOption: []
+        milk: null,
+        sweet: null,
+        flavor: null,
+        topping: null
     },
     {
         id: 4,
@@ -50,20 +58,10 @@ export const PRODUCTS = [
         defaultAtr: "Sweeteners available at pick-up",
         caffeine: "TRUE",
         includesDairy: "TRUE",
-        milkOption: [
-            {
-                id: "prod_Ps2k8JWY9np7iS",
-                milk: "Oat Milk"
-            },
-            {
-                id: "prod_Ps2lFRMLJZQVLL",
-                milk: "Soy Milk"
-            },
-            {
-                id: "prod_Ps2ltruv1axIHF",
-                milk: "Coconut Milk"
-            }
-        ]
+        milk: null,
+        sweet: null,
+        flavor: null,
+        topping: null
     },
     {
         id: 5,
@@ -76,19 +74,25 @@ export const PRODUCTS = [
         defaultAtr: "Sweeteners available at pick-up",
         caffeine: "TRUE",
         includesDairy: "TRUE",
-        milkOption: [
-            {
-                id: "prod_Ps2k8JWY9np7iS",
-                milk: "Oat Milk"
-            },
-            {
-                id: "prod_Ps2lFRMLJZQVLL",
-                milk: "Soy Milk"
-            },
-            {
-                id: "prod_Ps2ltruv1axIHF",
-                milk: "Coconut Milk"
-            }
-        ]
+        milk: null,
+        sweet: null,
+        flavor: null,
+        topping: null
+    },
+    {
+        id: 6,
+        stripe: "price_1OoavrC97Gt3R1MtfgcUR9fu",
+        drink: "Lychee Mango Fruit Tea",
+        price: 6.50,
+        img: "/img/hokkaido_MT.jpg",
+        description: "Enjoy the refreshing taste of fruit tea.  Perfect for a thirst quencher and a hot day.",
+        category: "Fruit Tea",
+        defaultAtr: "All basic fruit tea includes regular boba",
+        caffeine: "TRUE",
+        includesDairy: "FALSE",
+        milk: null,
+        sweet: null,
+        flavor: null,
+        topping: null
     }
 ]

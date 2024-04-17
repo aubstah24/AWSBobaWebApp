@@ -3,7 +3,6 @@ import React from "react";
 import {PRODUCTS} from "../data/products";
 import {DrinkItem} from "../data/DrinkItem";
 import {Row, Col} from "react-bootstrap";
-import {Link} from "react-router-dom";
 import {Coffee} from "./Coffee";
 import {MilkTea} from "./MilkTea";
 import {Tea} from "./Tea";
@@ -13,7 +12,7 @@ import {Latte} from "./Latte";
 const panes = [
     { menuItem: 'COFFEE', render: () => <TabPane>
             <Row md={2}>
-                {PRODUCTS.map((product, key ) => {
+                {PRODUCTS.map((product ) => {
                         if (product.category === "Coffee") {
                             return <Coffee data={product} key={product.id}/>;
                         }
@@ -23,7 +22,7 @@ const panes = [
         </TabPane> },
     { menuItem: 'LATTE', render: () => <TabPane>
             <Row md={2}>
-                {PRODUCTS.map((product, key ) => {
+                {PRODUCTS.map((product ) => {
                         if (product.category === "Latte") {
                             return <Latte data={product} key={product.id}/>;
                         }
@@ -33,7 +32,7 @@ const panes = [
         </TabPane> },
     { menuItem: 'TEA', render: () => <TabPane>
             <Row md={2}>
-                {PRODUCTS.map((product, key ) => {
+                {PRODUCTS.map((product ) => {
                         if (product.category === "Tea") {
                             return <Tea data={product} key={product.id}/>;
                         }
@@ -43,7 +42,7 @@ const panes = [
         </TabPane> },
     { menuItem: 'MILK TEA', render: () => <TabPane>
             <Row md={2}>
-                {PRODUCTS.map((product, key ) => {
+                {PRODUCTS.map((product ) => {
                         if (product.category === "Milk Tea") {
                             return <MilkTea data={product} key={product.id}/>;
                         }
@@ -53,7 +52,7 @@ const panes = [
         </TabPane> },
     { menuItem: 'FRUIT TEA', render: () => <TabPane>
             <Row md={2}>
-                {PRODUCTS.map((product, key ) => {
+                {PRODUCTS.map((product ) => {
                         if (product.category === "Fruit Tea") {
                             return <FruitTea data={product} key={product.id}/>;
                         }
@@ -73,7 +72,7 @@ export function OnlineOrderingPage() {
             <Divider/>
             <Header as='h2'>All Drinks</Header>
             <Row md={3}>
-                {PRODUCTS.map((product, key) => (
+                {PRODUCTS.map((product) => (
                     <Col>
                         <DrinkItem data={product} key={product.id}/>
                     </Col>

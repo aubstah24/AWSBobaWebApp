@@ -26,15 +26,10 @@ export const CartPage = () => {
 
 const GetCartTotal = () => {
     const {cartItems} = useContext(CartContext);
-    let total = 0;
-    for (const item in cartItems) {
-        if (cartItems[item] > 0) {
-            total = total + cartItems[item];
-        }
-    }
-    if (total === 0) {
+
+    if (cartItems.length === 0) {
         return 0;
     } else {
-        return total;
+        return cartItems.length;
     }
 }

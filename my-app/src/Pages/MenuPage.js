@@ -19,18 +19,15 @@ import milk from '../images/milk.jpg';
 import oat from '../images/oatmilk.jpg';
 import soy from '../images/soymilk.jpg';
 import coco from '../images/cocomilk.jpg';
-import pdfFile from '../data/BobaDrinkMenu.pdf'
-import {Page, Document} from "react-pdf";
-import {UploadImage} from "../Admin/UploadImage";
+import {UpdateMenu} from "../Admin/UpdateMenu";
+
 
 export const MenuPage = () => {
 
     return (
         <Container className='menupage' style={{width: '100%'}}>
             <Header className='pageheader' as='h1'>OUR MENU</Header>
-
-            <UploadImage/>
-
+            <UpdateMenu/>
             <Header as="h3">Select your sweetness:</Header>
             <div className='container'>
                 <div className='box' id='sweetfull'>100% Sweet</div>

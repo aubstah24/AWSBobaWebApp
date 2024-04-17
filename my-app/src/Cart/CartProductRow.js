@@ -2,27 +2,45 @@ import React, {useContext} from 'react';
 import {Button, Grid, GridColumn, GridRow, Header, Image, Input} from "semantic-ui-react";
 import {CartContext} from "./CartContext";
 
-const CartProductRow = (props) => {
-    const { id, drink, price, img } = props.data;
-    const {cartItems, addToCart, removeFromCart, updateCartCount} = useContext(CartContext);
 
+
+const CartProductRow = ({idx1, idx2, drink, price, flavor, sweet, topping, milk, img}) => {
+    const {cartItems, removeFromCart} = useContext(CartContext);
+
+    console.log("INDICES" + idx1 + "   " + idx2);
+    console.log("cartItem at Index:   ")
+    console.log(cartItems[idx1][idx2]);
+    //     } else if (milk !== null) {
+    //         MILKOPTIONS.map((opt) => {
+    //             if (milk === opt.milk) {
+    //                 total += opt.price
+    //             }
+    //         })
+    //     }
+    //
+    //     return total;
+    // }
     return (
         <div className="row product">
             <Grid>
                 <GridRow columns={4}>
                     <GridColumn>
-                        <Image src={img} size="large" fluid/>
+                        <Image src={img} fluid/>
                     </GridColumn>
                     <GridColumn>
                         <Header as='h2'>{drink}</Header>
+                        {{flavor} === null ? (<p>{topping} $1 ea.</p>) : (<p>{flavor}</p>)}
+                        {{sweet} === null ? null : (<p>{sweet} sweet</p>)}
+                        {{milk} === null ? null : (<p>Milk Substitute: {milk}</p>)}
                     </GridColumn>
                     <GridColumn>
-                        <Header as="h3">${price}</Header>
+                    <Header as="h3">${price}</Header>
                     </GridColumn>
                     <GridColumn>
-                        <Button onClick={() => removeFromCart(id)}> - </Button>
-                        <Input className="cartinput" value={cartItems[id]} onChange={(e) => updateCartCount(Number(e.target.value))}/>
-                        <Button onClick={() => addToCart(id)}> + </Button>
+                        <Input className="cartinput" value="1x"/>
+                        <Button onClick={() => removeFromCart(idx1, idx2)}>Remove from cart
+                        </Button>
+
                     </GridColumn>
                 </GridRow>
             </Grid>

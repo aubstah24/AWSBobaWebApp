@@ -1,26 +1,42 @@
 import {
-    Image,
     Button,
+    Card,
+    CardDescription,
+    CardMeta,
     Container,
-    Header, Card, CardMeta, CardDescription
+    Dropdown,
+    Header,
+    Image,
+    Modal,
+    ModalActions,
+    ModalContent,
+    ModalDescription,
+    ModalHeader
 } from "semantic-ui-react";
-import {useContext} from "react";
+import {useContext, useState} from "react";
 import {CartContext} from "../Cart/CartContext";
+import {teaflavors} from "../data/teaflavors";
 
 
 export const Tea = (props) => {
-    const { id, drink, price, img, description, caffeine, includesDairy, category, defaultAtr } = props.data;
+    const { id, drink, price, img, description, caffeine, includesDairy, defaultAtr } = props.data;
     const { addToCart } = useContext(CartContext);
+    const [open, setOpen] = useState(false);
+    const [teaFlavor, setFlavor] = useState();
 
-    const handleModal = () => {
-        if(category === "Coffee") {
+    const handleDropdown = (e, { value }) => {
+        setFlavor(value);
+    };
 
-        }
-        addToCart(id);
+    const handleModal = (e) => {
+        addToCart([{id}, {drink}, {price}, {img}, {}, {}, {teaFlavor}, []])
+        e.preventDefault();
+        setFlavor(prevState => {});
+        setOpen(false);
     }
 
     return (
-        <div key={id} className="product">
+        <div className="product">
             <Card fluid>
                 <Header as='h2' textAlign='center' style={{paddingTop: "15px"}}>{drink}</Header>
                 <Image src={img} size="large" centered={true}/>
@@ -34,9 +50,33 @@ export const Tea = (props) => {
                         {includesDairy === "TRUE" ? "Contains Dairy" : "Dairy-Free"}
                     </CardMeta>
                 </Container>
-                {/*<Button onClick={handleModal}>Add To Cart</Button>*/}
-                <Button onClick={() => addToCart(id)} color='black'>Add To Cart</Button>
-                <Button onClick={() => handleModal()} color='black'>Customize</Button>
+                <Modal
+                    centered={false}
+                    open={open}
+                    onClose={() => setOpen(false)}
+                    onOpen={() => setOpen(true)}
+                    trigger={<Button>Select Tea</Button>}
+                >
+                    <ModalHeader>Tea Flavors</ModalHeader>
+                    <ModalContent>
+                        <Header as='h5'>Select One Tea Flavor:</Header>
+
+                        <ModalDescription>
+                            <Dropdown
+                                placeholder='Select Flavor'
+                                fluid
+                                selection
+                                options={teaflavors}
+                                value={teaFlavor}
+                                onChange={handleDropdown}
+                            />
+
+                        </ModalDescription>
+                    </ModalContent>
+                    <ModalActions>
+                        <Button onClick={handleModal} color="black">Add to Cart</Button>
+                    </ModalActions>
+                </Modal>
             </Card>
         </div>
     );
