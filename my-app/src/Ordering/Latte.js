@@ -51,7 +51,7 @@ export const Latte = (props) => {
                         {includesDairy === "TRUE" ? "Contains Dairy" : "Dairy-Free"}
                     </CardMeta>
                 </Container>
-                <Button onClick={() => addToCart([{id}, {drink}, {price}, {img}, {milk}, {}, {}, {}])} color='black'>
+                <Button onClick={() => addToCart([{id}, {drink}, {price}, {img}, {}, {}, {}, []])} color='black'>
                     Add To Cart
                 </Button>
                 <Modal
@@ -67,7 +67,7 @@ export const Latte = (props) => {
 
                         <ModalDescription>
                             <Dropdown
-                                placeholder='Select Flavor'
+                                placeholder='Select Milk'
                                 fluid
                                 selection
                                 options={milkoptions}

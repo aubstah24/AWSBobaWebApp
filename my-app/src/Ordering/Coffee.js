@@ -1,26 +1,42 @@
 import {
-    Image,
     Button,
+    Card,
+    CardDescription,
+    CardMeta,
     Container,
-    Header, Card, CardMeta, CardDescription
+    Dropdown,
+    Header,
+    Image,
+    Modal,
+    ModalActions,
+    ModalContent,
+    ModalDescription,
+    ModalHeader
 } from "semantic-ui-react";
-import {useContext} from "react";
+import React, {useContext, useState} from "react";
 import {CartContext} from "../Cart/CartContext";
+import {teaflavors} from "../data/teaflavors";
 
 
 export const Coffee = (props) => {
-    const { id, drink, price, img, description, caffeine, includesDairy, category, defaultAtr } = props.data;
+    const { id, drink, price, img, description, caffeine, includesDairy, defaultAtr } = props.data;
     const { addToCart } = useContext(CartContext);
+    const [open, setOpen] = useState(false);
+    const [teaFlavor, setFlavor] = useState();
 
-    const handleModal = () => {
-        if(category === "Coffee") {
+    const handleDropdown = (e, { value }) => {
+        setFlavor(value);
+    };
 
-        }
-        addToCart(id);
+    const handleModal = (e) => {
+        addToCart([{id}, {drink}, {price}, {img}, {}, {}, {}, []])
+        e.preventDefault();
+        setFlavor(prevState => {});
+        setOpen(false);
     }
 
     return (
-        <div key={id} className="product">
+        <div className="product">
             <Card fluid>
                 <Header as='h2' textAlign='center' style={{paddingTop: "15px"}}>{drink}</Header>
                 <Image src={img} size="large" centered={true}/>
@@ -34,9 +50,9 @@ export const Coffee = (props) => {
                         {includesDairy === "TRUE" ? "Contains Dairy" : "Dairy-Free"}
                     </CardMeta>
                 </Container>
-                {/*<Button onClick={handleModal}>Add To Cart</Button>*/}
-                <Button onClick={() => addToCart(id)} color='black'>Add To Cart</Button>
-                <Button onClick={() => handleModal()} color='black'>Customize</Button>
+                <Button onClick={() => addToCart([{id}, {drink}, {price}, {img}, {}, {}, {}, []])} color='black'>
+                    Add To Cart
+                </Button>
             </Card>
         </div>
     );

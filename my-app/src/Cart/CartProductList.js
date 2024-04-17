@@ -35,9 +35,7 @@ export const CartProductList = () => {
 
     const getMilk = (id) => {
         let temp = milkoptions.filter((item) => item.key === id);
-        console.log(id)
-        console.log(temp[0].text);
-        return temp[0].text;
+        return <p>${temp[0].value} {temp[0].text}</p>;
     }
 
 
@@ -59,12 +57,18 @@ export const CartProductList = () => {
                             <GridColumn>
                                 <Header as="h3">1x</Header>
                                 <Header as='h2'>{item[1].drink}</Header>
-                                {(!item[6].teaFlavor) ?
-                                    (<p>{listToppings(item[7])}</p>)
+                                {(!item[6].teaFlavor) ? null
                                     :
                                     (<p>Tea: {item[6].teaFlavor}</p>)}
-                                {(!item[5].sweetness) ? null : (<p>({getSweetness(item[5].sweetness)} sweet)</p>)}
-                                {(!item[4].milk) ? null : (<p>Milk Substitute: {getMilk(item[4].milk)}</p>)}
+                                {(!item[7].topping) ? null
+                                    :
+                                    (<p>{listToppings(item[7])}</p>)}
+                                {(!item[5].sweetness) ? null
+                                    :
+                                    (<p>({getSweetness(item[5].sweetness)} sweet)</p>)}
+                                {(!item[4].milk) ? null
+                                    :
+                                    (<p>{getMilk(item[4].milk)}</p>)}
                             </GridColumn>
                             <GridColumn>
                                 <Header as="h3" textAlign="right">${item[2].price}</Header>

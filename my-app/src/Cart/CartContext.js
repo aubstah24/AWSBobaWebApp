@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import {TOPPINGS} from "../data/toppings";
+import {milkoptions} from "../data/milkoptions";
+import * as _ from 'lodash';
 
 export const CartContext = React.createContext(null);
 
@@ -39,21 +41,24 @@ export const ContextProvider = (props) => {
         let total = 0;
         for (let i = 0; i < cartItems.length; i++) {
             total += cartItems[i][2].price;
-
             if (cartItems[i][7].length !== 0) {
                 let temp = getToppingTotal(i);
-                console.log("TEMP: ", temp);
                 total = total + temp;
+            }
+            if (!(_.isEmpty(cartItems[i][4]))) {
+                let temp = cartItems[i][4].milk;
+                total = total + temp;
+                console.log("TOTAL: ", temp)
             }
         }
 
         return total;
     }
 
+
     const getToppingTotal = (index) => {
         let total = 0.00;
         let temp = cartItems[index][7]
-        console.log("TEMP: ", temp);
         for (let i = 0; i < temp.topping.length; i++) {
             let token = TOPPINGS.filter((item) => (item.id === temp.topping[i]))
             let priceVar = parseFloat(token[0].price);

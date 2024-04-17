@@ -78,5 +78,21 @@ export const PRODUCTS = [
         sweet: null,
         flavor: null,
         topping: null
+    },
+    {
+        id: 6,
+        stripe: "price_1OoavrC97Gt3R1MtfgcUR9fu",
+        drink: "Lychee Mango Fruit Tea",
+        price: 6.50,
+        img: "/img/hokkaido_MT.jpg",
+        description: "Enjoy the refreshing taste of fruit tea.  Perfect for a thirst quencher and a hot day.",
+        category: "Fruit Tea",
+        defaultAtr: "All basic fruit tea includes regular boba",
+        caffeine: "TRUE",
+        includesDairy: "FALSE",
+        milk: null,
+        sweet: null,
+        flavor: null,
+        topping: null
     }
 ]
