@@ -21,16 +21,10 @@ export const ContextProvider = (props) => {
     }
 
     const removeFromCart = (id) => {
-        let index;
         let count = getCartCount();
         if (count === 1) {
             setCartItems([])
         } else {
-            for (let i = 0; i < cartItems.length; i++) {
-                if (cartItems[i][8].uid === id) {
-                    index = i;
-                }
-            }
             const updatedCart = cartItems.filter((item) => item[8].uid !== id);
             setCartItems(updatedCart);
         }
