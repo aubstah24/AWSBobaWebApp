@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {TOPPINGS} from "../data/toppings";
-import {milkoptions} from "../data/milkoptions";
 import * as _ from 'lodash';
 
 export const CartContext = React.createContext(null);
@@ -21,14 +20,21 @@ export const ContextProvider = (props) => {
 
     }
 
-    const removeFromCart = (idx1) => {
+    const removeFromCart = (id) => {
+        let index;
         let count = getCartCount();
         if (count === 1) {
             setCartItems([])
         } else {
-            const updatedCart = cartItems.splice(cartItems[idx1], 1);
+            for (let i = 0; i < cartItems.length; i++) {
+                if (cartItems[i][8].uid === id) {
+                    index = i;
+                }
+            }
+            const updatedCart = cartItems.filter((item) => item[8].uid !== id);
             setCartItems(updatedCart);
         }
+        console.log("REMOVED ITEMS: \n", id);
 
     }
 
@@ -48,7 +54,6 @@ export const ContextProvider = (props) => {
             if (!(_.isEmpty(cartItems[i][4]))) {
                 let temp = cartItems[i][4].milk;
                 total = total + temp;
-                console.log("TOTAL: ", temp)
             }
         }
 
@@ -64,17 +69,14 @@ export const ContextProvider = (props) => {
             let priceVar = parseFloat(token[0].price);
             total = total + priceVar;
         }
-        console.log("TOPPING TOTAL: ", total);
         return total;
     }
 
     const getTotalPrice = (index) => {
         let total = 0.00;
-        console.log("TOKEN PRICE: ", cartItems[index][2].price);
         let itemPrice = parseFloat(cartItems[index][2].price);
         total = total + itemPrice;
         setCost([...cost, Number(total)])
-        console.log("ITEM TOTAL: ", total);
         return total;
     }
 
@@ -96,7 +98,7 @@ export const ContextProvider = (props) => {
         setTopping(temp);
         console.log("Topping Before: ", topping)
         console.log("Removed Topping: ", id)
-        console.log("Array is now: ", temp)
+        console.log("Array is now: ", topping)
 
     }
 

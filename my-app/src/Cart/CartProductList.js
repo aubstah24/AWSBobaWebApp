@@ -10,8 +10,6 @@ export const CartProductList = () => {
 
     const getSweetness = (id) => {
         let temp = sweetnessOptions.filter((item) => item.key === id);
-        console.log(id)
-        console.log(temp[0].text);
         return temp[0].text;
     }
 
@@ -25,7 +23,6 @@ export const CartProductList = () => {
                 <p>Toppings: </p>
                 {tempList.map((top) => {
                     let temp = TOPPINGS.filter((item) => item.id === top);
-                    console.log(temp);
                         return <p>+${temp[0].price} ({temp[0].topping})</p>
                     }
                 )}
@@ -35,7 +32,7 @@ export const CartProductList = () => {
 
     const getMilk = (id) => {
         let temp = milkoptions.filter((item) => item.key === id);
-        return <p>${temp[0].value} {temp[0].text}</p>;
+        return <p>+${temp[0].value} {temp[0].text}</p>;
     }
 
 
@@ -48,14 +45,13 @@ export const CartProductList = () => {
             <Container>
                 {cartItems.map((item, index) => {
                     return (
-                    //cartItems[idx1][idx2]:: [[{id: 1}, {drink: Tea}, {price: 3}, {img: ./img/img.png}, {milk: null}, {sweet: null}, {flavor: teaflavor}, {topping: null}]]
+                    //cartItems[idx1][idx2]:: [[{id: 1}, {drink: Tea}, {price: 3}, {img: ./img/img.png}, {milk: null}, {sweet: null}, {flavor: teaflavor}, {topping: null}, {uid: XXX}]]
                     <Grid key={index}>
                         <GridRow columns={4}>
                             <GridColumn>
                                 <Image src={item[3].img} fluid/>
                             </GridColumn>
                             <GridColumn>
-                                <Header as="h3">1x</Header>
                                 <Header as='h2'>{item[1].drink}</Header>
                                 {(!item[6].teaFlavor) ? null
                                     :
@@ -74,14 +70,12 @@ export const CartProductList = () => {
                                 <Header as="h3" textAlign="right">${item[2].price}</Header>
                             </GridColumn>
                             <GridColumn style={{justifyContent: "space-between"}}>
-                                <Button style={{padding: "15px"}} onClick={() => removeFromCart(index)} color="red">Remove
+                                <Button style={{padding: "15px"}} onClick={() => removeFromCart(item[8].uid)} color="red">Remove
                                     from cart</Button>
                             </GridColumn>
                         </GridRow>
                     </Grid>
                     )})}
-
-
             </Container>
         </div>
     )

@@ -18,6 +18,8 @@ import React, {useContext, useState} from "react";
 import {CartContext} from "../Cart/CartContext";
 import {TOPPINGS} from "../data/toppings";
 import {sweetnessOptions} from "../data/sweetness";
+import { v4 as uuidv4 } from 'uuid';
+
 
 
 export const MilkTea = (props) => {
@@ -26,8 +28,9 @@ export const MilkTea = (props) => {
     const [open, setOpen] = useState(false);
     const [sweetness, setSweetness] = useState();
     const [checked, setChecked] = useState([]);
+    const myUuid = uuidv4();
 
-    const handleDropdown = (e, { value }) => {
+    const handleMTDropdown = (e, { value }) => {
         console.log("VALUE: ", value);
         setSweetness(value);
     };
@@ -45,7 +48,7 @@ export const MilkTea = (props) => {
     };
 
     const handleModal = (e) => {
-        addToCart([{id}, {drink}, {price}, {img}, {}, {sweetness}, {}, {topping}])
+        addToCart([{id}, {drink}, {price}, {img}, {}, {sweetness}, {}, {topping}, {uid: myUuid}])
         e.preventDefault();
         resetOptions();
         setSweetness(prevState => {})
@@ -71,7 +74,7 @@ export const MilkTea = (props) => {
                    sweetness default is 50% == id=3
                    [{id: 1}, {drink: Tea}, {price: 3}, {img: ./img/img.png}, {milk: milk}, {sweet: sweet}, {flavor: teaFlavor}, {topping: topping}
                    */}
-                <Button onClick={() => addToCart([{id}, {drink}, {price}, {img}, {}, {sweet: 3}, {}, {topping: [6]}])} color='black'>
+                <Button onClick={() => addToCart([{id}, {drink}, {price}, {img}, {}, {sweet: 3}, {}, {topping: [6]}, {uid: myUuid}])} color='black'>
                     Add To Cart
                 </Button>
                 <Modal
@@ -91,7 +94,7 @@ export const MilkTea = (props) => {
                                 selection
                                 options={sweetnessOptions}
                                 value={sweetness}
-                                onChange={handleDropdown}
+                                onChange={handleMTDropdown}
                             />
                         </ModalDescription>
 

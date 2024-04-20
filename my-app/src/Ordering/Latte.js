@@ -16,6 +16,7 @@ import {
 import React, {useContext, useState} from "react";
 import {CartContext} from "../Cart/CartContext";
 import {milkoptions} from "../data/milkoptions";
+import {v4 as uuidv4} from "uuid";
 
 
 export const Latte = (props) => {
@@ -23,6 +24,7 @@ export const Latte = (props) => {
     const { addToCart } = useContext(CartContext);
     const [open, setOpen] = useState(false);
     const [milk, setMilk] = useState();
+    const myUuid = uuidv4();
 
     const handleDropdown = (e, { value }) => {
         console.log(value)
@@ -30,7 +32,7 @@ export const Latte = (props) => {
     };
 
     const handleModal = (e) => {
-        addToCart([{id}, {drink}, {price}, {img}, {milk}, {}, {}, []])
+        addToCart([{id}, {drink}, {price}, {img}, {milk}, {}, {}, [], {uid: myUuid}])
         e.preventDefault();
         setMilk(prevState => {});
         setOpen(false);
@@ -51,7 +53,7 @@ export const Latte = (props) => {
                         {includesDairy === "TRUE" ? "Contains Dairy" : "Dairy-Free"}
                     </CardMeta>
                 </Container>
-                <Button onClick={() => addToCart([{id}, {drink}, {price}, {img}, {}, {}, {}, []])} color='black'>
+                <Button onClick={() => addToCart([{id}, {drink}, {price}, {img}, {}, {}, {}, [], {uid: myUuid}])} color='black'>
                     Add To Cart
                 </Button>
                 <Modal
