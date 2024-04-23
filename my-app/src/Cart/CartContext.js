@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {TOPPINGS} from "../data/toppings";
-import {milkoptions} from "../data/milkoptions";
 import * as _ from 'lodash';
 
 export const CartContext = React.createContext(null);
@@ -8,8 +7,6 @@ export const CartContext = React.createContext(null);
 
 export const ContextProvider = (props) => {
     const [cartItems, setCartItems] = useState([]);
-    const [topping, setTopping] = useState([]);
-    const [cost, setCost] = useState([]);
     // eslint-disable-next-line
     {/* cartItems =  [[key, id, price...], [key, id, price...], ...] */}
 
@@ -18,17 +15,17 @@ export const ContextProvider = (props) => {
         setCartItems([...cartItems, item])
         console.log("ADD: Cart Items array: \n");
         console.log(cartItems);
-
     }
 
-    const removeFromCart = (idx1) => {
+    const removeFromCart = (id) => {
         let count = getCartCount();
         if (count === 1) {
             setCartItems([])
         } else {
-            const updatedCart = cartItems.splice(cartItems[idx1], 1);
+            const updatedCart = cartItems.filter((item) => item[8].uid !== id);
             setCartItems(updatedCart);
         }
+        console.log("REMOVED ITEMS: \n", id);
 
     }
 
@@ -48,7 +45,6 @@ export const ContextProvider = (props) => {
             if (!(_.isEmpty(cartItems[i][4]))) {
                 let temp = cartItems[i][4].milk;
                 total = total + temp;
-                console.log("TOTAL: ", temp)
             }
         }
 
@@ -60,23 +56,14 @@ export const ContextProvider = (props) => {
         let total = 0.00;
         let temp = cartItems[index][7]
         for (let i = 0; i < temp.topping.length; i++) {
-            let token = TOPPINGS.filter((item) => (item.id === temp.topping[i]))
+            let token = TOPPINGS.filter((item) => (item.id === Number(temp.topping[i])))
             let priceVar = parseFloat(token[0].price);
             total = total + priceVar;
         }
-        console.log("TOPPING TOTAL: ", total);
         return total;
     }
 
-    const getTotalPrice = (index) => {
-        let total = 0.00;
-        console.log("TOKEN PRICE: ", cartItems[index][2].price);
-        let itemPrice = parseFloat(cartItems[index][2].price);
-        total = total + itemPrice;
-        setCost([...cost, Number(total)])
-        console.log("ITEM TOTAL: ", total);
-        return total;
-    }
+
 
     const getCartCount = () => {
         if (cartItems.length === 0) {
@@ -86,27 +73,8 @@ export const ContextProvider = (props) => {
         }
     }
 
-    const updateTopping = (value) => {
-        setTopping([...topping, Number(value)])
-        console.log("Added Topping: ", value)
-    }
 
-    const removeTopping = (id) => {
-        let temp = topping.filter((item) => item[0] !== id)
-        setTopping(temp);
-        console.log("Topping Before: ", topping)
-        console.log("Removed Topping: ", id)
-        console.log("Array is now: ", temp)
-
-    }
-
-    const resetOptions = () => {
-        setTopping([]);
-    }
-
-
-
-    const contextValue = {cartItems, topping, getTotalPrice, resetOptions, updateTopping, removeTopping, addToCart, removeFromCart, updateCartCount, getTotalCost, getCartCount, getToppingTotal};
+    const contextValue = {cartItems, addToCart, removeFromCart, updateCartCount, getTotalCost, getCartCount, getToppingTotal};
 
 
     return <CartContext.Provider value={contextValue}>{props.children}</CartContext.Provider>

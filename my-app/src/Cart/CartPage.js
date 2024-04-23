@@ -1,4 +1,4 @@
-import { Container} from 'semantic-ui-react';
+import {Container, Header} from 'semantic-ui-react';
 import React, {useContext} from "react";
 import CartTotalRow from "./CartTotalRow";
 import {CartProductList} from "./CartProductList";
@@ -19,7 +19,7 @@ export const CartPage = () => {
 
     return (
         <Container className="productContainer" style={{backgroundColor: "white"}}>
-            <p>Your cart is empty.</p>
+            <Header as="h3" textAlign="center">Your cart is empty.</Header>
         </Container>
     )
 }

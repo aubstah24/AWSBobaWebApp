@@ -4,36 +4,18 @@ import {
     CardDescription,
     CardMeta,
     Container,
-    Dropdown,
     Header,
     Image,
-    Modal,
-    ModalActions,
-    ModalContent,
-    ModalDescription,
-    ModalHeader
 } from "semantic-ui-react";
-import React, {useContext, useState} from "react";
+import React, {useContext} from "react";
 import {CartContext} from "../Cart/CartContext";
-import {teaflavors} from "../data/teaflavors";
+import {v4 as uuidv4} from "uuid";
 
 
 export const Coffee = (props) => {
     const { id, drink, price, img, description, caffeine, includesDairy, defaultAtr } = props.data;
     const { addToCart } = useContext(CartContext);
-    const [open, setOpen] = useState(false);
-    const [teaFlavor, setFlavor] = useState();
-
-    const handleDropdown = (e, { value }) => {
-        setFlavor(value);
-    };
-
-    const handleModal = (e) => {
-        addToCart([{id}, {drink}, {price}, {img}, {}, {}, {}, []])
-        e.preventDefault();
-        setFlavor(prevState => {});
-        setOpen(false);
-    }
+    const myUuid = uuidv4();
 
     return (
         <div className="product">
@@ -50,7 +32,7 @@ export const Coffee = (props) => {
                         {includesDairy === "TRUE" ? "Contains Dairy" : "Dairy-Free"}
                     </CardMeta>
                 </Container>
-                <Button onClick={() => addToCart([{id}, {drink}, {price}, {img}, {}, {}, {}, []])} color='black'>
+                <Button onClick={() => addToCart([{id}, {drink}, {price}, {img}, {}, {}, {}, [], {uid: myUuid}])} color='black'>
                     Add To Cart
                 </Button>
             </Card>

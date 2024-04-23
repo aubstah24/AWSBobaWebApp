@@ -2,7 +2,7 @@ export const sweetnessOptions = [
     {
         key: 1,
         text: "100%",
-        value: "1"
+        value: 1
     },
     {
         key: 2,
