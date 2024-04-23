@@ -24,51 +24,31 @@ import { v4 as uuidv4 } from 'uuid';
 
 export const MilkTea = (props) => {
     const { id, drink, price, img, description, caffeine, includesDairy, defaultAtr } = props.data;
-    const { sendPricetoTotal, addToCart, updateTopping, removeTopping, topping, resetOptions } = useContext(CartContext);
+    const { addToCart } = useContext(CartContext);
     const [open, setOpen] = useState(false);
     const [sweetness, setSweetness] = useState();
-    const [checked, setChecked] = useState([]);
+    const [topping, setChecked] = useState([]);
     const myUuid = uuidv4();
 
     const handleMTDropdown = (e, { value }) => {
-        console.log("VALUE: ", value);
         setSweetness(value);
     };
 
     const handleCheckbox = (e) => {
         if (e.target.checked) {
-            setChecked([...checked, e.target.value]);
-            updateTopping(e.target.value)
-            console.log("CHECKED ARRAY: ", checked);
-
-            console.log("Toppings Array: ");
-            console.log(topping)
+            setChecked([...topping, e.target.value]);
+            console.log("CHECKED ARRAY: ", topping);
         } else {
-            console.log("CHECKED ARRAY: ", checked);
-            setChecked(checked.filter((item) => item !== e.target.value));
-            removeTopping(e.target.value);
+            console.log("REMOVED TOPPING: ", e.target.value);
+            setChecked(topping.filter((item) => item !== e.target.value));
         }
     };
 
 
-    const addPrices = (list) => {
-        let total = 0.00;
-        for (let i = 0; i < checked.length; i++) {
-            let token = TOPPINGS.filter((item) => (item.id === checked[i]))
-            let priceVar = token.price;
-            total = total + priceVar;
-        }
-        console.log("DRINK PRICE:" , total);
-        return total;
-    }
-
-
     const handleModal = (e) => {
         addToCart([{id}, {drink}, {price}, {img}, {}, {sweetness}, {}, {topping}, {uid: myUuid}])
-        sendPricetoTotal(addPrices(checked));
         e.preventDefault();
-        resetOptions();
-        setSweetness(prevState => {})
+        setSweetness({})
         setOpen(false);
     }
 

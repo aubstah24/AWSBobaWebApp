@@ -17,12 +17,12 @@ export const CartProductList = () => {
     const listToppings = (array) => {
         const tempList = []
         for (let i = 0; i < array.topping.length; i++) {
-            tempList.push(array.topping[i]);
+            tempList.push(Number(array.topping[i]));
         }
         return (<div>
                 <p>Toppings: </p>
                 {tempList.map((top) => {
-                    let temp = TOPPINGS.filter((item) => item.id === top);
+                        let temp = TOPPINGS.filter((item) => item.id === top);
                         return <p>+${temp[0].price} ({temp[0].topping})</p>
                     }
                 )}

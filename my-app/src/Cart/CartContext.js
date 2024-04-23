@@ -7,8 +7,6 @@ export const CartContext = React.createContext(null);
 
 export const ContextProvider = (props) => {
     const [cartItems, setCartItems] = useState([]);
-    const [topping, setTopping] = useState([]);
-    const [cost, setCost] = useState(0.00);
     // eslint-disable-next-line
     {/* cartItems =  [[key, id, price...], [key, id, price...], ...] */}
 
@@ -17,7 +15,6 @@ export const ContextProvider = (props) => {
         setCartItems([...cartItems, item])
         console.log("ADD: Cart Items array: \n");
         console.log(cartItems);
-
     }
 
     const removeFromCart = (id) => {
@@ -36,11 +33,6 @@ export const ContextProvider = (props) => {
         setCartItems((prevState) => ({...prevState, [id]: newCount }))
     }
 
-    const sendPricetoTotal = (money) => {
-        let updatedCost = cost + money;
-        setCost(updatedCost);
-        console.log(updatedCost);
-    }
 
     const getTotalCost = () => {
         let total = 0;
@@ -64,20 +56,14 @@ export const ContextProvider = (props) => {
         let total = 0.00;
         let temp = cartItems[index][7]
         for (let i = 0; i < temp.topping.length; i++) {
-            let token = TOPPINGS.filter((item) => (item.id === temp.topping[i]))
+            let token = TOPPINGS.filter((item) => (item.id === Number(temp.topping[i])))
             let priceVar = parseFloat(token[0].price);
             total = total + priceVar;
         }
         return total;
     }
 
-    const getTotalPrice = (index) => {
-        let total = 0.00;
-        let itemPrice = parseFloat(cartItems[index][2].price);
-        total = total + itemPrice;
-        setCost([...cost, Number(total)])
-        return total;
-    }
+
 
     const getCartCount = () => {
         if (cartItems.length === 0) {
@@ -87,23 +73,8 @@ export const ContextProvider = (props) => {
         }
     }
 
-    const updateTopping = (value) => {
-        setTopping([...topping, Number(value)])
-        console.log("Added Topping: ", value)
-    }
 
-    const removeTopping = (id) => {
-        const temp = [...topping];
-
-    }
-
-    const resetOptions = () => {
-        setTopping([]);
-    }
-
-
-
-    const contextValue = {cartItems, topping, sendPricetoTotal, getTotalPrice, resetOptions, updateTopping, removeTopping, addToCart, removeFromCart, updateCartCount, getTotalCost, getCartCount, getToppingTotal};
+    const contextValue = {cartItems, addToCart, removeFromCart, updateCartCount, getTotalCost, getCartCount, getToppingTotal};
 
 
     return <CartContext.Provider value={contextValue}>{props.children}</CartContext.Provider>
