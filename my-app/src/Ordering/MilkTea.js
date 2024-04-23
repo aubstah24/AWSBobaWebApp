@@ -24,7 +24,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 export const MilkTea = (props) => {
     const { id, drink, price, img, description, caffeine, includesDairy, defaultAtr } = props.data;
-    const { addToCart, updateTopping, removeTopping, topping, resetOptions } = useContext(CartContext);
+    const { sendPricetoTotal, addToCart, updateTopping, removeTopping, topping, resetOptions } = useContext(CartContext);
     const [open, setOpen] = useState(false);
     const [sweetness, setSweetness] = useState();
     const [checked, setChecked] = useState([]);
@@ -35,20 +35,37 @@ export const MilkTea = (props) => {
         setSweetness(value);
     };
 
-    const handleCheckbox = (e, { value }) => {
+    const handleCheckbox = (e) => {
         if (e.target.checked) {
             setChecked([...checked, e.target.value]);
             updateTopping(e.target.value)
+            console.log("CHECKED ARRAY: ", checked);
+
             console.log("Toppings Array: ");
             console.log(topping)
         } else {
+            console.log("CHECKED ARRAY: ", checked);
             setChecked(checked.filter((item) => item !== e.target.value));
             removeTopping(e.target.value);
         }
     };
 
+
+    const addPrices = (list) => {
+        let total = 0.00;
+        for (let i = 0; i < checked.length; i++) {
+            let token = TOPPINGS.filter((item) => (item.id === checked[i]))
+            let priceVar = token.price;
+            total = total + priceVar;
+        }
+        console.log("DRINK PRICE:" , total);
+        return total;
+    }
+
+
     const handleModal = (e) => {
         addToCart([{id}, {drink}, {price}, {img}, {}, {sweetness}, {}, {topping}, {uid: myUuid}])
+        sendPricetoTotal(addPrices(checked));
         e.preventDefault();
         resetOptions();
         setSweetness(prevState => {})
@@ -100,7 +117,6 @@ export const MilkTea = (props) => {
 
                         <Header as='h5'>Select Toppings:</Header>
                         <ModalDescription>
-                            <Container>
                                 {TOPPINGS.map((option) => (
                                     <div key={option.id}>
                                         <Input type="checkbox"
@@ -111,7 +127,6 @@ export const MilkTea = (props) => {
                                     )
 
                                 )}
-                            </Container>
                         </ModalDescription>
                     </ModalContent>
                     <ModalActions>

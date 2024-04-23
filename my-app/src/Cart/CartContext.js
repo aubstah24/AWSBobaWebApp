@@ -8,7 +8,7 @@ export const CartContext = React.createContext(null);
 export const ContextProvider = (props) => {
     const [cartItems, setCartItems] = useState([]);
     const [topping, setTopping] = useState([]);
-    const [cost, setCost] = useState([]);
+    const [cost, setCost] = useState(0.00);
     // eslint-disable-next-line
     {/* cartItems =  [[key, id, price...], [key, id, price...], ...] */}
 
@@ -36,6 +36,11 @@ export const ContextProvider = (props) => {
         setCartItems((prevState) => ({...prevState, [id]: newCount }))
     }
 
+    const sendPricetoTotal = (money) => {
+        let updatedCost = cost + money;
+        setCost(updatedCost);
+        console.log(updatedCost);
+    }
 
     const getTotalCost = () => {
         let total = 0;
@@ -88,11 +93,7 @@ export const ContextProvider = (props) => {
     }
 
     const removeTopping = (id) => {
-        let temp = topping.filter((item) => item[0] !== id)
-        setTopping(temp);
-        console.log("Topping Before: ", topping)
-        console.log("Removed Topping: ", id)
-        console.log("Array is now: ", topping)
+        const temp = [...topping];
 
     }
 
@@ -102,7 +103,7 @@ export const ContextProvider = (props) => {
 
 
 
-    const contextValue = {cartItems, topping, getTotalPrice, resetOptions, updateTopping, removeTopping, addToCart, removeFromCart, updateCartCount, getTotalCost, getCartCount, getToppingTotal};
+    const contextValue = {cartItems, topping, sendPricetoTotal, getTotalPrice, resetOptions, updateTopping, removeTopping, addToCart, removeFromCart, updateCartCount, getTotalCost, getCartCount, getToppingTotal};
 
 
     return <CartContext.Provider value={contextValue}>{props.children}</CartContext.Provider>
