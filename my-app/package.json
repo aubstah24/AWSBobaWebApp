@@ -11,12 +11,13 @@
     "@react-email/render": "^0.0.12",
     "@react-pdf-viewer/core": "^3.12.0",
     "@react-pdf-viewer/default-layout": "^3.12.0",
+    "@supabase/supabase-js": "^2.42.5",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "amazon-cognito-identity-js": "^6.3.7",
     "aws-amplify": "^6.0.18",
-    "aws-sdk": "^2.1569.0",
+    "aws-sdk": "^2.1605.0",
     "axios": "^1.6.8",
     "bootstrap": "^5.3.3",
     "lodash": "^4.17.21",
@@ -36,8 +37,10 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "prebuild": "aws s3 cp s3://${S3BUCKET}/aws-exports.js ./src/aws-exports.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "deploy": "aws s3 cp ./build s3://${S3BUCKET}/ --recursive",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

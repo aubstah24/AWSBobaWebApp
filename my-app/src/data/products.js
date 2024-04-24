@@ -9,11 +9,7 @@ export const PRODUCTS = [
         category: "Coffee",
         defaultAtr: "Sweeteners available at pick-up",
         caffeine: "TRUE",
-        includesDairy: "FALSE",
-        milk: null,
-        sweet: null,
-        flavor: null,
-        topping: null
+        includesDairy: "FALSE"
     },
     {
         id: 2,
@@ -25,11 +21,7 @@ export const PRODUCTS = [
         category: "Milk Tea",
         defaultAtr: "All basic milk tea includes regular boba",
         caffeine: "TRUE",
-        includesDairy: "TRUE",
-        milk: null,
-        sweet: null,
-        flavor: null,
-        topping: null
+        includesDairy: "TRUE"
     },
     {
         id: 3,
@@ -41,11 +33,7 @@ export const PRODUCTS = [
         category: "Tea",
         defaultAtr: "Sweeteners available at pick-up",
         caffeine: "TRUE",
-        includesDairy: "FALSE",
-        milk: null,
-        sweet: null,
-        flavor: null,
-        topping: null
+        includesDairy: "FALSE"
     },
     {
         id: 4,
@@ -57,11 +45,7 @@ export const PRODUCTS = [
         category: "Latte",
         defaultAtr: "Sweeteners available at pick-up",
         caffeine: "TRUE",
-        includesDairy: "TRUE",
-        milk: null,
-        sweet: null,
-        flavor: null,
-        topping: null
+        includesDairy: "TRUE"
     },
     {
         id: 5,
@@ -73,11 +57,7 @@ export const PRODUCTS = [
         category: "Latte",
         defaultAtr: "Sweeteners available at pick-up",
         caffeine: "TRUE",
-        includesDairy: "TRUE",
-        milk: null,
-        sweet: null,
-        flavor: null,
-        topping: null
+        includesDairy: "TRUE"
     },
     {
         id: 6,
@@ -89,10 +69,6 @@ export const PRODUCTS = [
         category: "Fruit Tea",
         defaultAtr: "All basic fruit tea includes regular boba",
         caffeine: "TRUE",
-        includesDairy: "FALSE",
-        milk: null,
-        sweet: null,
-        flavor: null,
-        topping: null
+        includesDairy: "FALSE"
     }
 ]

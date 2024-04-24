@@ -15,7 +15,7 @@ import {
 } from "semantic-ui-react";
 import React, {useContext, useState} from "react";
 import {CartContext} from "../Cart/CartContext";
-import {milkoptions} from "../data/milkoptions";
+import {milkOptions} from "../data/milkoptions";
 import {v4 as uuidv4} from "uuid";
 
 
@@ -23,18 +23,18 @@ export const Latte = (props) => {
     const { id, drink, price, img, description, caffeine, includesDairy, defaultAtr } = props.data;
     const { addToCart } = useContext(CartContext);
     const [open, setOpen] = useState(false);
-    const [milk, setMilk] = useState();
+    const [milk, setMilk] = useState('');
     const myUuid = uuidv4();
 
     const handleDropdown = (e, { value }) => {
-        console.log(value)
+        e.preventDefault();
         setMilk(value);
+        console.log(value);
     };
 
     const handleModal = (e) => {
         addToCart([{id}, {drink}, {price}, {img}, {milk}, {}, {}, [], {uid: myUuid}])
         e.preventDefault();
-        setMilk(prevState => {});
         setOpen(false);
     }
 
@@ -70,9 +70,8 @@ export const Latte = (props) => {
                         <ModalDescription>
                             <Dropdown
                                 placeholder='Select Milk'
-                                fluid
                                 selection
-                                options={milkoptions}
+                                options={milkOptions}
                                 value={milk}
                                 onChange={handleDropdown}
                             />
