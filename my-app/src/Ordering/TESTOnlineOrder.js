@@ -1,6 +1,5 @@
 import { Header, Tab, TabPane} from "semantic-ui-react";
-import React from "react";
-import {PRODUCTS} from "../data/products";
+import React, {useEffect, useState} from "react";
 import {Row} from "react-bootstrap";
 import {Coffee} from "./Coffee";
 import {MilkTea} from "./MilkTea";
@@ -9,15 +8,15 @@ import {FruitTea} from "./FruitTea";
 import {Latte} from "./Latte";
 import {supabase} from "../supabase_client";
 
+
 const { data } = await supabase.from("DrinkList").select();
 
-const panes = [
+const topicPanes = [
     { menuItem: 'COFFEE', render: () => <TabPane>
             <Row md={2}>
                 {data.map((product ) => {
                         if (product.category === "Coffee") {
-
-                            return <Coffee data={product} key={product.id}/>;
+                            return <Coffee data={product} key={product.id} />;
                         }
                     }
                 )}
@@ -65,15 +64,13 @@ const panes = [
         </TabPane> },
 ]
 
-export function OnlineOrderingPage() {
+export async function TESTOnlineOrder() {
 
     return (
         <div className="onlineorderingpage">
             <Header as="h1" textAlign="center">ORDER ONLINE HERE</Header>
 
-            <Tab menu={{ fluid: true, vertical: true, tabular: true }} panes={panes} />
-
-            <br/>
+            <Tab menu={{ fluid: true, vertical: true, tabular: true }} panes={topicPanes} />
         </div>
     );
 

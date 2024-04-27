@@ -17,23 +17,27 @@ import {useContext, useState} from "react";
 import {CartContext} from "../Cart/CartContext";
 import {teaflavors} from "../data/teaflavors";
 import {v4 as uuidv4} from "uuid";
+import {supabase} from "../supabase_client";
+
 
 
 export const Tea = (props) => {
-    const { id, drink, price, img, description, caffeine, includesDairy, defaultAtr } = props.data;
-    const { addToCart } = useContext(CartContext);
+    const {id, drink, price, img, description, caffeine, includesDairy, defaultAtr} = props.data;
+    const {addToCart} = useContext(CartContext);
     const [open, setOpen] = useState(false);
     const [teaFlavor, setFlavor] = useState();
     const myUuid = uuidv4();
 
-    const handleDropdown = (e, { value }) => {
+
+    const handleDropdown = (e, {value}) => {
         setFlavor(value);
     };
 
     const handleModal = (e) => {
         addToCart([{id}, {drink}, {price}, {img}, {}, {}, {teaFlavor}, [], {uid: myUuid}])
         e.preventDefault();
-        setFlavor(prevState => {});
+        setFlavor(prevState => {
+        });
         setOpen(false);
     }
 
