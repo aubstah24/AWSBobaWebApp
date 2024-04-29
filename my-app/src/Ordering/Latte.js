@@ -4,27 +4,48 @@ import {
     CardDescription,
     CardMeta,
     Container,
-    Dropdown,
+    Dropdown, DropdownItem,
     Header,
     Image,
     Modal,
     ModalActions,
     ModalContent,
     ModalDescription,
-    ModalHeader
+    ModalHeader, Select
 } from "semantic-ui-react";
-import React, {useContext, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {CartContext} from "../Cart/CartContext";
-import {milkOptions} from "../data/milkoptions";
 import {v4 as uuidv4} from "uuid";
+import {supabase} from "../supabase_client";
+
 
 
 export const Latte = (props) => {
     const { id, drink, price, img, description, caffeine, includesDairy, defaultAtr } = props.data;
     const { addToCart } = useContext(CartContext);
     const [open, setOpen] = useState(false);
+    const [milkOptions, setMilkOptions] = useState([]);
     const [milk, setMilk] = useState('');
     const myUuid = uuidv4();
+    const [imageURL, setImageURL] = useState(null);
+
+    useEffect(() => {
+        getURL();
+        getOptions();
+    }, []);
+
+    async function getOptions() {
+        const {data} = await supabase.from('MilkOptions').select();
+        setMilkOptions(data)
+    }
+
+    async function getURL() {
+        const {data} = await supabase.from('DrinkList').select().eq('id', id)
+        const publicURL = supabase.storage.from('drinkImagesStorage').getPublicUrl(data[0].img);
+
+        setImageURL(publicURL.data.publicUrl)
+    }
+
 
     const handleDropdown = (e, { value }) => {
         e.preventDefault();
@@ -33,7 +54,7 @@ export const Latte = (props) => {
     };
 
     const handleModal = (e) => {
-        addToCart([{id}, {drink}, {price}, {img}, {milk}, {}, {}, [], {uid: myUuid}])
+        addToCart([{id}, {drink}, {price}, {img}, {milk}, {}, {}, [], {uid: myUuid}, imageURL])
         e.preventDefault();
         setOpen(false);
     }
@@ -42,7 +63,7 @@ export const Latte = (props) => {
         <div className="product">
             <Card fluid>
                 <Header as='h2' textAlign='center' style={{paddingTop: "15px"}}>{drink}</Header>
-                <Image src={img} size="large" centered={true}/>
+                <Image src={imageURL} size="large" centered={true}/>
                 <Container fluid>
                     <CardDescription>{description}</CardDescription>
                     <p>{defaultAtr}</p>
@@ -53,7 +74,7 @@ export const Latte = (props) => {
                         {includesDairy === "TRUE" ? "Contains Dairy" : "Dairy-Free"}
                     </CardMeta>
                 </Container>
-                <Button onClick={() => addToCart([{id}, {drink}, {price}, {img}, {}, {}, {}, [], {uid: myUuid}])} color='black'>
+                <Button onClick={() => addToCart([{id}, {drink}, {price}, {img}, {}, {}, {}, [], {uid: myUuid}, imageURL])} color='black'>
                     Add To Cart
                 </Button>
                 <Modal
@@ -68,14 +89,11 @@ export const Latte = (props) => {
                         <Header as='h5'>Select One Substitute:</Header>
 
                         <ModalDescription>
-                            <Dropdown
-                                placeholder='Select Milk'
-                                selection
-                                options={milkOptions}
-                                value={milk}
-                                onChange={handleDropdown}
-                            />
-
+                            <Dropdown placeholder='Select Milk'
+                                      selection
+                                      value={milk}
+                                      options={milkOptions}
+                                        onChange={handleDropdown}/>
                         </ModalDescription>
                     </ModalContent>
                     <ModalActions>

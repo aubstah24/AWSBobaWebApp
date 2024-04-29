@@ -13,7 +13,7 @@ import {
     ModalDescription,
     ModalHeader
 } from "semantic-ui-react";
-import {useContext, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {CartContext} from "../Cart/CartContext";
 import {teaflavors} from "../data/teaflavors";
 import {v4 as uuidv4} from "uuid";
@@ -26,15 +26,26 @@ export const Tea = (props) => {
     const {addToCart} = useContext(CartContext);
     const [open, setOpen] = useState(false);
     const [teaFlavor, setFlavor] = useState();
+    const [imageURL, setImageURL] = useState(null);
     const myUuid = uuidv4();
 
+    useEffect(() => {
+        getURL()
+    }, []);
+
+    async function getURL() {
+        const {data} = await supabase.from('DrinkList').select().eq('id', id)
+        const publicURL = supabase.storage.from('drinkImagesStorage').getPublicUrl(data[0].img);
+
+        setImageURL(publicURL.data.publicUrl)
+    }
 
     const handleDropdown = (e, {value}) => {
         setFlavor(value);
     };
 
     const handleModal = (e) => {
-        addToCart([{id}, {drink}, {price}, {img}, {}, {}, {teaFlavor}, [], {uid: myUuid}])
+        addToCart([{id}, {drink}, {price}, {img}, {}, {}, {teaFlavor}, [], {uid: myUuid}, imageURL])
         e.preventDefault();
         setFlavor(prevState => {
         });
@@ -45,7 +56,7 @@ export const Tea = (props) => {
         <div className="product">
             <Card fluid>
                 <Header as='h2' textAlign='center' style={{paddingTop: "15px"}}>{drink}</Header>
-                <Image src={img} size="large" centered={true}/>
+                <Image src={imageURL} size="large" centered={true}/>
                 <Container fluid>
                     <CardDescription>{description}</CardDescription>
                     <p>{defaultAtr}</p>

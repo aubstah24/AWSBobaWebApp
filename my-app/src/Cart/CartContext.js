@@ -1,12 +1,23 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {TOPPINGS} from "../data/toppings";
 import * as _ from 'lodash';
+import {supabase} from "../supabase_client";
 
 export const CartContext = React.createContext(null);
 
 
 export const ContextProvider = (props) => {
     const [cartItems, setCartItems] = useState([]);
+    const [boba, setBoba] = useState([]);
+
+    useEffect(() => {
+        fetchBoba();
+    }, []);
+
+    async function fetchBoba(){
+        const {data} = await supabase.from('BobaToppings').select()
+        setBoba(data);
+    }
     // eslint-disable-next-line
     {/* cartItems =  [[key, id, price...], [key, id, price...], ...] */}
 
@@ -38,13 +49,14 @@ export const ContextProvider = (props) => {
         let total = 0;
         for (let i = 0; i < cartItems.length; i++) {
             total += cartItems[i][2].price;
+            // if there are toppings in the cart
             if (cartItems[i][7].length !== 0) {
                 let temp = getToppingTotal(i);
                 total = total + temp;
             }
+            //fi there is milk substitutes in the cart
             if (!(_.isEmpty(cartItems[i][4]))) {
-                let temp = cartItems[i][4].milk;
-                total = total + temp;
+                total = total + 1;
             }
         }
 
@@ -56,7 +68,7 @@ export const ContextProvider = (props) => {
         let total = 0.00;
         let temp = cartItems[index][7]
         for (let i = 0; i < temp.topping.length; i++) {
-            let token = TOPPINGS.filter((item) => (item.id === Number(temp.topping[i])))
+            let token = boba.filter((item) => (item.id === Number(temp.topping[i])))
             let priceVar = parseFloat(token[0].price);
             total = total + priceVar;
         }

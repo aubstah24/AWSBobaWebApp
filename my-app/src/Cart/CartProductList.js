@@ -1,39 +1,73 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {Button, Container, Grid, GridColumn, GridRow, Header, Image} from "semantic-ui-react";
-import {TOPPINGS} from "../data/toppings";
 import {sweetnessOptions} from "../data/sweetness";
-import {milkOptions} from "../data/milkoptions";
 import {CartContext} from "./CartContext";
+import {supabase} from "../supabase_client";
+import * as _ from "lodash";
 
 export const CartProductList = () => {
     const {cartItems, removeFromCart} = useContext(CartContext);
+    const [bobaToppings, setBobaToppings] = useState([]);
+
+    // useEffect(() => {
+    //     getToppings();
+    // }, []);
+    //
+    //
+    // async function getToppings() {
+    //     const {data} = await supabase.from('BobaToppings').select();
+    //     setBobaToppings(data);
+    //     console.log(bobaToppings);
+    // }
+
+    async function fetchData(id) {
+        const {data} = await supabase.from('BobaToppings').select().eq('id', id);
+        return data[0];
+    }
 
     const getSweetness = (id) => {
         let temp = sweetnessOptions.filter((item) => item.key === id);
         return temp[0].text;
     }
 
-
-    const listToppings = (array) => {
-        const tempList = []
+    const listToppings = async (array) => {
+        const tempList = [];
+        const rows = [];
         for (let i = 0; i < array.topping.length; i++) {
             tempList.push(Number(array.topping[i]));
         }
+
+        for (const id of tempList) {
+            const row = await fetchData(id);
+            if (row) {
+                rows.push(row);
+            }
+        }
+
         return (<div>
-                <p>Toppings: </p>
-                {tempList.map((top) => {
-                        let temp = TOPPINGS.filter((item) => item.id === top);
-                        return <p key={temp[0].id}>+${temp[0].price} ({temp[0].topping})</p>
-                    }
-                )}
+            <p>Toppings: </p>
+            {rows.map((row) => {
+                console.log("Row Item: ", row);
+                return <p key={row.id}>{row.topping}</p>
+                // return <p key={row.id}>+${row.price} ({row.topping}</p>
+            })}
         </div>);
         //toppings = [Regular Boba, Lychee Jelly, ...]
     }
 
-    const getMilk = (id) => {
-        let temp = milkOptions.filter((item) => item.key === id);
-        return <p>+$1 ({temp[0].text})</p>;
-    }
+
+    //
+    // async function getMilk(id){
+    //     const {data} = await supabase.from('MilkOptions').select().eq('key', id);
+    //     let milkName = '';
+    //     data.map((item) => {
+    //         if (item.key === id){
+    //             milkName = item.text;
+    //         }
+    //     })
+    //     console.log(milkName)
+    //     return <p>+$1 ({milkName})</p>
+    // }
 
 
 
@@ -49,22 +83,22 @@ export const CartProductList = () => {
                     <Grid key={index}>
                         <GridRow columns={4}>
                             <GridColumn>
-                                <Image src={item[3].img} fluid/>
+                                <Image src={item[9]} fluid/>
                             </GridColumn>
                             <GridColumn>
                                 <Header as='h2'>{item[1].drink}</Header>
                                 {(!item[6].teaFlavor) ? null
                                     :
                                     (<p>Tea: {item[6].teaFlavor}</p>)}
-                                {(!item[7].topping) ? null
+                                {(_.isEmpty(item[7].topping)) ? null
                                     :
                                     (<p>{listToppings(item[7])}</p>)}
                                 {(!item[5].sweetness) ? null
                                     :
                                     (<p>({getSweetness(item[5].sweetness)} sweet)</p>)}
-                                {(!item[4].milk) ? null
+                                {(_.isEmpty(item[4])) ? null
                                     :
-                                    (<p>{getMilk(item[4].milk)}</p>)}
+                                    (<p>+$1 ({item[4].milk})</p>)}
                             </GridColumn>
                             <GridColumn>
                                 <Header as="h3" textAlign="right">${item[2].price}</Header>
