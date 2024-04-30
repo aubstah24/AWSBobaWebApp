@@ -1,6 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {Button, Container, Grid, GridColumn, GridRow, Header, Image} from "semantic-ui-react";
 import {sweetnessOptions} from "../data/sweetness";
+import {TOPPINGS} from "../data/toppings";
 import {CartContext} from "./CartContext";
 import {supabase} from "../supabase_client";
 import * as _ from "lodash";
@@ -30,29 +31,19 @@ export const CartProductList = () => {
         return temp[0].text;
     }
 
-    const listToppings = async (array) => {
-        const tempList = [];
-        const rows = [];
+    const listToppings = (array) => {
+        const tempList = []
         for (let i = 0; i < array.topping.length; i++) {
             tempList.push(Number(array.topping[i]));
         }
-
-        for (const id of tempList) {
-            const row = await fetchData(id);
-            if (row) {
-                rows.push(row);
-            }
-        }
-
         return (<div>
             <p>Toppings: </p>
-            {rows.map((row) => {
-                console.log("Row Item: ", row);
-                return <p key={row.id}>{row.topping}</p>
-                // return <p key={row.id}>+${row.price} ({row.topping}</p>
-            })}
+            {tempList.map((top) => {
+                    let temp = TOPPINGS.filter((item) => item.id === top);
+                    return <p>+${temp[0].price} ({temp[0].topping})</p>
+                }
+            )}
         </div>);
-        //toppings = [Regular Boba, Lychee Jelly, ...]
     }
 
 
@@ -90,7 +81,7 @@ export const CartProductList = () => {
                                 {(!item[6].teaFlavor) ? null
                                     :
                                     (<p>Tea: {item[6].teaFlavor}</p>)}
-                                {(_.isEmpty(item[7].topping)) ? null
+                                {(!item[7].topping) ? null
                                     :
                                     (<p>{listToppings(item[7])}</p>)}
                                 {(!item[5].sweetness) ? null

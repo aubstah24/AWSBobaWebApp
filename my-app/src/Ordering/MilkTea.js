@@ -17,6 +17,7 @@ import {
 import React, {useContext, useEffect, useState} from "react";
 import {CartContext} from "../Cart/CartContext";
 import {sweetnessOptions} from "../data/sweetness";
+import {TOPPINGS} from "../data/toppings";
 import { v4 as uuidv4 } from 'uuid';
 import {supabase} from "../supabase_client";
 
@@ -27,7 +28,6 @@ export const MilkTea = (props) => {
     const { addToCart } = useContext(CartContext);
     const [open, setOpen] = useState(false);
     const [sweetness, setSweetness] = useState();
-    const [myToppings, setMyToppings] = useState([]);
     const [topping, setChecked] = useState([]);
     const myUuid = uuidv4();
 
@@ -35,7 +35,6 @@ export const MilkTea = (props) => {
 
     useEffect(() => {
         getURL();
-        fetchData();
     }, []);
 
     async function getURL() {
@@ -45,11 +44,6 @@ export const MilkTea = (props) => {
         setImageURL(publicURL.data.publicUrl)
     }
 
-    async function fetchData(){
-        const {data} = await supabase.from('BobaToppings').select();
-        setMyToppings(data);
-        console.log(data)
-    }
 
     const handleMTDropdown = (e, { value }) => {
         setSweetness(value);
@@ -118,7 +112,7 @@ export const MilkTea = (props) => {
 
                         <Header as='h5'>Select Toppings:</Header>
                         <ModalDescription>
-                                {myToppings.map((option) => (
+                                {TOPPINGS.map((option) => (
                                     <div key={option.id}>
                                         <Input type="checkbox"
                                                value={option.id}
