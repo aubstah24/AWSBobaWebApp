@@ -13,27 +13,45 @@ import {
     ModalDescription,
     ModalHeader
 } from "semantic-ui-react";
-import {useContext, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {CartContext} from "../Cart/CartContext";
-import {teaflavors} from "../data/teaflavors";
 import {v4 as uuidv4} from "uuid";
+import {supabase} from "../supabase_client";
+
+
+const { data } = await supabase.from("TeaFlavors").select();
 
 
 export const Tea = (props) => {
-    const { id, drink, price, img, description, caffeine, includesDairy, defaultAtr } = props.data;
-    const { addToCart } = useContext(CartContext);
+    const {id, drink, price, img, description, caffeine, includesDairy, defaultAtr} = props.data;
+    const {addToCart} = useContext(CartContext);
     const [open, setOpen] = useState(false);
     const [teaFlavor, setFlavor] = useState();
+    const [imageURL, setImageURL] = useState(null);
     const myUuid = uuidv4();
 
-    const handleDropdown = (e, { value }) => {
+    async function getURL() {
+        const {data} = await supabase.from('DrinkList').select().eq('id', id)
+        const publicURL = supabase.storage.from('drinkImagesStorage').getPublicUrl(data[0].img);
+
+        setImageURL(publicURL.data.publicUrl)
+    }
+
+    useEffect(() => {
+        getURL();
+    }, []);
+
+
+
+    const handleDropdown = (e, {value}) => {
         setFlavor(value);
     };
 
     const handleModal = (e) => {
-        addToCart([{id}, {drink}, {price}, {img}, {}, {}, {teaFlavor}, [], {uid: myUuid}])
+        addToCart([{id}, {drink}, {price}, {img}, {}, {}, {teaFlavor}, [], {uid: myUuid}, imageURL])
         e.preventDefault();
-        setFlavor(prevState => {});
+        setFlavor(prevState => {
+        });
         setOpen(false);
     }
 
@@ -41,7 +59,7 @@ export const Tea = (props) => {
         <div className="product">
             <Card fluid>
                 <Header as='h2' textAlign='center' style={{paddingTop: "15px"}}>{drink}</Header>
-                <Image src={img} size="large" centered={true}/>
+                <Image src={imageURL} size="large" centered={true}/>
                 <Container fluid>
                     <CardDescription>{description}</CardDescription>
                     <p>{defaultAtr}</p>
@@ -52,6 +70,10 @@ export const Tea = (props) => {
                         {includesDairy === "TRUE" ? "Contains Dairy" : "Dairy-Free"}
                     </CardMeta>
                 </Container>
+
+                {id === 23 ?
+                    <Button onClick={() => addToCart([{id}, {drink}, {price}, {img}, {}, {}, {teaFlavor: "Green Tea"}, [], {uid: myUuid}, imageURL])} color="black">Add to Cart</Button>
+                :
                 <Modal
                     centered={false}
                     open={open}
@@ -68,7 +90,7 @@ export const Tea = (props) => {
                                 placeholder='Select Flavor'
                                 fluid
                                 selection
-                                options={teaflavors}
+                                options={data}
                                 value={teaFlavor}
                                 onChange={handleDropdown}
                             />
@@ -79,6 +101,7 @@ export const Tea = (props) => {
                         <Button onClick={handleModal} color="black">Add to Cart</Button>
                     </ModalActions>
                 </Modal>
+                }
             </Card>
         </div>
     );

@@ -1,9 +1,10 @@
 import React, {useContext} from 'react';
 import {Button, Container, Grid, GridColumn, GridRow, Header, Image} from "semantic-ui-react";
-import {TOPPINGS} from "../data/toppings";
 import {sweetnessOptions} from "../data/sweetness";
-import {milkoptions} from "../data/milkoptions";
+import {TOPPINGS} from "../data/toppings";
 import {CartContext} from "./CartContext";
+import {supabase} from "../supabase_client";
+import * as _ from "lodash";
 
 export const CartProductList = () => {
     const {cartItems, removeFromCart} = useContext(CartContext);
@@ -13,27 +14,34 @@ export const CartProductList = () => {
         return temp[0].text;
     }
 
-
     const listToppings = (array) => {
         const tempList = []
         for (let i = 0; i < array.topping.length; i++) {
             tempList.push(Number(array.topping[i]));
         }
         return (<div>
-                <p>Toppings: </p>
-                {tempList.map((top) => {
-                        let temp = TOPPINGS.filter((item) => item.id === top);
-                        return <p>+${temp[0].price} ({temp[0].topping})</p>
-                    }
-                )}
+            <p>Toppings: </p>
+            {tempList.map((top) => {
+                    let temp = TOPPINGS.filter((item) => item.id === top);
+                    return <p>+${temp[0].price} ({temp[0].topping})</p>
+                }
+            )}
         </div>);
-        //toppings = [Regular Boba, Lychee Jelly, ...]
     }
 
-    const getMilk = (id) => {
-        let temp = milkoptions.filter((item) => item.key === id);
-        return <p>+${temp[0].value} {temp[0].text}</p>;
-    }
+
+    //
+    // async function getMilk(id){
+    //     const {data} = await supabase.from('MilkOptions').select().eq('key', id);
+    //     let milkName = '';
+    //     data.map((item) => {
+    //         if (item.key === id){
+    //             milkName = item.text;
+    //         }
+    //     })
+    //     console.log(milkName)
+    //     return <p>+$1 ({milkName})</p>
+    // }
 
 
 
@@ -49,7 +57,7 @@ export const CartProductList = () => {
                     <Grid key={index}>
                         <GridRow columns={4}>
                             <GridColumn>
-                                <Image src={item[3].img} fluid/>
+                                <Image src={item[9]} fluid/>
                             </GridColumn>
                             <GridColumn>
                                 <Header as='h2'>{item[1].drink}</Header>
@@ -62,9 +70,9 @@ export const CartProductList = () => {
                                 {(!item[5].sweetness) ? null
                                     :
                                     (<p>({getSweetness(item[5].sweetness)} sweet)</p>)}
-                                {(!item[4].milk) ? null
+                                {(_.isEmpty(item[4])) ? null
                                     :
-                                    (<p>{getMilk(item[4].milk)}</p>)}
+                                    (<p>+$1 ({item[4].milk})</p>)}
                             </GridColumn>
                             <GridColumn>
                                 <Header as="h3" textAlign="right">${item[2].price}</Header>

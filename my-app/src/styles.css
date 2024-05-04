@@ -286,6 +286,20 @@ body {
 }
 /*ABOUT US PAGE CSS END*/
 
+
+
+/*ADMIN PAGE CSS*/
+.create-item-supabase .radio {
+    padding: 10px;
+}
+
+.form-control {
+    width: 20%;
+}
+
+/*ADMIN PAGE CSS END*/
+
+
 /*TABLET CSS GROUP*/
 @media (max-width: 768px) {
     .nav ul {
