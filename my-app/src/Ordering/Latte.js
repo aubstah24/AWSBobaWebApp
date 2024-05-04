@@ -4,14 +4,14 @@ import {
     CardDescription,
     CardMeta,
     Container,
-    Dropdown, DropdownItem,
+    Dropdown,
     Header,
     Image,
     Modal,
     ModalActions,
     ModalContent,
     ModalDescription,
-    ModalHeader, Select
+    ModalHeader
 } from "semantic-ui-react";
 import React, {useContext, useEffect, useState} from "react";
 import {CartContext} from "../Cart/CartContext";

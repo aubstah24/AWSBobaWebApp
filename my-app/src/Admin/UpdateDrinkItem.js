@@ -1,5 +1,5 @@
 import { useState} from "react";
-import {Button, Container, Header, Input} from "semantic-ui-react";
+import {Button, Container, Input} from "semantic-ui-react";
 import { supabase } from "../supabase_client";
 
 
@@ -49,11 +49,14 @@ export function UpdateDrinkItem() {
 
         if (error) {
             console.error('Error updating data:', error.message);
+            alert('Error Updating item');
             return (<p>{error.message}</p>);
         } else {
             console.log('Data updated successfully:', data, item);
             e.preventDefault()
             window.location.reload();
+            alert('Item Updated successfully');
+
         }
 
     }

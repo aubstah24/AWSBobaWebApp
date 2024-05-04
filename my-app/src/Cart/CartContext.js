@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import {TOPPINGS} from "../data/toppings";
 import * as _ from 'lodash';
 import {supabase} from "../supabase_client";
 
@@ -10,14 +9,14 @@ export const ContextProvider = (props) => {
     const [cartItems, setCartItems] = useState([]);
     const [boba, setBoba] = useState([]);
 
-    useEffect(() => {
-        fetchBoba();
-    }, []);
-
     async function fetchBoba(){
         const {data} = await supabase.from('BobaToppings').select()
         setBoba(data);
     }
+
+    useEffect(() => {
+        fetchBoba();
+    }, []);
     // eslint-disable-next-line
     {/* cartItems =  [[key, id, price...], [key, id, price...], ...] */}
 
