@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext} from 'react';
 import {Button, Container, Grid, GridColumn, GridRow, Header, Image} from "semantic-ui-react";
 import {sweetnessOptions} from "../data/sweetness";
 import {TOPPINGS} from "../data/toppings";
@@ -8,23 +8,6 @@ import * as _ from "lodash";
 
 export const CartProductList = () => {
     const {cartItems, removeFromCart} = useContext(CartContext);
-    const [bobaToppings, setBobaToppings] = useState([]);
-
-    // useEffect(() => {
-    //     getToppings();
-    // }, []);
-    //
-    //
-    // async function getToppings() {
-    //     const {data} = await supabase.from('BobaToppings').select();
-    //     setBobaToppings(data);
-    //     console.log(bobaToppings);
-    // }
-
-    async function fetchData(id) {
-        const {data} = await supabase.from('BobaToppings').select().eq('id', id);
-        return data[0];
-    }
 
     const getSweetness = (id) => {
         let temp = sweetnessOptions.filter((item) => item.key === id);

@@ -1,6 +1,5 @@
 import { Header, Tab, TabPane} from "semantic-ui-react";
 import React from "react";
-import {PRODUCTS} from "../data/products";
 import {Row} from "react-bootstrap";
 import {Coffee} from "./Coffee";
 import {MilkTea} from "./MilkTea";

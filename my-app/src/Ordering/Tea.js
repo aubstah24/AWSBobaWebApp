@@ -30,16 +30,18 @@ export const Tea = (props) => {
     const [imageURL, setImageURL] = useState(null);
     const myUuid = uuidv4();
 
-    useEffect(() => {
-        getURL()
-    }, []);
-
     async function getURL() {
         const {data} = await supabase.from('DrinkList').select().eq('id', id)
         const publicURL = supabase.storage.from('drinkImagesStorage').getPublicUrl(data[0].img);
 
         setImageURL(publicURL.data.publicUrl)
     }
+
+    useEffect(() => {
+        getURL();
+    }, []);
+
+
 
     const handleDropdown = (e, {value}) => {
         setFlavor(value);
