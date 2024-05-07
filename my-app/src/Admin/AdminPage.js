@@ -10,35 +10,11 @@ import {MilkTable} from "./MilkTable";
 import {TeaFlavors} from "./TeaFlavors";
 
 
-const supabase = createClient('https://owbmgfexablklljwydlm.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im93Ym1nZmV4YWJsa2xsand5ZGxtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTM5MTQyOTQsImV4cCI6MjAyOTQ5MDI5NH0.iXttQ_vbqXIQd6SI7gaK7rty7kDDGM1Kvtxa5Ugq4QQ')
-
 export const AdminPage = () => {
-
-// update a row
-// You can update specific rows using horizontal filters, e.g. eq, lt, and is.
-    const updateItem = async (id) => {
-        try {
-            const {data, error} = await supabase
-                .from('DrinkList')
-                .update({description: 'NEW description available'})
-                .eq('id', id)
-
-            if (error) {
-                console.error('Error updating data:', error.message);
-            } else {
-                console.log('Data updated successfully:', data);
-                // Optionally, you can access the inserted data here
-            }
-
-        } catch (error) {
-            console.error('Error updating data:', error.message);
-        }
-    }
-
 
 
     return (
-        <div>
+        <div style={{marginTop:'30px'}}>
             {/*Show admin page after login */}
             <Header as="h1" textAlign="center">WELCOME TO THE ADMIN PAGE</Header>
             <Header as="h3" textAlign="center">All edits here will be automatically updated to the website. It uses

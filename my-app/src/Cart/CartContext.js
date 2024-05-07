@@ -1,24 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import * as _ from 'lodash';
 import {supabase} from "../supabase_client";
+import {TOPPINGS} from "../data/toppings";
 
 export const CartContext = React.createContext(null);
 
 
 export const ContextProvider = (props) => {
     const [cartItems, setCartItems] = useState([]);
-    const [boba, setBoba] = useState([]);
-
-    async function fetchBoba(){
-        const {data} = await supabase.from('BobaToppings').select()
-        setBoba(data);
-    }
-
-    useEffect(() => {
-        fetchBoba();
-    }, []);
-    // eslint-disable-next-line
-    {/* cartItems =  [[key, id, price...], [key, id, price...], ...] */}
 
 
     const addToCart = (item) => {
@@ -67,7 +56,7 @@ export const ContextProvider = (props) => {
         let total = 0.00;
         let temp = cartItems[index][7]
         for (let i = 0; i < temp.topping.length; i++) {
-            let token = boba.filter((item) => (item.id === Number(temp.topping[i])))
+            let token = TOPPINGS.filter((item) => (item.id === Number(temp.topping[i])))
             let priceVar = parseFloat(token[0].price);
             total = total + priceVar;
         }

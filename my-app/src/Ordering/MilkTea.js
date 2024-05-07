@@ -86,7 +86,7 @@ export const MilkTea = (props) => {
                    sweetness default is 50% == id=3
                    [{id: 1}, {drink: Tea}, {price: 3}, {img: ./img/img.png}, {milk: milk}, {sweet: sweet}, {flavor: teaFlavor}, {topping: topping}
                    */}
-                <Button onClick={() => addToCart([{id}, {drink}, {price}, {img}, {}, {sweet: 3}, {}, {topping: [6]}, {uid: myUuid}, imageURL])} color='brown'>
+                <Button onClick={() => addToCart([{id}, {drink}, {price}, {img}, {}, {sweet: 3}, {}, {topping: ['6']}, {uid: myUuid}, imageURL])} color='brown'>
                     Add To Cart
                 </Button>
                 <Modal
