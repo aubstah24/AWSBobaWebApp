@@ -4,14 +4,14 @@ import {
     CardDescription,
     CardMeta,
     Container,
-    Dropdown, DropdownItem,
+    Dropdown,
     Header,
     Image,
     Modal,
     ModalActions,
     ModalContent,
     ModalDescription,
-    ModalHeader, Select
+    ModalHeader
 } from "semantic-ui-react";
 import React, {useContext, useEffect, useState} from "react";
 import {CartContext} from "../Cart/CartContext";
@@ -62,11 +62,11 @@ export const Latte = (props) => {
     return (
         <div className="product">
             <Card fluid>
-                <Header as='h2' textAlign='center' style={{paddingTop: "15px"}}>{drink}</Header>
-                <Image src={imageURL} size="large" centered={true}/>
-                <Container fluid>
-                    <CardDescription>{description}</CardDescription>
-                    <p>{defaultAtr}</p>
+                <Header as='h2' textAlign='center' style={{paddingTop: "15px", fontFamily: 'Elephant'}}>{drink}</Header>
+                <Image src={imageURL} size="large" centered={true}  style={{marginBottom: "15px"}}/>
+                <Container fluid  style={{marginBottom: "15px"}}>
+                    <CardDescription style={{fontFamily: 'Metro Nova Hawaiian Light'}}>{description}</CardDescription>
+                    <p style={{fontFamily: 'Georgia', fontWeight: 'bold'}}>{defaultAtr}</p>
                     <p>${price.toFixed(2)}</p>
                     <CardMeta>
                         {caffeine === "TRUE" ? "Contains Caffeine" : "Caffeine-Free"}
@@ -74,7 +74,7 @@ export const Latte = (props) => {
                         {includesDairy === "TRUE" ? "Contains Dairy" : "Dairy-Free"}
                     </CardMeta>
                 </Container>
-                <Button onClick={() => addToCart([{id}, {drink}, {price}, {img}, {}, {}, {}, [], {uid: myUuid}, imageURL])} color='black'>
+                <Button onClick={() => addToCart([{id}, {drink}, {price}, {img}, {}, {}, {}, [], {uid: myUuid}, imageURL])} color='brown'>
                     Add To Cart
                 </Button>
                 <Modal
@@ -82,7 +82,7 @@ export const Latte = (props) => {
                     open={open}
                     onClose={() => setOpen(false)}
                     onOpen={() => setOpen(true)}
-                    trigger={<Button color="pink">Customize</Button>}
+                    trigger={<Button color="black">Customize</Button>}
                 >
                     <ModalHeader>Milk Substitutes</ModalHeader>
                     <ModalContent>
@@ -97,7 +97,7 @@ export const Latte = (props) => {
                         </ModalDescription>
                     </ModalContent>
                     <ModalActions>
-                        <Button onClick={handleModal} color="black">Add to Cart</Button>
+                        <Button onClick={handleModal} color="brown">Add to Cart</Button>
                     </ModalActions>
                 </Modal>
             </Card>

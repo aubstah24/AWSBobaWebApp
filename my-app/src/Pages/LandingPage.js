@@ -12,8 +12,8 @@ export const LandingPage = () => {
             <Grid>
                 <GridRow columns={1} >
                     <GridColumn className="welcome">
-                            <Header className='landingheader' as='h1'>WELCOME TO OUR FAMILY</Header>
-                            <p>Welcome to our family-owned boba shop. We sell coffee, espresso, boba teas, and boba milk
+                            <Header className='landingheader' as='h1' style={{padding: '10px', textAlign: 'center', fontFamily: 'Elephant'}}>WELCOME TO OUR FAMILY</Header>
+                            <p style={{fontFamily: 'Metro Nova Hawaiian Regular'}}>Welcome to our family-owned boba shop. We sell coffee, espresso, boba teas, and boba milk
                                 teas. </p>
                             <Button color="black" href="/menu">SEE MENU</Button>
                     </GridColumn>
@@ -23,7 +23,7 @@ export const LandingPage = () => {
                         <Image src={inside} alt={inside} fluid/>
                     </GridColumn>
                     <GridColumn className="coffeesection">
-                        <Header as="h2">
+                        <Header as="h2" style={{fontFamily: 'Metro Nova Hawaiian Regular'}}>
                             Travel with our roasts from around the world...
                         </Header>
                         <p>We brought the countries to you with our roasts from around the world.  We hand picked the best coffees and with different bodies so that you can find the right fit.  Our roasts include beans from Brazil, Puerto Rico, Japan, Ethiopia, and Seattle.</p>
@@ -31,7 +31,7 @@ export const LandingPage = () => {
                 </GridRow>
                 <GridRow columns={2} className="info">
                     <GridColumn className="coffeesection">
-                        <Header as="h2">
+                        <Header as="h2" style={{fontFamily: 'Metro Nova Hawaiian Regular'}}>
                             ...And check out our green tea blends
                         </Header>
                         <p>There is a whole world when you talk about Green Tea.  We have our high end matcha powder as well as our hojicha blend.  We have green tea for our tea-based boba drinks or our plain hot tea.  </p>

@@ -56,11 +56,11 @@ export const Tea = (props) => {
     return (
         <div className="product">
             <Card fluid>
-                <Header as='h2' textAlign='center' style={{paddingTop: "15px"}}>{drink}</Header>
-                <Image src={imageURL} size="large" centered={true}/>
-                <Container fluid>
-                    <CardDescription>{description}</CardDescription>
-                    <p>{defaultAtr}</p>
+                <Header as='h2' textAlign='center' style={{paddingTop: "15px", fontFamily: 'Elephant'}} >{drink}</Header>
+                <Image src={imageURL} size="large" centered={true}  style={{marginBottom: "15px"}}/>
+                <Container fluid  style={{marginBottom: "15px"}}>
+                    <CardDescription style={{fontFamily: 'Metro Nova Hawaiian Light'}}>{description}</CardDescription>
+                    <p style={{fontFamily: 'Georgia', fontWeight: 'bold'}}>{defaultAtr}</p>
                     <p>${price}</p>
                     <CardMeta>
                         {caffeine === "TRUE" ? "Contains Caffeine" : "Caffeine-Free"}
@@ -70,14 +70,14 @@ export const Tea = (props) => {
                 </Container>
 
                 {id === 23 ?
-                    <Button onClick={() => addToCart([{id}, {drink}, {price}, {img}, {}, {}, {teaFlavor: "Green Tea"}, [], {uid: myUuid}, imageURL])} color="black">Add to Cart</Button>
+                    <Button onClick={() => addToCart([{id}, {drink}, {price}, {img}, {}, {}, {teaFlavor: "Green Tea"}, [], {uid: myUuid}, imageURL])} color="brown">Add to Cart</Button>
                 :
                 <Modal
                     centered={false}
                     open={open}
                     onClose={() => setOpen(false)}
                     onOpen={() => setOpen(true)}
-                    trigger={<Button>Select Tea</Button>}
+                    trigger={<Button color='black'>Select Tea</Button>}
                 >
                     <ModalHeader>Tea Flavors</ModalHeader>
                     <ModalContent>
@@ -96,7 +96,7 @@ export const Tea = (props) => {
                         </ModalDescription>
                     </ModalContent>
                     <ModalActions>
-                        <Button onClick={handleModal} color="black">Add to Cart</Button>
+                        <Button onClick={handleModal} color="brown">Add to Cart</Button>
                     </ModalActions>
                 </Modal>
                 }

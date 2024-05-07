@@ -36,29 +36,28 @@ export const AdminPage = () => {
 
 
     return (
-        <div>
+        <div style={{marginTop: '30px'}}>
             {/*Show admin page after login */}
             <Header as="h1" textAlign="center">WELCOME TO THE ADMIN PAGE</Header>
             <Header as="h3" textAlign="center">All edits here will be automatically updated to the website.  It uses DynamoDB to submit changes on the database side.
             Only Aubrie has access to the AWS Console, so if any issues come up, contact her.</Header>
             {/*Make edits to Menu via DynamoDB actions - POST, GET, PUT*/}
-            <Container>
+            <div>
                 <Header as="h2">Create New Menu Item:</Header>
                 <p>To create a new menu item, please fill in the form below and press submit.  You should get a confirmation message following the submission.</p>
                 <p>***PRICE FIELD: do not put a dollar sign $ in front of the number.  Just type out the number in the field: ( 6.99 / 3 / 4.50 )</p>
                 <p>***CAFFEINE & DAIRY FIELD: only put true or false in lowercase.  It is a boolean. </p>
                 <p>***IMG FIELD: upload the image to the data folder.  Path should be exactly as follows: /img/[IMAGEFILENAME.EXT] --> /img/example.png </p>
-            </Container>
+            </div>
+            <br/>
             <CreateDrinkItem/>
 
-            <Container>
-                <Header as="h2">Remove Menu Item:</Header>
-                <p>To remove a menu item, please select the item from below and sign your name and date.  Once you delete, there is no undo.  </p>
-            </Container>
+            <Header as="h2">Remove Menu Item:</Header>
+            <p>To remove a menu item, please select the item from below and sign your name and date.  Once you delete, there is no undo.  </p>
             <DeleteDrinkItem/>
 
+            <Header as="h2">Make Edits To A Menu Item:</Header>
             <Container>
-                <Header as="h2">Make Edits To A Menu Item:</Header>
                 <p>To edit a menu item, please select the item from below and sign your name and date.
                 Change what needs to be changed and press save.</p>
             </Container>
@@ -73,9 +72,8 @@ export const AdminPage = () => {
 
             {/*See dashboard of orders -- simple table of overall orders with date filters*/}
             <OrderDashboard/>
-
+            <br/><br/>
             {/*See Drink List from dynamoDB */}
-            <Header as="h2">CURRENT DRINK LIST VIEW</Header>
             <DrinkListTable/>
         </div>
     )

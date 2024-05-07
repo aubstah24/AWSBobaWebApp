@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {Button, Form, FormField, Header, Radio} from "semantic-ui-react";
+import {Button, Container, Form, FormField, Header, Radio} from "semantic-ui-react";
 import {FormControl, FormLabel} from "react-bootstrap";
 import { supabase } from "../supabase_client";
 
@@ -44,7 +44,7 @@ export function CreateDrinkItem() {
     }
 
     return (
-        <div>
+        <Container>
         <Form className='create-item-supabase'>
             <FormLabel>DRINK ID (check the table on the bottom of page to get the next number)</FormLabel>
             <FormControl
@@ -167,7 +167,7 @@ export function CreateDrinkItem() {
         <Header as='h4'>{defaultAtr}</Header>
         <Header as='h4'>{caffeine}</Header>
         <Header as='h4'>{includesDairy}</Header>
-    </div>
+    </Container>
 
 )
 }

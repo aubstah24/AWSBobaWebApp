@@ -69,9 +69,9 @@ export function OnlineOrderingPage() {
 
     return (
         <div className="onlineorderingpage">
-            <Header as="h1" textAlign="center">ORDER ONLINE HERE</Header>
+            <Header as="h1" style={{padding: '20px', textAlign: 'center', fontFamily: 'Elephant'}}>ORDER ONLINE HERE</Header>
 
-            <Tab menu={{ fluid: true, vertical: true, tabular: true }} panes={panes} />
+            <Tab menu={{ fluid: true, vertical: false, tabular: true }} panes={panes} />
 
             <br/>
         </div>

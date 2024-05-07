@@ -1,5 +1,5 @@
 import { useState} from "react";
-import {Button, Header, Input} from "semantic-ui-react";
+import {Button, Container, Header, Input} from "semantic-ui-react";
 import { supabase } from "../supabase_client";
 
 
@@ -24,11 +24,11 @@ export function DeleteDrinkItem() {
 
 
     return (
-        <div>
+        <Container>
             <Header as='h3'>Type in the ID number of the drink you want to remove.</Header>
             <Input type='number' onChange={(e) => setItem(e.target.value)} />
             <Button type='submit' onClick={(e) => {deleteDrinkItem(item)}} color='red'>DELETE ITEM</Button>
-        </div>
+        </Container>
     )
 }
 
