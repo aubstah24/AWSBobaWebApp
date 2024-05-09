@@ -34,11 +34,11 @@ export const Coffee = (props) => {
     return (
         <div className="product">
             <Card fluid>
-                <Header as='h2' textAlign='center' style={{paddingTop: "15px"}}>{drink}</Header>
-                <Image src={imageURL} size="large" centered={true}/>
-                <Container fluid>
-                    <CardDescription>{description}</CardDescription>
-                    <p>{defaultAtr}</p>
+                <Header as='h2' style={{paddingTop: "15px", fontFamily: 'Elephant'}}>{drink}</Header>
+                <Image src={imageURL} size="large" centered={true} style={{marginBottom: "15px"}}/>
+                <Container fluid style={{marginBottom: "15px"}}>
+                    <CardDescription style={{fontFamily: 'Metro Nova Hawaiian Light'}}>{description}</CardDescription>
+                    <p style={{fontFamily: 'Georgia', fontWeight: 'bold'}}>{defaultAtr}</p>
                     <p>${price}</p>
                     <CardMeta>
                         {caffeine === "TRUE" ? "Contains Caffeine" : "Caffeine-Free"}
@@ -47,7 +47,7 @@ export const Coffee = (props) => {
                     </CardMeta>
                 </Container>
                 <Button onClick={() => addToCart([{id}, {drink}, {price}, {img}, {}, {}, {}, [], {uid: myUuid}, imageURL])}
-                        color='black'>
+                        color='brown'>
                     Add To Cart
                 </Button>
             </Card>

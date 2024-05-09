@@ -1,7 +1,3 @@
-* {
-    box-sizing: border-box;
-}
-
 body {
     background-color: beige;
     margin: 10px;
@@ -39,6 +35,7 @@ body {
     align-items: center;
     justify-content: center;
     padding: 10px;
+    font-family: 'Elephant', sans-serif;
 }
 
 .nav a {
@@ -65,8 +62,6 @@ body {
 .nav li:hover {
     background-color: saddlebrown;
 }
-
-
 
 .pageheader {
     padding: 20px;
@@ -141,6 +136,7 @@ body {
     text-align: left;
     justify-items: center;
     padding-top: 20%;
+    font-family: 'Metro Nova Hawaiian Regular', sans-serif;
 }
 
 .gridgallery {
@@ -152,96 +148,23 @@ body {
 
 
 /*MENU PAGE CSS*/
-.pdfUpload {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 30px;
-    flex-direction: column;
-}
-.react-pdf__Page__textContent{
-    display: none;
-}
+
 
 .menupage {
     background-color: #DAA06D;
-    justify-content: left;
     display: flex; /* Changed to flex for proper alignment */
     flex-wrap: wrap; /* Allow items to wrap to the next line on small screens */
     padding: 30px;
 }
 
-.sweetnesslevel {
-    justify-content: flex-start;
-    padding-top: 30px;
-    margin: 20px;
-}
-
-.container {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-}
-
-.cards {
-    display: flex;
-    justify-content: space-between;
-    align-content: space-between;
-    width: 100%;
-    padding-top: 30px;
-}
-
-.image {
-    width: 20%;
-}
-
-.box {
-    padding: 20px 10px 20px 10px;
-    margin: 5px;
-    width: 18%;
-    text-align: center;
-}
-
-#sweetfull {
-    background-color: #7B3F00;
-
-}
-
-#sweet3 {
-    background-color: #a85803;
-
-}
-
-#sweethalf {
-    background-color: #d16e04;
-
-}
-
-#sweetquarter {
-    background-color: #d98930;
-
-}
-
-#unsweet {
-    background-color: #f2bb7e;
-
-}
-
-.card image {
-    text-align: left;
-    display: inline-flex;
-}
-
-.card {
-    padding: 10px;
-    margin: 10px;
+.menucard {
+    padding-top: 2rem;
 }
 
 /*MENU PAGE CSS END*/
 
 /*ORDER PAGE CSS*/
 .onlineorderingpage {
-    background-color: #DAA06D;
     justify-content: space-between;
     align-content: center;
     text-align: center;
@@ -286,6 +209,9 @@ body {
 }
 /*ABOUT US PAGE CSS END*/
 
+.productContainer {
+    margin-top: 30px;
+}
 
 
 /*ADMIN PAGE CSS*/
@@ -298,6 +224,92 @@ body {
 }
 
 /*ADMIN PAGE CSS END*/
+
+/* LOGIN / SIGN UP CSS */
+
+.logincontainer{
+    background: linear-gradient(#8C4E2B, #D39F82);
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 100px;
+    padding: 20px;
+}
+
+.loginheader header {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    gap: 9px;
+    width: 100%;
+    margin-top: 30px;
+    font-size: 48px;
+    font-weight: bold;
+    color: white;
+}
+
+.underline {
+    width: 61px;
+    height: 6px;
+    background: white;
+    border-radius: 9px;
+    text-align: center;
+    justify-items: center;
+    align-self: center;
+}
+
+.inputs {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.inputdiv {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    width: 400px;
+    height: 60px;
+    background: #EAEAEA;
+    border-radius: 6px;
+}
+
+.image[alt="person"] {
+    margin: 0px 30px;
+}
+
+.input[name="user"] {
+    height: 50px;
+    width: 400px;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #797979;
+    font-size: 19px;
+}
+
+.submit-container {
+    justify-items: center;
+    align-content: center;
+    align-items: center;
+    margin: 30px auto;
+    text-align: center;
+    width: 220px;
+    height: 59px;
+    color: white;
+    background: #8C4E2B;
+    border-radius: 50px;
+    font-size: 19px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* LOGIN / SIGNUP CSS END */
+
+
+
+
 
 
 /*TABLET CSS GROUP*/

@@ -70,11 +70,11 @@ export const MilkTea = (props) => {
     return (
         <div className="product">
             <Card fluid>
-                <Header as='h2' textAlign='center' style={{paddingTop: "15px"}}>{drink}</Header>
-                <Image src={imageURL} size="large" centered={true}/>
-                <Container fluid>
-                    <CardDescription>{description}</CardDescription>
-                    <p>{defaultAtr}</p>
+                <Header as='h2' textAlign='center' style={{paddingTop: "15px", fontFamily: 'Elephant'}}>{drink}</Header>
+                <Image src={imageURL} size="large" centered={true}  style={{marginBottom: "15px"}}/>
+                <Container fluid  style={{marginBottom: "15px"}}>
+                    <CardDescription style={{fontFamily: 'Metro Nova Hawaiian Light'}}>{description}</CardDescription>
+                    <p style={{fontFamily: 'Georgia', fontWeight: 'bold'}}>{defaultAtr}</p>
                     <p>${price.toFixed(2)}</p>
                     <CardMeta>
                         {caffeine === "TRUE" ? "Contains Caffeine" : "Caffeine-Free"}
@@ -86,7 +86,7 @@ export const MilkTea = (props) => {
                    sweetness default is 50% == id=3
                    [{id: 1}, {drink: Tea}, {price: 3}, {img: ./img/img.png}, {milk: milk}, {sweet: sweet}, {flavor: teaFlavor}, {topping: topping}
                    */}
-                <Button onClick={() => addToCart([{id}, {drink}, {price}, {img}, {}, {sweet: 3}, {}, {topping: [6]}, {uid: myUuid}, imageURL])} color='black'>
+                <Button onClick={() => addToCart([{id}, {drink}, {price}, {img}, {}, {sweet: 3}, {}, {topping: ['6']}, {uid: myUuid}, imageURL])} color='brown'>
                     Add To Cart
                 </Button>
                 <Modal
@@ -94,7 +94,7 @@ export const MilkTea = (props) => {
                     open={open}
                     onClose={() => setOpen(false)}
                     onOpen={() => setOpen(true)}
-                    trigger={<Button>Customize</Button>}
+                    trigger={<Button color='black'>Customize</Button>}
                 >
                     <ModalHeader>Customize Your Drink</ModalHeader>
                     <ModalContent>
@@ -125,7 +125,7 @@ export const MilkTea = (props) => {
                         </ModalDescription>
                     </ModalContent>
                     <ModalActions>
-                        <Button onClick={handleModal} primary>Add To Cart</Button>
+                        <Button onClick={handleModal} color='brown'>Add To Cart</Button>
                     </ModalActions>
                 </Modal>
             </Card>

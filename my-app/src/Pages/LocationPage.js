@@ -15,7 +15,7 @@ export const LocationPage = () => {
                 <GridRow columns={2}>
                     <GridColumn width={6}>
                         <div>
-                            <Header as="h2">LOCATION</Header>
+                            <Header as="h2" style={{padding: '10px', textAlign: 'left', fontFamily: 'Elephant'}}>LOCATION</Header>
                             <p>We are located at the intersection of Pensacola and King Street. Our Parking entrance is
                                 on Pensacola which is a one way. </p>
                         </div>

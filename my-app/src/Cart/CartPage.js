@@ -18,8 +18,8 @@ export const CartPage = () => {
     }
 
     return (
-        <Container className="productContainer" style={{backgroundColor: "white"}}>
-            <Header as="h3" textAlign="center">Your cart is empty.</Header>
+        <Container className="productContainer">
+            <Header as="h1" textAlign="center">Your cart is empty.</Header>
         </Container>
     )
 }

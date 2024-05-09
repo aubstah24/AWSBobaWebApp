@@ -1,7 +1,4 @@
 import {
-    Card,
-    Container, Grid, GridColumn,
-    GridRow,
     Header,
     Image,
     Table,
@@ -11,163 +8,121 @@ import {
     TableHeaderCell,
     TableRow
 } from "semantic-ui-react"
-import React from "react";
+import React, {useEffect} from "react";
 import 'semantic-ui-css/semantic.min.css';
-import filler from '../images/BobaFiller.jpeg';
-import coffee from '../images/coffee.jpg';
-import milk from '../images/milk.jpg';
-import oat from '../images/oatmilk.jpg';
-import soy from '../images/soymilk.jpg';
-import coco from '../images/cocomilk.jpg';
+import milk from '../images/milk.png';
+import oat from '../images/oatmilk.png';
+import soy from '../images/soymilk.png';
+import coco from '../images/cocomilk.png';
+import almond from '../images/almond-milk.png';
+import {MenuCard} from "./MenuCard";
+import {supabase} from "../supabase_client";
+import beans from '../images/coffee-bean.png';
+import dairy from '../images/dairy-milk.png';
+import star from '../images/star.png';
 
 
 export const MenuPage = () => {
+    const [drinks, setDrinks] = React.useState([]);
+    const [milks, setMilks] = React.useState([]);
+    const [tops, setTops] = React.useState([]);
 
+    useEffect( () => {
+    fetchData();
+    fetchMilk();
+    fetchTops();
+    }, []);
+
+    async function fetchData() {
+        const {data} = await supabase.from("DrinkList").select();
+        setDrinks(data);
+    }
+
+    async function fetchMilk() {
+        const {data} = await supabase.from('MilkOptions').select();
+        setMilks(data);
+    }
+
+    async function fetchTops() {
+        const {data} = await supabase.from('BobaToppings').select();
+        setTops(data);
+
+    }
+
+    
     return (
-        <Container className='menupage' style={{width: '100%'}}>
-            <Header className='pageheader' as='h1'>OUR MENU</Header>
-            <Header as="h3">Select your sweetness:</Header>
-            <div className='container'>
-                <div className='box' id='sweetfull'>100% Sweet</div>
-                <div className='box' id='sweet3'>75% Sweet</div>
-                <div className='box' id='sweethalf'>50% Sweet</div>
-                <div className='box' id='sweetquarter'>25% Sweet</div>
-                <div className='box' id='unsweet'>0% Sweet</div>
+        <div className='menupage' >
+
+            <div style={{paddingTop:'30px'}}>
+                <Header as='h1' style={{padding: '20px', textAlign: 'center', fontFamily: 'Elephant'}}>OUR MENU</Header>
+
+                <Table celled fixed singleLine>
+                    <TableHeader>
+                        <TableRow>
+                            <TableHeaderCell colSpan={5} textAlign='center'>MILK ALTERNATIVES</TableHeaderCell>
+                        </TableRow>
+                    </TableHeader>
+
+                    <TableBody>
+                        <TableRow textAlign='center'>
+                            {milks.map((option) => {
+                                return (<TableCell key={option.key}>{option.text}</TableCell>)
+                            })}
+                        </TableRow>
+                        <TableRow>
+                            <TableCell><Image src={coco} size='small' centered/></TableCell>
+                            <TableCell><Image src={soy} size='small' centered/></TableCell>
+                            <TableCell><Image src={almond} size='small' centered/></TableCell>
+                            <TableCell><Image src={oat} size='small' centered/></TableCell>
+                            <TableCell><Image src={milk} size='small' centered/></TableCell>
+
+                        </TableRow>
+
+                    </TableBody>
+                </Table>
             </div>
-            '
-            <Header as="h3">Topping selections:</Header>
-            <Table celled fixed singleLine>
-                <TableHeader>
-                    <TableRow textAlign='center'>
-                        <TableHeaderCell/>
-                        <TableHeaderCell>Toppings</TableHeaderCell>
-                        <TableHeaderCell/>
-                    </TableRow>
-                    <TableRow>
-                        <TableHeaderCell className='row1'>+ $0.50</TableHeaderCell>
-                        <TableHeaderCell className='row2'>+ $1</TableHeaderCell>
-                        <TableHeaderCell className='row3'>Free</TableHeaderCell>
-                    </TableRow>
-                </TableHeader>
 
-                <TableBody>
-                    <TableRow>
-                        <TableCell>Lychee Jelly</TableCell>
-                        <TableCell>Coffee Jelly</TableCell>
-                        <TableCell>Regular Boba</TableCell>
-                    </TableRow>
 
-                    <TableRow>
-                        <TableCell>Strawberry Jelly</TableCell>
-                        <TableCell>Ube Walls</TableCell>
-                        <TableCell>Large Boba</TableCell>
-                    </TableRow>
+            <div style={{paddingTop:'30px'}}>
+                <Table celled fixed singleLine>
+                    <TableHeader>
+                        <TableRow>
+                            <TableHeaderCell colSpan={6} textAlign='center'>BOBA TOPPINGS $1</TableHeaderCell>
+                        </TableRow>
+                    </TableHeader>
 
-                    <TableRow>
-                        <TableCell>Mango Jelly</TableCell>
-                        <TableCell>Caramel Walls</TableCell>
-                        <TableCell>Condensed Milk</TableCell>
-                    </TableRow>
+                    <TableBody>
+                        <TableRow textAlign='center'>
+                            {tops.map((option) => {
+                                return (
+                                        <TableCell key={option.id}>{option.topping}</TableCell>
+                                )
+                            })}
+                        </TableRow>
 
-                    <TableRow>
-                        <TableCell>Passion fruit Jelly</TableCell>
-                        <TableCell>Strawberry Puree</TableCell>
-                        <TableCell>Extra Boba</TableCell>
-                    </TableRow>
-
-                    <TableRow>
-                        <TableCell>Orange Jelly</TableCell>
-                        <TableCell>Chocolate Walls</TableCell>
-                        <TableCell>Green Tea</TableCell>
-                    </TableRow>
-                </TableBody>
-            </Table>
-
-            <Header as='h3'>Milk Options:</Header>
-
-            <Grid>
-                <GridRow columns={4}>
-                    <GridColumn>
-                        <Image src={oat} size='medium' alt={oat}/>
-                        <Header as='h4' textAlign='center'>Oat Milk</Header>
-                    </GridColumn>
-                    <GridColumn>
-                        <Image src={soy} size='medium' alt={soy}/>
-                        <Header as='h4' textAlign='center'>Soy Milk</Header>
-                    </GridColumn>
-                    <GridColumn>
-                        <Image src={coco} size='medium' alt={coco}/>
-                        <Header as='h4' textAlign='center'>Coconut Milk</Header>
-                    </GridColumn>
-                    <GridColumn>
-                        <Image src={milk} size='medium' alt={milk}/>
-                        <Header as='h4' textAlign='center'>Regular Milk</Header>
-                    </GridColumn>
-                </GridRow>
-            </Grid>
-
-            <div className="cards">
-                <Grid>
-                    <GridRow columns={2}>
-                        <GridColumn>
-                            <Card.Group>
-                                <Card fluid>
-                                    <Image floated="left" src={filler} alt="Filler"/>
-                                    <Card.Content>
-                                        <Card.Header>BOBA DRINK EXAMPLE 1</Card.Header>
-                                        <p>Here is a description of the boba like what flavors are in this and that it
-                                            has syrups or
-                                            extra sauces inside.</p>
-                                    </Card.Content>
-                                </Card>
-                            </Card.Group>
-                        </GridColumn>
-                        <GridColumn>
-                            <Card.Group>
-                                <Card fluid>
-                                    <Image floated="left" src={coffee} alt="Filler"/>
-                                    <Card.Content>
-                                        <Card.Header>COFFEE DRINK EXAMPLE 2</Card.Header>
-                                        <p>Here is a description of the boba like what flavors are in this and that it
-                                            has syrups or
-                                            extra sauces inside.</p>
-                                    </Card.Content>
-                                </Card>
-                            </Card.Group>
-                        </GridColumn>
-                    </GridRow>
-
-                    <GridRow columns={2}>
-                        <GridColumn>
-                            <Card.Group>
-                                <Card fluid>
-                                    <Image floated="left" src={filler} alt="Filler"/>
-                                    <Card.Content>
-                                        <Card.Header>SUBSTITUTES FOR MILK</Card.Header>
-                                        <p>Here is a description of the boba like what flavors are in this and that it
-                                            has syrups or
-                                            extra sauces inside.</p>
-                                    </Card.Content>
-                                </Card>
-                            </Card.Group>
-                        </GridColumn>
-                        <GridColumn>
-                            <Card.Group>
-                                <Card fluid>
-                                    <Image floated="left" src={coffee} alt="Filler"/>
-                                    <Card.Content>
-                                        <Card.Header>COFFEE DRINK EXAMPLE 2</Card.Header>
-                                        <p>Here is a description of the boba like what flavors are in this and that it
-                                            has syrups or
-                                            extra sauces inside.</p>
-                                    </Card.Content>
-                                </Card>
-                            </Card.Group>
-                        </GridColumn>
-                    </GridRow>
-                </Grid>
+                    </TableBody>
+                </Table>
             </div>
-        </Container>
+
+            <div className='menucard'>
+                {drinks.map((product) => {
+                    return (
+                        <MenuCard data={product} key={product.id}/>
+                    )
+                })}
+
+               <div style={{display: 'flex'}}>
+                    <Image src={beans} size='mini'/> <span style={{alignContent: 'center'}}>Contains Caffeine</span>
+                </div>
+                <div style={{display: 'flex'}}>
+                    <Image src={dairy} size='mini' /> <span style={{alignContent: 'center'}}>Contains Dairy</span>
+                </div>
+                <div style={{display: 'flex'}}>
+                    <Image src={star} size='mini' /> <span style={{alignContent: 'center'}}>Milk Substitutes Available</span>
+                </div>
+           </div>
+        </div>
+
     )
 
 }

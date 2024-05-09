@@ -9,6 +9,7 @@ export function UpdateDrinkItem() {
     const [drinkEdit, setDrinkEdit] = useState();
     const [priceEdit, setPriceEdit] = useState();
     const [catEdit, setCatEdit] = useState();
+    const [imgEdit,setImgEdit] = useState('');
 
     async function updateNameItem(e) {
         const {data, error} = await supabase
@@ -41,6 +42,23 @@ export function UpdateDrinkItem() {
         }
     }
 
+    async function updateImgItem(e) {
+        const {data, error} = await supabase
+            .from('DrinkList')
+            .update({img: imgEdit})
+            .eq('id', item)
+
+        if (error) {
+            console.error('Error updating data:', error.message);
+            return (<p>{error.message}</p>);
+        } else {
+            console.log('Data updated successfully:', data, item);
+            e.preventDefault()
+            window.location.reload();
+        }
+
+    }
+
     async function updateCategoryItem(e) {
         const {data, error} = await supabase
             .from('DrinkList')
@@ -63,7 +81,7 @@ export function UpdateDrinkItem() {
 
     return (
         <div>
-            <Container>
+            <Container style={{padding: '10px'}}>
                 <Input type='number' label='ID of drink to edit   ' onChange={(e) => setItem(e.target.value)} />
                 <br/>
                 <Input type='text' label='Type New Name for Drink   ' onChange={(e) => setDrinkEdit(e.target.value)} />
@@ -71,7 +89,7 @@ export function UpdateDrinkItem() {
                 <Button type='submit' onClick={updateNameItem} color='purple'>UPDATE DRINK NAME</Button>
             </Container>
 
-            <Container>
+            <Container style={{padding: '10px'}}>
                 <Input type='number' label='ID of drink to edit   ' onChange={(e) => setItem(e.target.value)} />
                 <br/>
                 <Input type='text' label='Type New Price   ' onChange={(e) => setPriceEdit(e.target.value)} />
@@ -79,12 +97,20 @@ export function UpdateDrinkItem() {
                 <Button type='submit' onClick={updatePriceItem} color='purple'>UPDATE PRICE</Button>
             </Container>
 
-            <Container>
+            <Container style={{padding: '10px'}}>
                 <Input type='number' label='ID of drink to edit   ' onChange={(e) => setItem(e.target.value)} />
                 <br/>
                 <Input type='text' label='Type New Category  ' onChange={(e) => setCatEdit(e.target.value)} />
                 <br/>
                 <Button type='submit' onClick={updateCategoryItem} color='purple'>UPDATE CATEGORY</Button>
+            </Container>
+
+            <Container style={{padding: '10px'}}>
+                <Input type='number' label='ID of drink to edit   ' onChange={(e) => setItem(e.target.value)} />
+                <br/>
+                <Input type='text' label='Type New Image Filename' onChange={(e) => setImgEdit(e.target.value)} />
+                <br/>
+                <Button type='submit' onClick={updateCategoryItem} color='purple'>UPDATE IMG FILENAME</Button>
             </Container>
         </div>
     )

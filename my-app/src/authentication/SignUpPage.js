@@ -1,14 +1,27 @@
 import React, { useState } from 'react';
 import { CognitoIdentityServiceProvider } from 'aws-sdk';
 import {Link, Navigate} from "react-router-dom";
-import {LandingPage} from "./LandingPage";
+import {LandingPage} from "../Pages/LandingPage";
 import {Button, Header, Input} from "semantic-ui-react";
+import axios from "axios";
 
 export const SignUpPage = () => {
     const [name, setName] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
+
+    async function signup (e) {
+        e.preventDefault();
+
+        try {
+            await axios.post("http://localhost:5000/login", {
+                email, password
+            })
+        } catch (e) {
+            console.log(e)
+        }
+    }
 
     const signUp = async () => {
         try {
@@ -34,7 +47,7 @@ export const SignUpPage = () => {
     return (
         <div className="register">
             <Header as="h2">Register Here</Header>
-            <Input type="text" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)}></Input>
+            <Input type="text" placeholder="Full Name" value={username} onChange={e => setUsername(e.target.value)}></Input>
            <br/>
             <Input type="text" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)}></Input>
            <br/>
@@ -43,7 +56,7 @@ export const SignUpPage = () => {
             <Button color="black" onClick={signUp}>Sign up</Button>
             <br/>
             <p>Already Have a Login? </p>
-            <Link to="/login">Click here</Link>
+            <Link to="/account">Click here</Link>
         </div>
      );
 };

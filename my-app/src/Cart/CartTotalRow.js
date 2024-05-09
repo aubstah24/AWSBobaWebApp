@@ -1,6 +1,7 @@
 import React, {useContext} from 'react';
 import {Button, Form, Grid, GridRow, Header, TextArea} from "semantic-ui-react";
 import {CartContext} from "./CartContext";
+import {supabase} from "../supabase_client";
 
 const CartTotalRow = () => {
 
@@ -8,6 +9,7 @@ const CartTotalRow = () => {
 
     const totalCost = getTotalCost();
     const tax = totalCost * 0.047;
+
 
     return (
         <div className="totalrow">

@@ -10,9 +10,11 @@ import { Divider } from "semantic-ui-react";
 import {LocationPage} from "./Pages/LocationPage";
 import TopMenu from "./TopMenu";
 import {CartPage} from "./Cart/CartPage";
-import LoginPage from "./Pages/LoginPage";
+import {LoginPage} from "./authentication/LoginPage";
 import {ContextProvider} from "./Cart/CartContext";
-import {AdminPage} from "./Admin/AdminPage";
+import {AdminPage} from "./admin/AdminPage";
+import {SignUpPage} from "./authentication/SignUpPage";
+import {PasswordReset} from "./authentication/PasswordReset";
 
 function App() {
 
@@ -27,8 +29,12 @@ function App() {
                 <Route path="/about" element={<AboutUsPage/>}></Route>
                 <Route path="/location" element={<LocationPage/>}></Route>
                 <Route path="/account" element={<LoginPage/>}></Route>
-                <Route path="/cart" element={<CartPage/>}></Route>
-                  <Route path="/admin" element={<AdminPage/>}></Route>
+                  <Route path="/accountsignup" element={<SignUpPage/>}></Route>
+                  <Route path="/passwordreset" element={<PasswordReset/>}></Route>
+
+                  <Route path="/cart" element={<CartPage/>}></Route>
+                  <Route path='/admin' element={<AdminPage/>}></Route>
+                  {/*<ProtectedRoute path="/admin" component={<AdminPage/>} isAuthenticated={localStorage.getItem("isAuthenticated") === 'true'}/>*/}
               </Routes>
             </div>
               <Divider/>

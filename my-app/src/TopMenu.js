@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import {Link} from "react-router-dom";
-import {Button, Header, Image, Menu} from 'semantic-ui-react';
-import AuthComponent from './AuthComponent';
+import {Button, Header, Icon, Image, Menu} from 'semantic-ui-react';
+import {LoginPage} from './authentication/LoginPage';
 import bobaicon from './images/boba-cart.png';
 import {Badge} from "@aws-amplify/ui-react";
 import {CartContext} from "./Cart/CartContext";
@@ -21,7 +21,7 @@ export default class TopMenu extends React.Component {
 
       return (
     <div className="navcontainer">
-        <Header as="h1"><Link to="/" className="site-title">Usui Boba Shop</Link></Header>
+        <Header as="h1"><Link to="/" className="site-title">Da Morning Grind</Link></Header>
         <Menu borderless pointing secondary stackable className="nav">
             <Menu.Item
                 name='home'
@@ -54,7 +54,9 @@ export default class TopMenu extends React.Component {
                 <Link to="/location">LOCATION</Link>
                 </Menu.Item>
             <Menu.Item fitted position="right">
-                <AuthComponent/>
+                <Link to="/account">
+                    <Icon name="user circle" size="big"/>
+                </Link>
             </Menu.Item>
             <Menu.Item fitted>
                 <Button circular>
