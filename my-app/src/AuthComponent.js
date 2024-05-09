@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Icon, Dropdown, DropdownItem, DropdownMenu } from 'semantic-ui-react';
 import {Link } from "react-router-dom";
-import LoginPage from './Pages/LoginPage'
+import LoginPage from './authentication/LoginPage'
 import { Amplify } from 'aws-amplify';
 import awsExports from './aws-exports';
 
