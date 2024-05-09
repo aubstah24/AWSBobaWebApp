@@ -3,6 +3,7 @@ import React, {useContext} from "react";
 import CartTotalRow from "./CartTotalRow";
 import {CartProductList} from "./CartProductList";
 import {CartContext} from "./CartContext";
+import {Col, Row} from "react-bootstrap";
 
 
 export const CartPage = () => {
@@ -10,10 +11,20 @@ export const CartPage = () => {
 
     if (cartTotal > 0) {
         return (
-            <Container className="productContainer" style={{backgroundColor: "white"}}>
-                <CartProductList/>
-                <CartTotalRow/>
-            </Container>
+            <div>
+                <Row>
+                    <Col md={8}>
+                        <div className="productContainer" style={{backgroundColor: "white"}}>
+                            <CartProductList/>
+                        </div>
+                    </Col>
+                    <Col md={4}>
+                        <div className="productContainer" style={{backgroundColor: "tan"}}>
+                            <CartTotalRow/>
+                        </div>
+                    </Col>
+                </Row>
+            </div>
         );
     }
 

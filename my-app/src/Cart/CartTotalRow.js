@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {Button, Form, Grid, GridRow, Header, TextArea} from "semantic-ui-react";
+import {Button, Container, Form, Grid, GridRow, Header, TextArea} from "semantic-ui-react";
 import {CartContext} from "./CartContext";
 import {supabase} from "../supabase_client";
 
@@ -12,29 +12,39 @@ const CartTotalRow = () => {
 
 
     return (
-        <div className="totalrow">
+        <div>
             {totalCost > 0 ? (
+                <Container className='totalrow'>
             <Grid>
                 <GridRow>
-                    <Form>
-                        <TextArea placeholder="Additional Requests"/>
-                    </Form>
-                </GridRow>
-                <GridRow>
+                    <div className='totalcost'>
                         Subtotal: ${totalCost.toFixed(2)}
+                    </div>
                 </GridRow>
                 <GridRow>
-                    Tax: ${tax.toFixed(2)}
+                    <div className='totalcost'>
+                        Tax: ${tax.toFixed(2)}
+                    </div>
                 </GridRow>
                 <GridRow>
-                    Total: ${(totalCost+tax).toFixed(2)}
+                    <div className='totalcost'>
+                        Total: ${(totalCost + tax).toFixed(2)}
+                    </div>
+                </GridRow>
+                <GridRow>
+                    <div className='totalcost'>
+                        <Form>
+                            <TextArea placeholder="Additional Requests"/>
+                        </Form>
+                    </div>
                 </GridRow>
                 <GridRow>
                     <a href="https://buy.stripe.com/test_00g00s5Zf6fXdMc9AC">
                         <Button color="black">Checkout</Button>
                     </a>
                 </GridRow>
-            </Grid>)
+            </Grid>
+                </Container>)
                 : (<Header>Your Cart is Empty</Header>
                 )}
         </div>

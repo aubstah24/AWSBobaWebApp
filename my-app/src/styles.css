@@ -181,7 +181,14 @@ body {
     justify-content: space-between;
     text-align: center;
     align-content: center;
-    padding: 40px;
+    align-items: center;
+    justify-items: center;
+    padding: 20px;
+}
+
+.totalcost {
+    text-align: right;
+
 }
 
 .cartinput {
@@ -211,6 +218,7 @@ body {
 
 .productContainer {
     margin-top: 30px;
+
 }
 
 

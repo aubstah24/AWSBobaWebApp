@@ -53,12 +53,7 @@ export default class TopMenu extends React.Component {
                 onClick={this.handleItemClick}>
                 <Link to="/location">LOCATION</Link>
                 </Menu.Item>
-            <Menu.Item fitted position="right">
-                <Link to="/account">
-                    <Icon name="user circle" size="big"/>
-                </Link>
-            </Menu.Item>
-            <Menu.Item fitted>
+            <Menu.Item fitted position='right'>
                 <Button circular>
                     <Link to="/cart"><Image style={{width:"2.5rem", height:"auto"}} src={bobaicon}/>
                     <Badge style={{justifyContent: "right", display: "flex"}}>
