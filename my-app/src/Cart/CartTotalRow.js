@@ -1,7 +1,6 @@
 import React, {useContext} from 'react';
 import {Button, Container, Form, Grid, GridRow, Header, TextArea} from "semantic-ui-react";
 import {CartContext} from "./CartContext";
-import {supabase} from "../supabase_client";
 
 const CartTotalRow = () => {
 

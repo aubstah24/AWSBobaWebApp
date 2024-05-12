@@ -1,14 +1,11 @@
 import React, {useEffect, useState} from "react";
-import {Row} from "react-bootstrap";
-import {Coffee} from "../Ordering/Coffee";
 import {supabase} from "../supabase_client";
-import {Button, Card, CardDescription, CardMeta, Container, GridColumn, Header, Image} from "semantic-ui-react";
-import filler from "../images/BobaFiller.jpeg";
+import {Card, CardDescription, CardMeta, Header, Image} from "semantic-ui-react";
 
 
 
 export const MenuCard = (props) => {
-    const {id, drink, price, img, description, caffeine, includesDairy, defaultAtr} = props.data;
+    const {id, drink, price, description, caffeine, includesDairy, defaultAtr} = props.data;
     const [imageURL, setImageURL] = useState(null);
 
     useEffect(() => {
@@ -25,9 +22,9 @@ export const MenuCard = (props) => {
     return (
         <div className="product">
             <Card fluid>
-                <Header as='h2' textAlign='center' style={{paddingTop: "15px"}}>{drink}</Header>
+                <Header as='h2' textAlign='center' style={{paddingTop: "15px", fontFamily: 'Metro Nova Hawaiian Regular'}}>{drink}</Header>
                 <Image src={imageURL} size="large" centered={true}/>
-                <CardDescription>{description}</CardDescription>
+                <CardDescription style={{fontFamily: 'Metro Nova Hawaiian Regular'}}>{description}</CardDescription>
                 <p>{defaultAtr}</p>
                 <p>${price}</p>
                 <CardMeta>

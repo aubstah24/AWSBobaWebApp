@@ -3,6 +3,10 @@ import React from "react";
 import inside from "../images/boba_inside.jpg";
 import matcha from "../images/matcha_landing.png";
 import gallery from "../images/boba_gallery_filler.jpg";
+import milktea from '../images/hokkaido_MT.jpg';
+import coffee from '../images/ColdBrew.png';
+import latte from '../images/latte.jpg';
+import strlatte from '../images/strawberry_matcha_latte.jpg';
 
 
 export const LandingPage = () => {
@@ -13,9 +17,9 @@ export const LandingPage = () => {
                 <GridRow columns={1} >
                     <GridColumn className="welcome">
                             <Header className='landingheader' as='h1' style={{padding: '10px', textAlign: 'center', fontFamily: 'Elephant'}}>WELCOME TO OUR FAMILY</Header>
-                            <p style={{fontFamily: 'Metro Nova Hawaiian Regular'}}>Welcome to our family-owned boba shop. We sell coffee, espresso, boba teas, and boba milk
+                            <p style={{fontFamily: 'Metro Nova Hawaiian Regular', fontSize: '18px'}}>Welcome to our family-owned boba shop. We sell coffee, espresso, boba teas, and boba milk
                                 teas. </p>
-                            <Button color="black" href="/menu">SEE MENU</Button>
+                            <Button color="brown" href="/menu">SEE MENU</Button>
                     </GridColumn>
                 </GridRow>
                 <GridRow columns={2} className="info">
@@ -46,37 +50,30 @@ export const LandingPage = () => {
 
 
             <Grid>
-                <Header as="h2" className="gridgallery">SOME OF OUR FAVORITES...</Header>
-                <GridRow columns={4}>
-                    <GridColumn>
-                        <Image src={gallery} alt={gallery} circular fluid/>
-                    </GridColumn>
-                    <GridColumn>
-                        <Image src={gallery} alt={gallery} circular fluid/>
-                    </GridColumn>
-                    <GridColumn>
-                        <Image src={gallery} alt={gallery} circular fluid/>
-                    </GridColumn>
-                    <GridColumn>
-                        <Image src={gallery} alt={gallery} circular fluid/>
-                    </GridColumn>
+                <GridRow centered>
+                    <div className="gridgallery">
+                        <Header as="h2" style={{fontFamily: 'Elephant', fontSize: '30px'}}>SOME OF OUR
+                            FAVORITES</Header>
+                    </div>
+                    <div className='headerline'></div>
                 </GridRow>
                 <GridRow columns={4}>
-                    <GridColumn>
-                        <Image src={gallery} alt={gallery} circular fluid/>
-                    </GridColumn>
-                    <GridColumn>
-                        <Image src={gallery} alt={gallery} circular fluid/>
-                    </GridColumn>
-                    <GridColumn>
-                        <Image src={gallery} alt={gallery} circular fluid/>
-                    </GridColumn>
-                    <GridColumn>
-                        <Image src={gallery} alt={gallery} circular fluid/>
-                    </GridColumn>
+                    <Gallery pictureURL={milktea}/>
+                    <Gallery pictureURL={coffee}/>
+                    <Gallery pictureURL={strlatte}/>
+                    <Gallery pictureURL={latte}/>
                 </GridRow>
             </Grid>
         </div>
     )
 
+}
+
+function Gallery (props) {
+    const { pictureURL } = props;
+    return (
+        <GridColumn>
+            <Image src={pictureURL} alt={gallery} circular fluid/>
+        </GridColumn>
+    )
 }
