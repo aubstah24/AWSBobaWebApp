@@ -77,9 +77,9 @@ export const MilkTea = (props) => {
                     <p style={{fontFamily: 'Georgia', fontWeight: 'bold'}}>{defaultAtr}</p>
                     <p>${price.toFixed(2)}</p>
                     <CardMeta>
-                        {caffeine === "TRUE" ? "Contains Caffeine" : "Caffeine-Free"}
+                        {caffeine ? "Contains Caffeine" : "Caffeine-Free"}
                         <br/>
-                        {includesDairy === "TRUE" ? "Contains Dairy" : "Dairy-Free"}
+                        {includesDairy ? "Contains Dairy" : "Dairy-Free"}
                     </CardMeta>
                 </Container>
                 {/*default regular will have regular boba as topping == id=6

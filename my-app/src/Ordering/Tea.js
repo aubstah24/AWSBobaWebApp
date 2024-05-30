@@ -65,9 +65,9 @@ export const Tea = (props) => {
                     <p style={{fontFamily: 'Georgia', fontWeight: 'bold'}}>{defaultAtr}</p>
                     <p>${price}</p>
                     <CardMeta>
-                        {caffeine === "TRUE" ? "Contains Caffeine" : "Caffeine-Free"}
+                        {caffeine ? "Contains Caffeine" : "Caffeine-Free"}
                         <br/>
-                        {includesDairy === "TRUE" ? "Contains Dairy" : "Dairy-Free"}
+                        {includesDairy ? "Contains Dairy" : "Dairy-Free"}
                     </CardMeta>
                 </Container>
 

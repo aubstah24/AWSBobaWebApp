@@ -3,8 +3,8 @@ import {Button, Container, Grid, GridColumn, GridRow, Header, Image} from "seman
 import {sweetnessOptions} from "../data/sweetness";
 import {TOPPINGS} from "../data/toppings";
 import {CartContext} from "./CartContext";
-import {supabase} from "../supabase_client";
 import * as _ from "lodash";
+import {Col, Row} from "react-bootstrap";
 
 export const CartProductList = () => {
     const {cartItems, removeFromCart} = useContext(CartContext);
@@ -30,24 +30,10 @@ export const CartProductList = () => {
     }
 
 
-    //
-    // async function getMilk(id){
-    //     const {data} = await supabase.from('MilkOptions').select().eq('key', id);
-    //     let milkName = '';
-    //     data.map((item) => {
-    //         if (item.key === id){
-    //             milkName = item.text;
-    //         }
-    //     })
-    //     console.log(milkName)
-    //     return <p>+$1 ({milkName})</p>
-    // }
-
-
 
     return (
         <div>
-            <Header as='h1'>
+            <Header as='h1' style={{fontFamily: 'Metro Nova Hawaiian Light', padding: '15px'}}>
                 Your Cart Items
             </Header>
             <Container>
@@ -56,28 +42,28 @@ export const CartProductList = () => {
                     //cartItems[idx1][idx2]:: [[{id: 1}, {drink: Tea}, {price: 3}, {img: ./img/img.png}, {milk: null}, {sweet: null}, {flavor: teaflavor}, {topping: null}, {uid: XXX}]]
                     <Grid key={index}>
                         <GridRow columns={4}>
-                            <GridColumn>
-                                <Image src={item[9]} fluid/>
+                            <GridColumn width={4}>
+                                <Image src={item[9]} fluid style={{borderRadius: '30%', margin: '20px'}}/>
                             </GridColumn>
-                            <GridColumn>
-                                <Header as='h2'>{item[1].drink}</Header>
+                            <GridColumn width={5}>
+                                <Header as='h2' style={{fontFamily: 'Metro Nova Hawaiian Light', fontSize: '20pt', margin: '20px'}}>{item[1].drink}</Header>
                                 {(!item[6].teaFlavor) ? null
                                     :
-                                    (<p>Tea: {item[6].teaFlavor}</p>)}
+                                    (<p style={{margin: '20px'}}>Tea: {item[6].teaFlavor}</p>)}
                                 {(!item[7].topping) ? null
                                     :
-                                    (<p>{listToppings(item[7])}</p>)}
+                                    (<p style={{margin: '20px'}}>{listToppings(item[7])}</p>)}
                                 {(!item[5].sweetness) ? null
                                     :
-                                    (<p>({getSweetness(item[5].sweetness)} sweet)</p>)}
+                                    (<p style={{margin: '20px'}}>({getSweetness(item[5].sweetness)} sweet)</p>)}
                                 {(_.isEmpty(item[4])) ? null
                                     :
-                                    (<p>+$1 ({item[4].milk})</p>)}
+                                    (<p style={{margin: '20px'}}>+$1 ({item[4].milk})</p>)}
                             </GridColumn>
-                            <GridColumn>
-                                <Header as="h3" textAlign="right">${item[2].price}</Header>
+                            <GridColumn width={2} style={{margin: '20px'}}>
+                                <Header as="h3" textAlign="right">${item[2].price.toFixed(2)}</Header>
                             </GridColumn>
-                            <GridColumn style={{justifyContent: "space-between"}}>
+                            <GridColumn style={{justifyContent: "space-between", margin: '10px'}} width={3}>
                                 <Button style={{padding: "15px"}} onClick={() => removeFromCart(item[8].uid)} color="red">Remove
                                     from cart</Button>
                             </GridColumn>

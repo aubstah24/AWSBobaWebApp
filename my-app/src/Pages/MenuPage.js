@@ -51,9 +51,9 @@ export const MenuPage = () => {
 
     
     return (
-        <div className='menupage' >
+        <div className='menupage'>
 
-            <div style={{paddingTop:'30px'}}>
+            <div style={{paddingTop: '30px'}}>
                 <Header as='h1' style={{padding: '20px', textAlign: 'center', fontFamily: 'Elephant'}}>OUR MENU</Header>
 
                 <Table celled fixed singleLine>
@@ -83,7 +83,7 @@ export const MenuPage = () => {
             </div>
 
 
-            <div style={{paddingTop:'30px'}}>
+            <div style={{paddingTop: '30px'}}>
                 <Table celled fixed singleLine>
                     <TableHeader>
                         <TableRow>
@@ -95,7 +95,7 @@ export const MenuPage = () => {
                         <TableRow textAlign='center'>
                             {tops.map((option) => {
                                 return (
-                                        <TableCell key={option.id}>{option.topping}</TableCell>
+                                    <TableCell key={option.id}>{option.topping}</TableCell>
                                 )
                             })}
                         </TableRow>
@@ -104,23 +104,19 @@ export const MenuPage = () => {
                 </Table>
             </div>
 
+            <div style={{display: 'flex', paddingTop: '30px', justifyContent: 'space-between'}}>
+                <Image src={beans} size='mini'/> <span style={{alignContent: 'center'}}>Contains Caffeine</span>
+                <Image src={dairy} size='mini'/> <span style={{alignContent: 'center'}}>Contains Dairy</span>
+                <Image src={star} size='mini'/> <span style={{alignContent: 'center'}}>Milk Substitutes Available</span>
+            </div>
+
             <div className='menucard'>
                 {drinks.map((product) => {
                     return (
                         <MenuCard data={product} key={product.id}/>
                     )
                 })}
-
-               <div style={{display: 'flex'}}>
-                    <Image src={beans} size='mini'/> <span style={{alignContent: 'center'}}>Contains Caffeine</span>
-                </div>
-                <div style={{display: 'flex'}}>
-                    <Image src={dairy} size='mini' /> <span style={{alignContent: 'center'}}>Contains Dairy</span>
-                </div>
-                <div style={{display: 'flex'}}>
-                    <Image src={star} size='mini' /> <span style={{alignContent: 'center'}}>Milk Substitutes Available</span>
-                </div>
-           </div>
+            </div>
         </div>
 
     )
