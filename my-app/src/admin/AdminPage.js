@@ -92,6 +92,7 @@ export const AdminPage = () => {
                         </ListItem>
                     </List>
                 </Container>
+                <br/>
 
                 <CreateDrinkItem/>
                 <Divider/>

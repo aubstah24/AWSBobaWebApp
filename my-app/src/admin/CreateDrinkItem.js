@@ -72,7 +72,7 @@ export function CreateDrinkItem() {
                     value={price}
                     onChange={(e) => setPrice(e.target.value)}
                 />
-                <FormLabel>IMAGE URL FOR DRINK (e.g. /img/data/picture.png)</FormLabel>
+                <FormLabel>IMAGE FILENAME FROM UPLOAD (e.g. Picture.png)</FormLabel>
                 <FormControl
                     type='text'
                     id='img'

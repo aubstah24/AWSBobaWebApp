@@ -8,7 +8,7 @@ export const AboutUsPage = () => {
             <div className="bio">
                 <Header as='h1' style={{padding: '10px', textAlign: 'center', fontFamily: 'Elephant'}}>OUR STORY</Header>
                 <p>We are a family-owned business and we wanted to provide affordable drinks while customers do their laundry.  We call it sip n' wash!
-                We tak pride in our drink quality by going the extra lengths to ensure our ingredients are what we say they are.  </p>
+                We take pride in our drink quality by going the extra lengths to ensure our ingredients are what we say they are.  </p>
             </div>
 
             <Divider/>
