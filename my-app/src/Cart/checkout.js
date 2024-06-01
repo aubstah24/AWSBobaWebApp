@@ -5,10 +5,11 @@ import {useContext, useEffect, useState} from "react";
 import {loadStripe} from "@stripe/stripe-js";
 import {CartContext} from "./CartContext";
 import {Col, Row} from "react-bootstrap";
+import {Header} from "semantic-ui-react";
 
 const stripePromise = loadStripe("pk_test_c3VpdGVkLXdhcnRob2ctNzAuY2xlcmsuYWNjb3VudHMuZGV2JA");
 
-const CheckoutForm = () => {
+export const CheckoutForm = () => {
     const {cartItems, getTotalCost} = useContext(CartContext);
     const stripe = useStripe();
     const elements = useElements();
@@ -21,35 +22,28 @@ const CheckoutForm = () => {
     const tax = totalCost * 0.047;
     const amt = (totalCost+tax)*100;
 
-    useEffect(() => {
-        // Create PaymentIntent as soon as the page loads
-        fetch('http://localhost:3000/create-payment-intent', {
+    const handleClick = async (event) => {
+        // Create a Checkout Session.
+        const response = await fetch('http://localhost:3001/create-checkout-session', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ amount: amt }), // Amount in cents
-        })
-            .then(res => res.json())
-            .then(data => setClientSecret(data.clientSecret));
-    }, []);
-
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        setPaymentProcessing(true);
-
-        const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
-            payment_method: {
-                card: elements.getElement(CardElement),
+            headers: {
+                'Content-Type': 'application/json',
             },
+            body: JSON.stringify({}),
         });
 
-        if (error) {
-            setError(error.message);
-            setPaymentProcessing(false);
-        } else if (paymentIntent.status === 'succeeded') {
-            setSuccess(true);
-            setPaymentProcessing(false);
+        const session = await response.json();
+
+        // Redirect to Stripe Checkout.
+        const result = await stripe.redirectToCheckout({
+            sessionId: session.id,
+        });
+
+        if (result.error) {
+            console.error(result.error.message);
         }
     };
+
 
     return (
         <div id="checkout" className="checkout-page">
@@ -79,9 +73,8 @@ const CheckoutForm = () => {
                     </Row>
                 </div>
 
-                <CardElement />
                 <br/>
-                <button type="submit" className="btn btn-primary" disabled={!stripe || paymentProcessing}>
+                <button type="submit" className="btn btn-primary" onClick={handleClick}>
                     Pay Now
                 </button>
                 {error && <div>{error}</div>}
@@ -92,10 +85,10 @@ const CheckoutForm = () => {
 }
 
 export const Return = () => {
-    return (
-        <Elements stripe={stripePromise}>
-            <CheckoutForm/>
-        </Elements>
-    );
+    return <Header as='h1' textAlign="center">Payment Successful!</Header>
+}
+
+export const Cancel = () => {
+    return <Header as="h2" textAlign="center">Cancelled</Header>
 }
 
