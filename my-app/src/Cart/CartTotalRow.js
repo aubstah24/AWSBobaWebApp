@@ -1,12 +1,8 @@
 import React, {useContext} from 'react';
-import {Form, Grid, GridRow, Header, TextArea} from "semantic-ui-react";
+import {Button, Form, Grid, GridRow, Header, TextArea} from "semantic-ui-react";
 import {CartContext} from "./CartContext";
-import {loadStripe} from "@stripe/stripe-js";
-import {Elements} from "@stripe/react-stripe-js";
-import {CheckoutForm} from "./CheckoutForm";
+import {Link} from "react-router-dom";
 
-
-const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PK);
 
 const CartTotalRow = () => {
 
@@ -15,14 +11,6 @@ const CartTotalRow = () => {
     const totalCost = getTotalCost();
     const tax = totalCost * 0.047;
 
-    const options = {
-        mode: 'payment',
-        amount: (totalCost+tax).toFixed(2),
-        currency: 'usd',
-        appearance: {
-
-        },
-    };
 
     return (
         <div className="totalrow">
@@ -43,9 +31,7 @@ const CartTotalRow = () => {
                     Total: ${(totalCost+tax).toFixed(2)}
                 </GridRow>
                 <GridRow>
-                    <Elements stripe={stripePromise} options={options}>
-                        <CheckoutForm />
-                    </Elements>
+                    <Link to='checkout'><Button>Checkout</Button></Link>
                 </GridRow>
             </Grid>)
                 : (<Header>Your Cart is Empty</Header>

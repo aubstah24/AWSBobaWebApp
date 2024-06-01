@@ -15,6 +15,7 @@ import {ContextProvider} from "./Cart/CartContext";
 import {AdminPage} from "./admin/AdminPage";
 import {SignUpPage} from "./authentication/SignUpPage";
 import {PasswordReset} from "./authentication/PasswordReset";
+import {Return} from "./Cart/checkout";
 
 function App() {
 
@@ -34,7 +35,7 @@ function App() {
 
                   <Route path="/cart" element={<CartPage/>}></Route>
                   <Route path='/admin' element={<AdminPage/>}></Route>
-                  {/*<ProtectedRoute path="/admin" component={<AdminPage/>} isAuthenticated={localStorage.getItem("isAuthenticated") === 'true'}/>*/}
+                  <Route path="/cart/checkout" element={<Return/>}></Route>
               </Routes>
             </div>
               <Divider/>
