@@ -1,90 +1,62 @@
-import {
-    CardElement, Elements, useElements, useStripe
-} from "@stripe/react-stripe-js";
-import {useContext, useEffect, useState} from "react";
-import {loadStripe} from "@stripe/stripe-js";
-import {CartContext} from "./CartContext";
-import {Col, Row} from "react-bootstrap";
+import {EmbeddedCheckout, EmbeddedCheckoutProvider, useStripe} from "@stripe/react-stripe-js";
 import {Header} from "semantic-ui-react";
+import StripeProvider from "./StripeProvider";
+import {loadStripe} from "@stripe/stripe-js";
+import {useCallback, useContext, useEffect, useState} from "react";
+import {CartContext} from "./CartContext";
 
-const stripePromise = loadStripe("pk_test_c3VpdGVkLXdhcnRob2ctNzAuY2xlcmsuYWNjb3VudHMuZGV2JA");
+const stripePromise = loadStripe("pk_test_51MgbgpC97Gt3R1MtTFDilDrEzr1AXA8QHVyXfcESZKgKxrAi8jPeLBFBL462jKWJK4OAaMHJDvrHa1aK7fHSfXaV00WXaphyfn");
 
-export const CheckoutForm = () => {
-    const {cartItems, getTotalCost} = useContext(CartContext);
-    const stripe = useStripe();
-    const elements = useElements();
-    const [clientSecret, setClientSecret] = useState('');
-    const [paymentProcessing, setPaymentProcessing] = useState(false);
-    const [error, setError] = useState(null);
-    const [success, setSuccess] = useState(false);
+export const Payment = () => {
+    const {cartItems} = useContext(CartContext);
+    const [clientSecret, setClientSecret] = useState("");
 
-    const totalCost = getTotalCost();
-    const tax = totalCost * 0.047;
-    const amt = (totalCost+tax)*100;
 
-    const handleClick = async (event) => {
-        // Create a Checkout Session.
-        const response = await fetch('http://localhost:3001/create-checkout-session', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({}),
-        });
 
-        const session = await response.json();
+    useEffect(() => {
+        try {
+            const fetchClientSecret = async () => {
+                // Create a Checkout Session
 
-        // Redirect to Stripe Checkout.
-        const result = await stripe.redirectToCheckout({
-            sessionId: session.id,
-        });
+                const res = await fetch("/create-checkout-session", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({priceId: "price_1Ooax7C97Gt3R1MtDg47hgEy"
+                    })
+                })
 
-        if (result.error) {
-            console.error(result.error.message);
+                const responseBody = await res.json();
+                setClientSecret(responseBody.clientSecret)
+
+            }
+
+            fetchClientSecret();
+        } catch (error ){
+            console.log("ERROR FETCHING CLIENT", error)
         }
-    };
+
+
+    }, []);
+
 
 
     return (
-        <div id="checkout" className="checkout-page">
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <Row md={3}>
-                        <Col>
-                            ITEM
-                        </Col>
-                        <Col>
-                            Quantity
-                        </Col>
-                        <Col>
-                            Price
-                        </Col>
-                    </Row>
-                    <Row md={3}>
-                        {cartItems.forEach((item) => {
-                            return (
-                                <div key={item[0].id}>
-                                    <Col>{item[1].drink}</Col>
-                                    <Col><p>1</p></Col>
-                                    <Col>{item[2].price}</Col>
-                                </div>
-                            )
-                        })}
-                    </Row>
-                </div>
+            <div id="checkout">
 
-                <br/>
-                <button type="submit" className="btn btn-primary" onClick={handleClick}>
-                    Pay Now
-                </button>
-                {error && <div>{error}</div>}
-                {success && <div>Payment succeeded!</div>}
-            </form>
-        </div>
+                    <EmbeddedCheckoutProvider
+                        stripe={stripePromise}
+                        options={{clientSecret: clientSecret}}
+                    >
+                        <EmbeddedCheckout />
+                    </EmbeddedCheckoutProvider>
+
+            </div>
     )
 }
 
-export const Return = () => {
+export const Success = () => {
     return <Header as='h1' textAlign="center">Payment Successful!</Header>
 }
 
@@ -92,3 +64,12 @@ export const Cancel = () => {
     return <Header as="h2" textAlign="center">Cancelled</Header>
 }
 
+export const CheckoutForm = () => {
+    return (
+        <StripeProvider>
+            <div>
+                <Payment />
+            </div>
+        </StripeProvider>
+    )
+}
