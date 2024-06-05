@@ -33,7 +33,6 @@ export const PaymentPage = () => {
                         </div>
                     )
                 })}
-            <Payment />
 
         </div>
 )

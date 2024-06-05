@@ -1,36 +1,29 @@
+// This is your test secret API key.
+const stripe = require('stripe')('sk_test_51MgbgpC97Gt3R1MtDEqGSfSle4Avv2s6ds62ytBOV2AWaXWjhrGixTioqeKAaBq6sYCoXAGCRjaRoqNYjezC1RLe00Hsl6Bpb6');
 const express = require('express');
-const {Stripe} = require("stripe");
-const stripe = Stripe('sk_test_51MgbgpC97Gt3R1MtDEqGSfSle4Avv2s6ds62ytBOV2AWaXWjhrGixTioqeKAaBq6sYCoXAGCRjaRoqNYjezC1RLe00Hsl6Bpb6');
-
 const app = express();
-app.use(express.json());
+app.use(express.static('public'));
 
+const YOUR_DOMAIN = 'http://localhost:3000';
 
-export async function POST(req, res) {
-
-    const {priceId} = await req.json();
-    console.log("IN SERVER")
+app.post('/create-checkout-session', async (req, res) => {
     const session = await stripe.checkout.sessions.create({
-        ui_mode: "embedded",
-        mode: "payment",
-        line_items: [{
-            price: priceId
-        }],
-        return_url: `${req.headers.origin}/return?session_id={CHECKOUT_SESSION_ID}`,
-        success_url: 'http://localhost:3000/success',
-        cancel_url: 'http://localhost:3000/cancel',
+        customer_email: 'customer@example.com',
+        billing_address_collection: 'auto',
+        line_items: [
+            {
+                // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
+                price: 'price_1PMeUmC97Gt3R1MtAGrZRand',
+                quantity: 1,
+            },
+        ],
+        mode: 'payment',
+        success_url: `${YOUR_DOMAIN}?success=true`,
+        cancel_url: `${YOUR_DOMAIN}?canceled=true`,
+        automatic_tax: {enabled: true},
     });
 
-    res.send({clientSecret: session.client_secret});
-}
-
-app.get('/session-status', async (req, res) => {
-    const session = await stripe.checkout.sessions.retrieve(req.query.session_id);
-
-    res.send({
-        status: session.status,
-        customer_email: session.customer_details.email
-    });
+    res.redirect(303, session.url);
 });
 
-app.listen(8000, () => console.log('Server running on port 3000'));
+app.listen(3000, () => console.log('Running on port 3000'));

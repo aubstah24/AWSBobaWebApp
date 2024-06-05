@@ -15,7 +15,7 @@ import {ContextProvider} from "./Cart/CartContext";
 import {AdminPage} from "./admin/AdminPage";
 import {SignUpPage} from "./authentication/SignUpPage";
 import {PasswordReset} from "./authentication/PasswordReset";
-import {Cancel, Success} from "./Cart/checkout";
+import CheckoutForm, {Cancel, Success} from "./Cart/checkout";
 import {PaymentPage} from "./Cart/PaymentPage";
 
 
@@ -37,9 +37,8 @@ function App() {
 
                   <Route path="/cart" element={<CartPage/>}></Route>
                   <Route path='/admin' element={<AdminPage/>}></Route>
-                  <Route path="/checkout" element={<PaymentPage/>}></Route>
-                  <Route path="/success" element={<Success/>}></Route>
-                  <Route path="/cancel" element={<Cancel/>}></Route>
+                  <Route path="/checkout" element={<CheckoutForm/>}></Route>
+
               </Routes>
             </div>
               <Divider/>

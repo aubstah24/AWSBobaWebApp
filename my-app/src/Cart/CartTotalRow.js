@@ -3,7 +3,7 @@ import {Button, Form, Grid, GridRow, Header, TextArea} from "semantic-ui-react";
 import {CartContext} from "./CartContext";
 import {Link, Navigate} from "react-router-dom";
 import {loadStripe} from "@stripe/stripe-js";
-import {CheckoutForm, Payment} from "./checkout";
+import CheckoutForm, {Payment} from "./checkout";
 import {Elements} from "@stripe/react-stripe-js";
 import StripeProvider from "./StripeProvider";
 import {PaymentPage} from "./PaymentPage";
@@ -35,7 +35,7 @@ const CartTotalRow = () => {
                     Total: ${(totalCost+tax).toFixed(2)}
                 </GridRow>
                 <GridRow>
-                    <Link to="/checkout"><Button>Checkout</Button></Link>
+                    <CheckoutForm/>
                 </GridRow>
             </Grid>)
                 : (<Header>Your Cart is Empty</Header>
