@@ -21,4 +21,4 @@ Dependencies:
 
 #Home Page
 
-<img src="" size="large" floated/>
+<img src="./images/Home1.png" size="large" floated/>
