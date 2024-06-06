@@ -46,3 +46,7 @@ The images below are the most updated UI right now in the main branch.
 # Location Page
 
 <img src="./images/location1.png" size="large" floated/>
+
+# Shopping Cart Page
+
+<img src="./images/cart.png" size="large" floated/>
