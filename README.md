@@ -22,3 +22,26 @@ Dependencies:
 #Home Page
 
 <img src="./images/Home1.png" size="large" floated/>
+<img src="./images/Home2.png" size="large" floated/>
+<img src="./images/Home3.png" size="large" floated/>
+
+#Menu Page
+
+<img src="./images/Menu1.png" size="large" floated/>
+<img src="./images/Menu2.png" size="large" floated/>
+<img src="./images/Menu3.png" size="large" floated/>
+
+#Online Ordering Page
+
+<img src="./images/order1.png" size="large" floated/>
+<img src="./images/order2.png" size="large" floated/>
+<img src="./images/order3.png" size="large" floated/>
+
+#About Us Page
+
+<img src="./images/about1.png" size="large" floated/>
+<img src="./images/about2.png" size="large" floated/>
+
+#Location Page
+
+<img src="./images/location1.png" size="large" floated/>
