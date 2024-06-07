@@ -1,12 +1,7 @@
 import React, {useContext} from 'react';
 import {Button, Form, Grid, GridRow, Header, TextArea} from "semantic-ui-react";
 import {CartContext} from "./CartContext";
-import {Link, Navigate} from "react-router-dom";
-import {loadStripe} from "@stripe/stripe-js";
-import CheckoutForm, {Payment} from "./checkout";
-import {Elements} from "@stripe/react-stripe-js";
-import StripeProvider from "./StripeProvider";
-import {PaymentPage} from "./PaymentPage";
+import {Link} from "react-router-dom";
 
 const CartTotalRow = () => {
 
@@ -35,7 +30,7 @@ const CartTotalRow = () => {
                     Total: ${(totalCost+tax).toFixed(2)}
                 </GridRow>
                 <GridRow>
-                    <CheckoutForm/>
+                    <Link to='/checkout'><Button>CHECKOUT</Button></Link>
                 </GridRow>
             </Grid>)
                 : (<Header>Your Cart is Empty</Header>
