@@ -17,6 +17,8 @@ import {SignUpPage} from "./authentication/SignUpPage";
 import {PasswordReset} from "./authentication/PasswordReset";
 import CheckoutForm, {Cancel, Success} from "./Cart/checkout";
 import {PaymentPage} from "./Cart/PaymentPage";
+import SuccessPayment from "./Pages/SuccessPayment";
+import MakePayment from "./Cart/MakePayment";
 
 
 function App() {
@@ -37,8 +39,8 @@ function App() {
 
                   <Route path="/cart" element={<CartPage/>}></Route>
                   <Route path='/admin' element={<AdminPage/>}></Route>
-                  <Route path="/checkout" element={<CheckoutForm/>}></Route>
-
+                  <Route path="/payment" element={<MakePayment/>}></Route>
+                  <Route path="/success" element={<SuccessPayment/>}></Route>
               </Routes>
             </div>
               <Divider/>
