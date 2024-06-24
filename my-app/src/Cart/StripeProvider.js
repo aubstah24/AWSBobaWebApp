@@ -1,11 +1,12 @@
 import React from 'react';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
+import {PaymentForm} from "./payment";
 
-const stripePromise = loadStripe("pk_test_51MgbgpC97Gt3R1MtTFDilDrEzr1AXA8QHVyXfcESZKgKxrAi8jPeLBFBL462jKWJK4OAaMHJDvrHa1aK7fHSfXaV00WXaphyfn");
+const stripePromise = loadStripe(`${process.env.STRIPE_PUBLISHABLE_KEY}`);
 
-const StripeProvider = ({ children }) => {
-    return <Elements stripe={stripePromise}>{children}</Elements>;
+const StripeProvider = () => {
+    return <Elements stripe={stripePromise}><PaymentForm/></Elements>;
 };
 
 export default StripeProvider;

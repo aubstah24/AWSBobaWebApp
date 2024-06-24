@@ -15,10 +15,9 @@ import {ContextProvider} from "./Cart/CartContext";
 import {AdminPage} from "./admin/AdminPage";
 import {SignUpPage} from "./authentication/SignUpPage";
 import {PasswordReset} from "./authentication/PasswordReset";
-import CheckoutForm, {Cancel, Success} from "./Cart/checkout";
-import {PaymentPage} from "./Cart/PaymentPage";
 import SuccessPayment from "./Pages/SuccessPayment";
-import MakePayment from "./Cart/MakePayment";
+import {PaymentForm} from "./Cart/payment";
+import StripeProvider from "./Cart/StripeProvider";
 
 
 function App() {
@@ -39,7 +38,7 @@ function App() {
 
                   <Route path="/cart" element={<CartPage/>}></Route>
                   <Route path='/admin' element={<AdminPage/>}></Route>
-                  <Route path="/payment" element={<MakePayment/>}></Route>
+                  <Route path="/create-payment-intent" element={<StripeProvider/>}></Route>
                   <Route path="/success" element={<SuccessPayment/>}></Route>
               </Routes>
             </div>

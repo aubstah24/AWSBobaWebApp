@@ -2,12 +2,15 @@ import React, {useContext} from 'react';
 import {Button, Form, Grid, GridRow, Header, TextArea} from "semantic-ui-react";
 import {CartContext} from "./CartContext";
 import {Link} from "react-router-dom";
+import {PaymentForm} from "./payment";
+import {Elements} from "@stripe/react-stripe-js";
+import {loadStripe} from "@stripe/stripe-js";
 
+const stripePromise = await loadStripe(`${process.env.STRIPE_PUBLISHABLE_KEY}`)
 
 const CartTotalRow = () => {
 
     const {getTotalCost} = useContext(CartContext);
-
     const totalCost = getTotalCost();
     const tax = totalCost * 0.047;
 
@@ -30,7 +33,9 @@ const CartTotalRow = () => {
                     Total: ${(totalCost+tax).toFixed(2)}
                 </GridRow>
                 <GridRow>
-                    <Link to="/payment">
+                </GridRow>
+                <GridRow>
+                    <Link to="/create-payment-intent">
                         <Button>
                             CHECKOUT
                         </Button>
@@ -42,5 +47,6 @@ const CartTotalRow = () => {
         </div>
     );
 }
+
 
 export default CartTotalRow;

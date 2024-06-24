@@ -26,6 +26,7 @@
     "aws-amplify": "^6.0.18",
     "aws-sdk": "^2.1605.0",
     "axios": "^1.6.8",
+    "body-parser": "^1.20.2",
     "bootstrap": "^5.3.3",
     "browserify-fs": "^1.0.0",
     "cors": "^2.8.5",
