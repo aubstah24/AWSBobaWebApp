@@ -20,17 +20,18 @@ app.post('/create-payment-intent', async (req, res) => {
     const {paymentMethodType, currency, orderAmount} = req.body;
     let params = {
         payment_method_type: paymentMethodType,
-        amount: orderAmount,
+        amount: 1000,
         currency: currency,
     }
 
     try {
         const paymentIntent = await stripe.paymentIntents.create(params);
-
+        res.send('Payment Intent has been created');
         res.send({
             clientSecret: paymentIntent.client_secret,
             nextAction: paymentIntent.next_action,
         });
+        console.log(res)
     } catch (e) {
         return res.status(400).send({
             error: {

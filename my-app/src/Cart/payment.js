@@ -3,13 +3,14 @@ import {CartContext} from "./CartContext";
 import {loadStripe} from "@stripe/stripe-js";
 import {CardElement, Elements, PaymentElement, useElements, useStripe} from "@stripe/react-stripe-js";
 import {Header} from "semantic-ui-react";
+import {response} from "express";
 
 
 export const PaymentForm = () => {
     const {getTotalCost} = useContext(CartContext);
     const totalCost = getTotalCost();
     const tax = totalCost * 0.047;
-    const totalAmt = totalCost + tax;
+    const totalAmt = (totalCost + tax)*100;
     const stripe = useStripe();
     const elements = useElements();
     const [message, setMessage] = useState(null);
@@ -36,7 +37,9 @@ export const PaymentForm = () => {
             }
             ).then((response) => response.json());
 
+        console.log(clientSecret);
         if (backendError) {
+            console.log("Error in Backend")
             console.error(backendError.message());
             setMessage(backendError.message)
             return;
@@ -54,10 +57,12 @@ export const PaymentForm = () => {
         );
 
         if (stripeError) {
-            console.error(stripeError.message);
+            console.error("Error with stripe", stripeError.message);
             setMessage(stripeError.message);
             return;
         }
+
+        setMessage(`Payment ${paymentIntent.status}: ${paymentIntent.id}`)
     }
 
     return (
@@ -76,7 +81,7 @@ export const PaymentForm = () => {
                     </button>
                     </div>
                 </form>
-                {message && <div>{message}</div>}
+               <p>{message}</p>
             </div>
         </div>
     )
