@@ -16,6 +16,7 @@ import {AdminPage} from "./admin/AdminPage";
 import {SignUpPage} from "./authentication/SignUpPage";
 import {PasswordReset} from "./authentication/PasswordReset";
 import {PaymentPage} from "./Cart/PaymentPage";
+import {SquarePayments} from "./Cart/SquarePayment";
 
 
 function App() {
@@ -36,7 +37,7 @@ function App() {
 
                   <Route path="/cart" element={<CartPage/>}></Route>
                   <Route path='/admin' element={<AdminPage/>}></Route>
-                  <Route path="/checkout" element={<PaymentPage/>}></Route>
+                  <Route path="/checkout" element={<SquarePayments/>}></Route>
 
               </Routes>
             </div>
