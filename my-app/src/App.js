@@ -1,3 +1,9 @@
+/*
+    Created By:  Aubrie Usui
+    Created Date: February 2024
+    Description: Dynamic and responsive web application that can add items to cart and implements a payment portal
+*/
+
 import './App.css';
 import {AboutUsPage} from "./Pages/AboutUsPage";
 import {LandingPage} from "./Pages/LandingPage";
