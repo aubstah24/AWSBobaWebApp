@@ -6,6 +6,7 @@ To start this app:
 1) Clone to desktop and open in your IDE choice or Git
 
 2) Run the following command in terminal
+```npm install```
 ```npm start```
 
 
